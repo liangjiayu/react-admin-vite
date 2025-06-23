@@ -1,4 +1,4 @@
-import { CrownFilled, SmileFilled } from "@ant-design/icons";
+import { CheckCircleOutlined, CrownFilled, SmileFilled } from "@ant-design/icons";
 import { ProLayout } from "@ant-design/pro-components";
 import { Link, Outlet, useLocation } from "react-router";
 
@@ -24,6 +24,21 @@ const BaseLayout = () => {
             name: "管理页",
             icon: <CrownFilled />,
             // component: "./Admin",
+          },
+          {
+            path: "/result",
+            name: "结果页",
+            icon: <CheckCircleOutlined />,
+            children: [
+              {
+                path: "/result/success",
+                name: "成功页",
+              },
+              {
+                path: "/result/fail",
+                name: "失败页",
+              },
+            ],
           },
         ];
       }}

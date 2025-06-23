@@ -3,6 +3,7 @@ import Home from "../pages/home";
 import TableList from "../pages/table-list";
 import BaseLayout from "../layout";
 import Welcome from "@/pages/welcome";
+import { lazy } from "react";
 
 const router = createBrowserRouter([
   {
@@ -11,6 +12,19 @@ const router = createBrowserRouter([
       { index: true, Component: Home },
       { path: "/table-list", Component: TableList },
       { path: "/welcome", Component: Welcome },
+      {
+        path: "/result",
+        children: [
+          {
+            path: "/result/success",
+            Component: lazy(() => import("@/pages/result/success")),
+          },
+          {
+            path: "/result/fail",
+            Component: lazy(() => import("@/pages/result/fail")),
+          },
+        ],
+      },
     ],
   },
 ]);
