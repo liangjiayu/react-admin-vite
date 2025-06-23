@@ -25,6 +25,23 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "/exception",
+        children: [
+          {
+            path: "/exception/403",
+            Component: lazy(() => import("@/pages/exception/403")),
+          },
+          {
+            path: "/exception/404",
+            Component: lazy(() => import("@/pages/exception/404")),
+          },
+          {
+            path: "/exception/500",
+            Component: lazy(() => import("@/pages/exception/500")),
+          },
+        ],
+      },
     ],
   },
 ]);

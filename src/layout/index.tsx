@@ -1,4 +1,9 @@
-import { CheckCircleOutlined, CrownFilled, SmileFilled } from "@ant-design/icons";
+import {
+  CheckCircleOutlined,
+  CrownFilled,
+  SmileFilled,
+  WarningOutlined,
+} from "@ant-design/icons";
 import { ProLayout } from "@ant-design/pro-components";
 import { Link, Outlet, useLocation } from "react-router";
 
@@ -37,6 +42,25 @@ const BaseLayout = () => {
               {
                 path: "/result/fail",
                 name: "失败页",
+              },
+            ],
+          },
+          {
+            path: "/exception",
+            name: "异常页",
+            icon: <WarningOutlined />,
+            children: [
+              {
+                path: "/exception/403",
+                name: "403",
+              },
+              {
+                path: "/exception/404",
+                name: "404",
+              },
+              {
+                path: "/exception/500",
+                name: "500",
               },
             ],
           },
