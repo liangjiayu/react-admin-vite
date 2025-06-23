@@ -14,11 +14,12 @@ const instance = axios.create({
 //   (error) => {}
 // );
 
-// // 响应拦截器
-// instance.interceptors.response.use(
-//   (response) => {},
-//   (error) => {}
-// );
+// 响应拦截器
+instance.interceptors.response.use(
+  (response) => {
+    return response.data;
+  },
+);
 
 async function request<T>(url: string, options: AxiosRequestConfig) {
   return instance.request<T, T>({

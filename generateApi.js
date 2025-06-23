@@ -10,6 +10,8 @@ generateService({
   // serversPath: "./src/services", // 生成代码的输出目录
   requestLibPath: "import request from '@/utils/request'", // 自定义请求库
   // 其他可选配置
-  projectName: "api", // 项目名称
+
+  projectName: "ant-design-pro", // 项目名称
   namespace: "API", // 命名空间
+  serversPath: "./src/services",
 });
