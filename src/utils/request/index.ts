@@ -17,11 +17,11 @@ const instance = axios.create({
 // 响应拦截器
 instance.interceptors.response.use(
   (response) => {
-    return response.data;
+    return response.data?.data;
   },
 );
 
-async function request<T>(url: string, options: AxiosRequestConfig) {
+async function request<T>(url: string, options?: AxiosRequestConfig) {
   return instance.request<T, T>({
     url,
     ...options,

@@ -1,6 +1,7 @@
 import {
   CheckCircleOutlined,
   CrownFilled,
+  ProfileFilled,
   SmileFilled,
   WarningOutlined,
 } from "@ant-design/icons";
@@ -13,7 +14,7 @@ const BaseLayout = () => {
   return (
     <ProLayout
       children={<Outlet />}
-      token={{ bgLayout: "#f2f2f2" }}
+      token={{ bgLayout: "#f5f5f5" }}
       location={location}
       menuItemRender={(item, dom) => <Link to={item.path}>{dom}</Link>}
       menuDataRender={() => {
@@ -61,6 +62,21 @@ const BaseLayout = () => {
               {
                 path: "/exception/500",
                 name: "500",
+              },
+            ],
+          },
+          {
+            path: "/profile",
+            name: "详情页",
+            icon: <ProfileFilled />,
+            children: [
+              {
+                path: "/profile/basic",
+                name: "基础详情页",
+              },
+              {
+                path: "/profile/advanced",
+                name: "高级详情页",
               },
             ],
           },
