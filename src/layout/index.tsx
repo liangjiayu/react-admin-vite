@@ -3,6 +3,7 @@ import {
   CrownFilled,
   ProfileFilled,
   SmileFilled,
+  UserOutlined,
   WarningOutlined,
 } from "@ant-design/icons";
 import { ProLayout } from "@ant-design/pro-components";
@@ -77,6 +78,21 @@ const BaseLayout = () => {
               {
                 path: "/profile/advanced",
                 name: "高级详情页",
+              },
+            ],
+          },
+          {
+            path: "/account",
+            name: "个人页",
+            icon: <UserOutlined />,
+            children: [
+              {
+                path: "/account/center",
+                name: "个人中心",
+              },
+              {
+                path: "/account/settings",
+                name: "个人设置",
               },
             ],
           },

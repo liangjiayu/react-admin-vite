@@ -5,8 +5,6 @@ import BaseLayout from "../layout";
 import Welcome from "@/pages/welcome";
 import { lazy } from "react";
 
-
-
 const router = createBrowserRouter([
   {
     Component: BaseLayout,
@@ -54,6 +52,19 @@ const router = createBrowserRouter([
           {
             path: "/profile/advanced",
             Component: lazy(() => import("@/pages/profile/advanced")),
+          },
+        ],
+      },
+      {
+        path: "/account",
+        children: [
+          {
+            path: "/account/center",
+            Component: lazy(() => import("@/pages/account/center")),
+          },
+          {
+            path: "/account/settings",
+            Component: lazy(() => import("@/pages/account/settings")),
           },
         ],
       },

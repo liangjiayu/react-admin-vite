@@ -15,11 +15,12 @@ const instance = axios.create({
 // );
 
 // 响应拦截器
-instance.interceptors.response.use(
-  (response) => {
-    return response.data?.data;
-  },
-);
+instance.interceptors.response.use((response) => {
+  if (Array.isArray(response?.data?.data)) {
+    return response?.data;
+  }
+  return response.data?.data;
+});
 
 async function request<T>(url: string, options?: AxiosRequestConfig) {
   return instance.request<T, T>({
