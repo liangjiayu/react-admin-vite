@@ -1,6 +1,7 @@
 import {
   CheckCircleOutlined,
   CrownFilled,
+  FormOutlined,
   ProfileFilled,
   SmileFilled,
   UserOutlined,
@@ -31,6 +32,25 @@ const BaseLayout = () => {
             name: "管理页",
             icon: <CrownFilled />,
             // component: "./Admin",
+          },
+          {
+            path: "/form",
+            name: "表单页",
+            icon: <FormOutlined />,
+            children: [
+              {
+                path: "/form/basic-form",
+                name: "基础表单",
+              },
+              {
+                path: "/form/step-form",
+                name: "分步表单",
+              },
+              {
+                path: "/form/advanced-form",
+                name: "高级表单",
+              },
+            ],
           },
           {
             path: "/result",

@@ -26,6 +26,23 @@ const router = createBrowserRouter([
         ],
       },
       {
+        path: "/form",
+        children: [
+          {
+            path: "/form/basic-form",
+            Component: lazy(() => import("@/pages/form/basic-form")),
+          },
+          {
+            path: "/form/step-form",
+            Component: lazy(() => import("@/pages/form/step-form")),
+          },
+          {
+            path: "/form/advanced-form",
+            Component: lazy(() => import("@/pages/form/advanced-form")),
+          },
+        ],
+      },
+      {
         path: "/exception",
         children: [
           {
