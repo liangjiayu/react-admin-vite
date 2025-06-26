@@ -16,8 +16,9 @@ const instance = axios.create({
 
 // 响应拦截器
 instance.interceptors.response.use((response) => {
-  if (Array.isArray(response?.data?.data)) {
-    return response?.data;
+  // 有total的数据结构，认为是分页数据
+  if (response?.data?.total) {
+    return response.data;
   }
   return response.data?.data;
 });

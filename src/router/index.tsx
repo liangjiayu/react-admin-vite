@@ -1,8 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import Home from "../pages/home";
-import TableList from "../pages/table-list";
 import BaseLayout from "../layout";
-import Welcome from "@/pages/welcome";
 import { lazy } from "react";
 
 const router = createBrowserRouter([
@@ -10,8 +8,23 @@ const router = createBrowserRouter([
     Component: BaseLayout,
     children: [
       { index: true, Component: Home },
-      { path: "/table-list", Component: TableList },
-      { path: "/welcome", Component: Welcome },
+      {
+        path: "/dashboard",
+        children: [
+          {
+            path: "/dashboard/analysis",
+            Component: lazy(() => import("@/pages/dashboard/analysis")),
+          },
+          {
+            path: "/dashboard/monitor",
+            Component: lazy(() => import("@/pages/dashboard/monitor")),
+          },
+          {
+            path: "/dashboard/workplace",
+            Component: lazy(() => import("@/pages/dashboard/workplace")),
+          },
+        ],
+      },
       {
         path: "/result",
         children: [
@@ -59,8 +72,10 @@ const router = createBrowserRouter([
               },
               {
                 path: "/list/search/applications",
-                Component: lazy(() => import("@/pages/list/search/applications")),
-              }
+                Component: lazy(
+                  () => import("@/pages/list/search/applications")
+                ),
+              },
             ],
           },
           {

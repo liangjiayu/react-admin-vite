@@ -1,9 +1,8 @@
 import {
   CheckCircleOutlined,
-  CrownFilled,
+  DashboardOutlined,
   FormOutlined,
   ProfileFilled,
-  SmileFilled,
   TableOutlined,
   UserOutlined,
   WarningOutlined,
@@ -23,16 +22,23 @@ const BaseLayout = () => {
       menuDataRender={() => {
         return [
           {
-            path: "/welcome",
-            name: "欢迎",
-            icon: <SmileFilled />,
-            // component: "./Welcome",
-          },
-          {
-            path: "/table-list",
-            name: "管理页",
-            icon: <CrownFilled />,
-            // component: "./Admin",
+            path: "/dashboard",
+            name: "仪表盘",
+            icon: <DashboardOutlined />,
+            children: [
+              {
+                path: "/dashboard/analysis",
+                name: "分析页",
+              },
+              {
+                path: "/dashboard/monitor",
+                name: "监控页",
+              },
+              {
+                path: "/dashboard/workplace",
+                name: "工作台",
+              },
+            ],
           },
           {
             path: "/form",
