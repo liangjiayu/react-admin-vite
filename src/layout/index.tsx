@@ -4,6 +4,7 @@ import {
   FormOutlined,
   ProfileFilled,
   SmileFilled,
+  TableOutlined,
   UserOutlined,
   WarningOutlined,
 } from "@ant-design/icons";
@@ -49,6 +50,43 @@ const BaseLayout = () => {
               {
                 path: "/form/advanced-form",
                 name: "高级表单",
+              },
+            ],
+          },
+          {
+            path: "/list",
+            name: "列表页",
+            icon: <TableOutlined />,
+            children: [
+              {
+                path: "/list/search",
+                name: "搜索列表",
+                children: [
+                  {
+                    path: "/list/search/articles",
+                    name: "搜索列表（文章）",
+                  },
+                  {
+                    path: "/list/search/projects",
+                    name: "搜索列表（项目）",
+                  },
+                  {
+                    path: "/list/search/applications",
+                    name: "搜索列表（应用）",
+                  },
+                ],
+              },
+              {
+                path: "/list/table-list",
+                name: "查询表格",
+              },
+              {
+                path: "/list/basic-list",
+                name: "标准列表",
+              },
+              {
+                path: "/list/card-list",
+                name: "卡片列表",
               },
             ],
           },

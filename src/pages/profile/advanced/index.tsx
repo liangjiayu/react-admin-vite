@@ -278,9 +278,8 @@ const Advanced: FC = () => {
 
   const { data = {}, loading } = useRequest<
     {
-      data: AdvancedProfileData
-    },
-    
+      data: AdvancedProfileData,
+    }
   >(queryAdvancedProfile);
   const { advancedOperation1, advancedOperation2, advancedOperation3 } = data;
   const contentList = {

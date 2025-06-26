@@ -11,7 +11,16 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  plugins: [react(), tailwindcss(), mockDevServerPlugin()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    mockDevServerPlugin({
+      include: [
+        "mock/**/*.mock.{js,ts,cjs,mjs,json,json5}",
+        "src/pages/**/_mock.{js,ts}",
+      ],
+    }),
+  ],
   server: {
     proxy: {
       "^/api": "http://example.com/",

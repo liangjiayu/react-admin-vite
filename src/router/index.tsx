@@ -43,6 +43,41 @@ const router = createBrowserRouter([
         ],
       },
       {
+        path: "/list",
+        children: [
+          {
+            path: "/list/search",
+            Component: lazy(() => import("@/pages/list/search")),
+            children: [
+              {
+                path: "/list/search/articles",
+                Component: lazy(() => import("@/pages/list/search/articles")),
+              },
+              {
+                path: "/list/search/projects",
+                Component: lazy(() => import("@/pages/list/search/projects")),
+              },
+              {
+                path: "/list/search/applications",
+                Component: lazy(() => import("@/pages/list/search/applications")),
+              }
+            ],
+          },
+          {
+            path: "/list/table-list",
+            Component: lazy(() => import("@/pages/list/table-list")),
+          },
+          {
+            path: "/list/basic-list",
+            Component: lazy(() => import("@/pages/list/basic-list")),
+          },
+          {
+            path: "/list/card-list",
+            Component: lazy(() => import("@/pages/list/card-list")),
+          },
+        ],
+      },
+      {
         path: "/exception",
         children: [
           {
