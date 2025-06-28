@@ -12,7 +12,7 @@ import { Link, Outlet, useLocation } from "react-router";
 import defaultSettings from "./defaultSettings";
 import Footer from "@/components/Footer";
 import { Question, AvatarName } from "@/components/RightContent";
-import "./styles.css";
+import "./styles.less";
 
 const BaseLayout = () => {
   const location = useLocation();
