@@ -9,14 +9,17 @@ import {
 } from "@ant-design/icons";
 import { ProLayout } from "@ant-design/pro-components";
 import { Link, Outlet, useLocation } from "react-router";
+import defaultSettings from "./defaultSettings";
+import Footer from "@/components/Footer";
+import { Question, AvatarName } from "@/components/RightContent";
 
 const BaseLayout = () => {
   const location = useLocation();
 
   return (
     <ProLayout
+      {...defaultSettings}
       children={<Outlet />}
-      token={{ bgLayout: "#f5f5f5" }}
       location={location}
       menuItemRender={(item, dom) => <Link to={item.path}>{dom}</Link>}
       menuDataRender={() => {
@@ -162,6 +165,32 @@ const BaseLayout = () => {
           },
         ];
       }}
+      footerRender={() => <Footer />}
+      actionsRender={() => [<Question key="doc" />]}
+      avatarProps={{
+        src: "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png",
+        title: <AvatarName />,
+      }}
+      bgLayoutImgList={[
+        {
+          src: "https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/D2LWSqNny4sAAAAAAAAAAAAAFl94AQBr",
+          left: 85,
+          bottom: 100,
+          height: "303px",
+        },
+        {
+          src: "https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/C2TWRpJpiC0AAAAAAAAAAAAAFl94AQBr",
+          bottom: -68,
+          right: -45,
+          height: "303px",
+        },
+        {
+          src: "https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/F6vSTbj8KpYAAAAAAAAAAAAAFl94AQBr",
+          bottom: 0,
+          left: 0,
+          width: "331px",
+        },
+      ]}
     />
   );
 };

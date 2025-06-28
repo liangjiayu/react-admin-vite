@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, redirect } from "react-router";
 import Home from "../pages/home";
 import BaseLayout from "../layout";
 import { lazy } from "react";
@@ -7,7 +7,11 @@ const router = createBrowserRouter([
   {
     Component: BaseLayout,
     children: [
-      { index: true, Component: Home },
+      {
+        index: true,
+        Component: Home,
+        loader: () => redirect("/dashboard/analysis"),
+      },
       {
         path: "/dashboard",
         children: [
