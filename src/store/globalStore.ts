@@ -1,7 +1,8 @@
 import { create } from "zustand";
+import { currentUser as queryCurrentUser } from "@/services/ant-design-pro/api";
 
 type GlobalState = {
-  currentUser: any;
+  currentUser: API.CurrentUser | null;
   globalLoading: boolean;
 };
 
@@ -14,9 +15,7 @@ export const useGlobalStore = create<GlobalState & GlobalActions>((set) => ({
   globalLoading: true,
 
   fetchUserInfo: async () => {
-    setTimeout(() => {
-      console.log("fetching user info");
-      set({ globalLoading: false, currentUser: { name: "123" } });
-    }, 1000);
+    const userInfo = await queryCurrentUser();
+    set({ currentUser: userInfo, globalLoading: false });
   },
 }));
