@@ -141,6 +141,23 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/user",
+    children: [
+      {
+        path: "/user/login",
+        Component: lazy(() => import("@/pages/user/login")),
+      },
+      {
+        path: "/user/register",
+        Component: lazy(() => import("@/pages/user/register")),
+      },
+      {
+        path: "/user/register-result",
+        Component: lazy(() => import("@/pages/user/register-result")),
+      },
+    ],
+  },
 ]);
 
 export default router;

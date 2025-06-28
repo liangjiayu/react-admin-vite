@@ -13,9 +13,10 @@ async function getFakeCaptcha() {
   return "captcha-xxx";
 }
 
+let access = "";
+
 const getAccess = () => {
-  return "admin";
-  // return access;
+  return access;
 };
 
 async function getUserInfo() {
@@ -76,6 +77,42 @@ async function getUserInfo() {
   };
 }
 
+async function postLoginAccount(req: any) {
+  const { password, username, type } = req.body;
+  await waitTime(2000);
+  if (password === "ant.design" && username === "admin") {
+    access = "admin";
+    return {
+      status: "ok",
+      type,
+      currentAuthority: "admin",
+    };
+  }
+  if (password === "ant.design" && username === "user") {
+    access = "user";
+    return {
+      status: "ok",
+      type,
+      currentAuthority: "user",
+    };
+  }
+  if (type === "mobile") {
+    access = "admin";
+    return {
+      status: "ok",
+      type,
+      currentAuthority: "admin",
+    };
+  }
+
+  access = "guest";
+  return {
+    status: "error",
+    type,
+    currentAuthority: "guest",
+  };
+}
+
 export default defineMock([
   {
     url: "/api/currentUser",
@@ -84,5 +121,17 @@ export default defineMock([
   {
     url: "/api/login/captcha",
     body: getFakeCaptcha,
+  },
+  {
+    url: "/api/login/account",
+    method: "POST",
+    body: postLoginAccount,
+  },
+  {
+    url: "/api/login/outLogin",
+    method: "POST",
+    body: () => {
+      return { data: {}, success: true };
+    },
   },
 ]);

@@ -20,7 +20,11 @@ instance.interceptors.response.use((response) => {
   if (response?.data?.total) {
     return response.data;
   }
-  return response.data?.data;
+  // 有data的数据结构，直接返回主体数据
+  if (response?.data?.data) {
+    return response.data.data;
+  }
+  return response.data;
 });
 
 async function request<T>(url: string, options?: AxiosRequestConfig) {
