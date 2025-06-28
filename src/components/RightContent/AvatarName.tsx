@@ -1,5 +1,8 @@
+import { useGlobalStore } from "@/store/globalStore";
+
 const AvatarName = () => {
-  return <span className="anticon">Serati Ma</span>;
+  const { currentUser } = useGlobalStore();
+  return <span className="anticon">{currentUser.name}</span>;
 };
 
 export default AvatarName;
