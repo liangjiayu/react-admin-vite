@@ -1,7 +1,7 @@
 import { defineMock } from "vite-plugin-mock-dev-server";
 
-import city from "../../src/pages/account/settings/geographic/city.json";
-import province from "../../src/pages/account/settings/geographic/province.json";
+import city from "./geographic/city.json";
+import province from "./geographic/province.json";
 
 function getProvince() {
   return {

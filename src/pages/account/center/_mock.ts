@@ -1,4 +1,4 @@
-import type { ListItemDataType } from "../../src/pages/account/center/data";
+import type { ListItemDataType } from "./data";
 import { defineMock } from "vite-plugin-mock-dev-server";
 
 const titles = [

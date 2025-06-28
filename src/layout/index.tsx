@@ -8,7 +8,7 @@ import {
   WarningOutlined,
 } from "@ant-design/icons";
 import { ProLayout } from "@ant-design/pro-components";
-import { Link, Outlet, useLocation } from "react-router";
+import { Link, Outlet, useLocation, useNavigate } from "react-router";
 import defaultSettings from "./defaultSettings";
 import Footer from "@/components/Footer";
 import { Question, AvatarName } from "@/components/RightContent";
@@ -16,6 +16,7 @@ import "./styles.less";
 
 const BaseLayout = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <ProLayout
@@ -192,6 +193,11 @@ const BaseLayout = () => {
           width: "331px",
         },
       ]}
+      onMenuHeaderClick={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        navigate("/");
+      }}
     />
   );
 };
