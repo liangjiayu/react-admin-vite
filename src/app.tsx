@@ -4,10 +4,10 @@ import { useGlobalStore } from "./store/globalStore";
 import { useEffect } from "react";
 
 const App = () => {
-  const { globalLoading, fetchUserInfo } = useGlobalStore();
+  const { globalLoading, fetchInitData } = useGlobalStore();
 
   useEffect(() => {
-    fetchUserInfo();
+    fetchInitData();
   }, []);
 
   if (globalLoading) {
