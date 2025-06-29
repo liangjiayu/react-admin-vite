@@ -2,12 +2,20 @@ import router from "./router/index.tsx";
 import { RouterProvider } from "react-router";
 import { useGlobalStore } from "./store/globalStore";
 import { useEffect } from "react";
+import { useAccessStore } from "./store/accessStore.ts";
 
 const App = () => {
-  const { globalLoading, fetchInitData } = useGlobalStore();
+  const { globalLoading, fetchInitData, setGlobalLoading } = useGlobalStore();
+  const { initAccess } = useAccessStore();
+
+  const initPage = async () => {
+    await fetchInitData();
+    await initAccess();
+    await setGlobalLoading(false);
+  };
 
   useEffect(() => {
-    fetchInitData();
+    initPage();
   }, []);
 
   if (globalLoading) {

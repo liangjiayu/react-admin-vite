@@ -9,6 +9,7 @@ type GlobalState = {
 type GlobalActions = {
   fetchUserInfo: () => Promise<void>;
   fetchInitData: () => Promise<void>;
+  setGlobalLoading: (loading: boolean) => void;
 };
 
 export const useGlobalStore = create<GlobalState & GlobalActions>(
@@ -21,6 +22,9 @@ export const useGlobalStore = create<GlobalState & GlobalActions>(
       set({ currentUser: userInfo });
     },
 
+    /**
+     * 主要用于初始化数据，比如获取用户信息、系统配置等
+     */
     fetchInitData: async () => {
       // 如果是登录页或注册页，则不进行初始化数据的获取
       if (
@@ -31,10 +35,13 @@ export const useGlobalStore = create<GlobalState & GlobalActions>(
       }
       try {
         await get().fetchUserInfo();
-        set({ globalLoading: false });
       } catch {
         console.error("获取用户信息失败!");
       }
+    },
+
+    setGlobalLoading: (loading) => {
+      set({ globalLoading: loading });
     },
   })
 );

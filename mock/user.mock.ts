@@ -13,7 +13,8 @@ async function getFakeCaptcha() {
   return "captcha-xxx";
 }
 
-let access = "";
+/** 权限标识有 admin、guest，默认是有权限的 */
+let access = "admin"; 
 
 const getAccess = () => {
   return access;

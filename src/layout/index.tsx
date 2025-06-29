@@ -12,6 +12,7 @@ import { Link, Outlet, useLocation, useNavigate } from "react-router";
 import defaultSettings from "./defaultSettings";
 import Footer from "@/components/Footer";
 import { Question, AvatarInfo } from "@/components/RightContent";
+import AccessControl from "@/components/AccessControl";
 import "./styles.less";
 
 const BaseLayout = () => {
@@ -21,7 +22,7 @@ const BaseLayout = () => {
   return (
     <ProLayout
       {...defaultSettings}
-      children={<Outlet />}
+      children={<AccessControl children={<Outlet />} />}
       location={location}
       menuItemRender={(item, dom) => <Link to={item.path}>{dom}</Link>}
       menuDataRender={() => {

@@ -35,6 +35,9 @@ const router = createBrowserRouter([
           {
             path: "/result/success",
             Component: lazy(() => import("@/pages/result/success")),
+            handle: {
+              access: "isAdmin",
+            },
           },
           {
             path: "/result/fail",
