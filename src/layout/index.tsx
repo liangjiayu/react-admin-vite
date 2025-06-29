@@ -11,7 +11,7 @@ import { ProLayout } from "@ant-design/pro-components";
 import { Link, Outlet, useLocation, useNavigate } from "react-router";
 import defaultSettings from "./defaultSettings";
 import Footer from "@/components/Footer";
-import { Question, AvatarName } from "@/components/RightContent";
+import { Question, AvatarInfo } from "@/components/RightContent";
 import "./styles.less";
 
 const BaseLayout = () => {
@@ -170,8 +170,9 @@ const BaseLayout = () => {
       footerRender={() => <Footer />}
       actionsRender={() => [<Question key="doc" />]}
       avatarProps={{
-        src: "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png",
-        title: <AvatarName />,
+        render: () => {
+          return <AvatarInfo />;
+        },
       }}
       bgLayoutImgList={[
         {

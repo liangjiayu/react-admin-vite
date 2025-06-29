@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { currentUser as queryCurrentUser } from "@/services/ant-design-pro/api";
-import history from "@/utils/history";
 
 type GlobalState = {
   currentUser: API.CurrentUser | null;
@@ -25,7 +24,7 @@ export const useGlobalStore = create<GlobalState & GlobalActions>(
     fetchInitData: async () => {
       // 如果是登录页或注册页，则不进行初始化数据的获取
       if (
-        ["/user/login", "/user/register"].includes(history.location.pathname)
+        ["/user/login", "/user/register"].includes(window.location.pathname)
       ) {
         set({ globalLoading: false });
         return;
@@ -34,7 +33,7 @@ export const useGlobalStore = create<GlobalState & GlobalActions>(
         await get().fetchUserInfo();
         set({ globalLoading: false });
       } catch {
-        window.location.href = "/user/login";
+        console.error("获取用户信息失败!");
       }
     },
   })

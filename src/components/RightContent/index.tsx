@@ -1,4 +1,4 @@
-import AvatarName from "./AvatarName";
 import Question from "./Question";
+import AvatarInfo from "./AvatarInfo";
 
-export { AvatarName, Question };
+export { Question, AvatarInfo };

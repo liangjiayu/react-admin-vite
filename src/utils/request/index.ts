@@ -31,6 +31,13 @@ instance.interceptors.response.use(
   (error) => {
     const serverMsg = error?.response?.data?.message;
     message.error(serverMsg || error.message || "请求失败!");
+
+    /** 状态码为401，统一用户信息未认证，跳转到登录页面 */
+    if (error.status === 401) {
+      window.location.href = "/user/login";
+      return;
+    }
+    throw error;
   }
 );
 
