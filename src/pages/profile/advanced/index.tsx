@@ -276,12 +276,9 @@ const Advanced: FC = () => {
     return dot;
   };
 
-  const { data = {}, loading } = useRequest<
-    {
-      data: AdvancedProfileData,
-    }
-  >(queryAdvancedProfile);
-  const { advancedOperation1, advancedOperation2, advancedOperation3 } = data;
+  const { data = {}, loading } = useRequest(queryAdvancedProfile);
+  const { advancedOperation1, advancedOperation2, advancedOperation3 } =
+    data as AdvancedProfileData;
   const contentList = {
     tab1: (
       <Table

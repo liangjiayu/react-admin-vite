@@ -15,7 +15,7 @@ export interface UserRegisterParams {
 }
 
 export async function fakeRegister(params: UserRegisterParams) {
-  return request('/api/register', {
+  return request<StateType>('/api/register', {
     method: 'POST',
     data: params,
   });

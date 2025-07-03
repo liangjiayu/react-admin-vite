@@ -87,9 +87,7 @@ const Register: FC = () => {
     }
     return "poor";
   };
-  const { loading: submitting, run: register } = useRequest<{
-    data: StateType;
-  }>(fakeRegister, {
+  const { loading: submitting, run: register } = useRequest(fakeRegister, {
     manual: true,
     onSuccess: (data, params) => {
       if (data.status === "ok") {

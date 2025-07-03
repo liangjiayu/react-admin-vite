@@ -1,7 +1,7 @@
 import request from "@/utils/request";
 import type { CurrentUser, GeographicItemType } from "./data";
 
-export async function queryCurrent(): Promise<{ data: CurrentUser }> {
+export async function queryCurrent(): Promise<CurrentUser> {
   return request("/api/accountSettingCurrentUser");
 }
 
