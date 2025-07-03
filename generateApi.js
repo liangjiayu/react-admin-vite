@@ -14,4 +14,5 @@ generateService({
   projectName: "ant-design-pro", // 项目名称
   namespace: "API", // 命名空间
   serversPath: "./src/services",
+  dataFields: ["data"],
 });

@@ -1,8 +1,8 @@
-import router from "./router/index.tsx";
+import router from "./router/index";
 import { RouterProvider } from "react-router";
 import { useGlobalStore } from "./store/globalStore";
 import { useEffect } from "react";
-import { useAccessStore } from "./store/accessStore.ts";
+import { useAccessStore } from "./store/accessStore";
 
 const App = () => {
   const { globalLoading, fetchInitData, setGlobalLoading } = useGlobalStore();

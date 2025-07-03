@@ -1,5 +1,4 @@
 import { createBrowserRouter, redirect } from "react-router";
-import Home from "../pages/home";
 import BaseLayout from "../layout";
 import { lazy } from "react";
 
@@ -9,7 +8,6 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: Home,
         loader: () => redirect("/dashboard/analysis"),
       },
       {

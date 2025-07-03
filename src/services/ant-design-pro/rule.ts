@@ -8,7 +8,7 @@ export async function rule(
   params: API.ruleParams,
   options?: { [key: string]: any }
 ) {
-  return request<API.RuleList>("/api/rule", {
+  return request<API.RuleListItem[]>("/api/rule", {
     method: "GET",
     params: {
       ...params,
