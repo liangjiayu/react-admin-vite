@@ -24,7 +24,7 @@ const BaseLayout = () => {
       {...defaultSettings}
       children={<AccessControl children={<Outlet />} />}
       location={location}
-      menuItemRender={(item, dom) => <Link to={item.path}>{dom}</Link>}
+      menuItemRender={(item, dom) => <Link to={item.path || ""}>{dom}</Link>}
       menuDataRender={() => {
         return [
           {

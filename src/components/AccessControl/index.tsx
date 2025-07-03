@@ -15,7 +15,7 @@ const AccessControl: React.FC<AccessControlProps> = ({ children }) => {
 
   const hasAccess = useMemo(() => {
     // 获取路由要求的权限（如 'isAdmin'）
-    const requiredPermission = currentRoute.handle?.access as
+    const requiredPermission = (currentRoute.handle as any)?.access as
       | keyof typeof accessStore
       | undefined;
 
