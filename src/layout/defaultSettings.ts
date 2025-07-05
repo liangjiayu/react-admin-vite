@@ -1,16 +1,16 @@
-import type { ProLayoutProps } from "@ant-design/pro-components";
+import type { ProLayoutProps } from '@ant-design/pro-components';
 
 const Settings: ProLayoutProps = {
-  navTheme: "light",
-  colorPrimary: "#1890ff",
-  layout: "mix",
-  contentWidth: "Fluid",
+  navTheme: 'light',
+  colorPrimary: '#1890ff',
+  layout: 'mix',
+  contentWidth: 'Fluid',
   fixedHeader: false,
   fixSiderbar: true,
   colorWeak: false,
-  title: "Ant Design Pro",
-  logo: "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg",
-  iconfontUrl: "",
+  title: 'Ant Design Pro',
+  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  iconfontUrl: '',
   siderWidth: 256,
   token: {
     // 参见ts声明，demo 见文档，通过token 修改样式

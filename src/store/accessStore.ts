@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { useGlobalStore } from "./globalStore";
+import { create } from 'zustand';
+import { useGlobalStore } from './globalStore';
 
 type AccessState = {
   isAdmin: boolean;
@@ -21,7 +21,7 @@ export const useAccessStore = create<AccessState & AccessActions>((set) => ({
     if (!currentUser) {
       return;
     }
-    if (currentUser?.access === "admin") {
+    if (currentUser?.access === 'admin') {
       set({ isAdmin: true });
     }
   },

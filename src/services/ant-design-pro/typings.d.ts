@@ -65,7 +65,7 @@ declare namespace API {
     type?: NoticeIconItemType;
   };
 
-  type NoticeIconItemType = "notification" | "message" | "event";
+  type NoticeIconItemType = 'notification' | 'message' | 'event';
 
   type NoticeIconList = {
     data?: NoticeIconItem[];

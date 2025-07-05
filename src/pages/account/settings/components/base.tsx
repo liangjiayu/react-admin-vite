@@ -145,7 +145,6 @@ const BaseView: React.FC = () => {
                   className={styles.item}
                   request={async () => {
                     return queryProvince().then(({ data }) => {
-                      
                       return data.map((item) => {
                         return {
                           label: item.name,

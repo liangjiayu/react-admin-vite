@@ -1,8 +1,8 @@
-import { outLogin } from "@/services/ant-design-pro/login";
-import { useGlobalStore } from "@/store/globalStore";
-import { LogoutOutlined } from "@ant-design/icons";
-import { Dropdown, Avatar } from "antd";
-import { useNavigate } from "react-router";
+import { outLogin } from '@/services/ant-design-pro/login';
+import { useGlobalStore } from '@/store/globalStore';
+import { LogoutOutlined } from '@ant-design/icons';
+import { Dropdown, Avatar } from 'antd';
+import { useNavigate } from 'react-router';
 
 const AvatarInfo = () => {
   const { currentUser } = useGlobalStore();
@@ -18,9 +18,9 @@ const AvatarInfo = () => {
       redirect: pathname + search,
     }).toString();
 
-    if (window.location.pathname !== "/user/login") {
+    if (window.location.pathname !== '/user/login') {
       navigate({
-        pathname: "/user/login",
+        pathname: '/user/login',
         search: searchParams,
       });
     }
@@ -28,7 +28,7 @@ const AvatarInfo = () => {
 
   const onMenuClick = (event: any) => {
     const { key } = event;
-    if (key === "logout") {
+    if (key === 'logout') {
       loginOut();
     }
   };
@@ -38,9 +38,9 @@ const AvatarInfo = () => {
       menu={{
         items: [
           {
-            key: "logout",
+            key: 'logout',
             icon: <LogoutOutlined />,
-            label: "退出登录",
+            label: '退出登录',
           },
         ],
         onClick: onMenuClick,

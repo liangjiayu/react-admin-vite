@@ -1,5 +1,5 @@
-import { message } from "antd";
-import axios, { type AxiosRequestConfig } from "axios";
+import { message } from 'antd';
+import axios, { type AxiosRequestConfig } from 'axios';
 
 const instance = axios.create({
   // baseURL: "https://api.example.com",
@@ -30,15 +30,15 @@ instance.interceptors.response.use(
   },
   (error) => {
     const serverMsg = error?.response?.data?.message;
-    message.error(serverMsg || error.message || "请求失败!");
+    message.error(serverMsg || error.message || '请求失败!');
 
     /** 状态码为401，统一用户信息未认证，跳转到登录页面 */
     if (error.status === 401) {
-      window.location.href = "/user/login";
+      window.location.href = '/user/login';
       return;
     }
     throw error;
-  }
+  },
 );
 
 async function request<T>(url: string, options?: AxiosRequestConfig) {

@@ -1,20 +1,16 @@
-import { removeRule, rule } from "@/services/ant-design-pro/rule";
-import type {
-  ActionType,
-  ProColumns,
-  ProDescriptionsItemProps,
-} from "@ant-design/pro-components";
+import { removeRule, rule } from '@/services/ant-design-pro/rule';
+import type { ActionType, ProColumns, ProDescriptionsItemProps } from '@ant-design/pro-components';
 import {
   FooterToolbar,
   PageContainer,
   ProDescriptions,
   ProTable,
-} from "@ant-design/pro-components";
-import { useRequest } from "ahooks";
-import { Button, Drawer, Input, message } from "antd";
-import React, { useCallback, useRef, useState } from "react";
-import CreateForm from "./components/CreateForm";
-import UpdateForm from "./components/UpdateForm";
+} from '@ant-design/pro-components';
+import { useRequest } from 'ahooks';
+import { Button, Drawer, Input, message } from 'antd';
+import React, { useCallback, useRef, useState } from 'react';
+import CreateForm from './components/CreateForm';
+import UpdateForm from './components/UpdateForm';
 
 const TableList: React.FC = () => {
   const actionRef = useRef<ActionType>(undefined);
@@ -33,17 +29,17 @@ const TableList: React.FC = () => {
     onSuccess: () => {
       setSelectedRows([]);
       actionRef.current?.reloadAndRest?.();
-      messageApi.success("Deleted successfully and will refresh soon");
+      messageApi.success('Deleted successfully and will refresh soon');
     },
     onError: () => {
-      messageApi.error("Delete failed, please try again");
+      messageApi.error('Delete failed, please try again');
     },
   });
   const columns: ProColumns<API.RuleListItem>[] = [
     {
-      title: "规则名称",
-      dataIndex: "name",
-      tip: "The rule name is the unique key",
+      title: '规则名称',
+      dataIndex: 'name',
+      tip: 'The rule name is the unique key',
       render: (dom, entity) => {
         return (
           <a
@@ -58,60 +54,60 @@ const TableList: React.FC = () => {
       },
     },
     {
-      title: "描述",
-      dataIndex: "desc",
-      valueType: "textarea",
+      title: '描述',
+      dataIndex: 'desc',
+      valueType: 'textarea',
     },
     {
-      title: "服务调用次数",
-      dataIndex: "callNo",
+      title: '服务调用次数',
+      dataIndex: 'callNo',
       sorter: true,
       hideInForm: true,
-      renderText: (val: string) => `${val}${"万"}`,
+      renderText: (val: string) => `${val}${'万'}`,
     },
     {
-      title: "状态",
-      dataIndex: "status",
+      title: '状态',
+      dataIndex: 'status',
       hideInForm: true,
       valueEnum: {
         0: {
-          text: "关闭",
-          status: "Default",
+          text: '关闭',
+          status: 'Default',
         },
         1: {
-          text: "运行中",
-          status: "Processing",
+          text: '运行中',
+          status: 'Processing',
         },
         2: {
-          text: "已上线",
-          status: "Success",
+          text: '已上线',
+          status: 'Success',
         },
         3: {
-          text: "异常",
-          status: "Error",
+          text: '异常',
+          status: 'Error',
         },
       },
     },
     {
-      title: "上次调度时间",
+      title: '上次调度时间',
       sorter: true,
-      dataIndex: "updatedAt",
-      valueType: "dateTime",
+      dataIndex: 'updatedAt',
+      valueType: 'dateTime',
       renderFormItem: (item, { defaultRender, ...rest }, form) => {
-        const status = form.getFieldValue("status");
-        if (`${status}` === "0") {
+        const status = form.getFieldValue('status');
+        if (`${status}` === '0') {
           return false;
         }
-        if (`${status}` === "3") {
-          return <Input {...rest} placeholder={"请输入异常原因！"} />;
+        if (`${status}` === '3') {
+          return <Input {...rest} placeholder={'请输入异常原因！'} />;
         }
         return defaultRender(item);
       },
     },
     {
-      title: "操作",
-      dataIndex: "option",
-      valueType: "option",
+      title: '操作',
+      dataIndex: 'option',
+      valueType: 'option',
       render: (_, record) => [
         <UpdateForm
           trigger={<a>配置</a>}
@@ -135,7 +131,7 @@ const TableList: React.FC = () => {
   const handleRemove = useCallback(
     async (selectedRows: API.RuleListItem[]) => {
       if (!selectedRows?.length) {
-        messageApi.warning("请选择删除项");
+        messageApi.warning('请选择删除项');
         return;
       }
       await delRun({
@@ -144,21 +140,19 @@ const TableList: React.FC = () => {
         },
       });
     },
-    [delRun]
+    [delRun],
   );
   return (
     <PageContainer>
       {contextHolder}
       <ProTable<API.RuleListItem, API.PageParams>
-        headerTitle={"查询表格"}
+        headerTitle={'查询表格'}
         actionRef={actionRef}
         rowKey="key"
         search={{
           labelWidth: 120,
         }}
-        toolBarRender={() => [
-          <CreateForm key="create" reload={actionRef.current?.reload} />,
-        ]}
+        toolBarRender={() => [<CreateForm key="create" reload={actionRef.current?.reload} />]}
         request={rule}
         columns={columns}
         rowSelection={{
@@ -171,19 +165,17 @@ const TableList: React.FC = () => {
         <FooterToolbar
           extra={
             <div>
-              已选择{" "}
+              已选择{' '}
               <a
                 style={{
                   fontWeight: 600,
                 }}
               >
                 {selectedRowsState.length}
-              </a>{" "}
+              </a>{' '}
               项 &nbsp;&nbsp;
               <span>
-                服务调用次数总计{" "}
-                {selectedRowsState.reduce((pre, item) => pre + item.callNo!, 0)}{" "}
-                万
+                服务调用次数总计 {selectedRowsState.reduce((pre, item) => pre + item.callNo!, 0)} 万
               </span>
             </div>
           }

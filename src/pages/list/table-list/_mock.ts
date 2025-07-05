@@ -1,5 +1,5 @@
-import type { TableListItem, TableListParams } from "./data.d";
-import { defineMock, type MockRequest } from "vite-plugin-mock-dev-server";
+import type { TableListItem, TableListParams } from './data.d';
+import { defineMock, type MockRequest } from 'vite-plugin-mock-dev-server';
 
 // mock tableListDataSource
 const genList = (current: number, pageSize: number) => {
@@ -10,14 +10,14 @@ const genList = (current: number, pageSize: number) => {
     tableListDataSource.push({
       key: index,
       disabled: i % 6 === 0,
-      href: "https://ant.design",
+      href: 'https://ant.design',
       avatar: [
-        "https://gw.alipayobjects.com/zos/rmsportal/eeHMaZBwmTvLdIwMfBpg.png",
-        "https://gw.alipayobjects.com/zos/rmsportal/udxAbMEhpwthVVcjLXik.png",
+        'https://gw.alipayobjects.com/zos/rmsportal/eeHMaZBwmTvLdIwMfBpg.png',
+        'https://gw.alipayobjects.com/zos/rmsportal/udxAbMEhpwthVVcjLXik.png',
       ][i % 2],
       name: `TradeCode ${index}`,
-      owner: "曲丽丽",
-      desc: "这是一段描述",
+      owner: '曲丽丽',
+      desc: '这是一段描述',
       callNo: Math.floor(Math.random() * 1000),
       status: (Math.floor(Math.random() * 10) % 4).toString(),
       updatedAt: new Date(),
@@ -37,14 +37,14 @@ function getRule(req: MockRequest) {
 
   let dataSource = [...tableListDataSource].slice(
     ((current as number) - 1) * (pageSize as number),
-    (current as number) * (pageSize as number)
+    (current as number) * (pageSize as number),
   );
   if (params.sorter) {
     const sorter = JSON.parse(params.sorter as any);
     dataSource = dataSource.sort((prev: any, next: any) => {
       let sortNumber = 0;
       Object.keys(sorter).forEach((key) => {
-        if (sorter[key] === "descend") {
+        if (sorter[key] === 'descend') {
           if (prev[key] - next[key] > 0) {
             sortNumber += -1;
           } else {
@@ -69,7 +69,7 @@ function getRule(req: MockRequest) {
           if (!filter[key]) {
             return true;
           }
-          if (filter[key].includes(`${item[key as "status"]}`)) {
+          if (filter[key].includes(`${item[key as 'status']}`)) {
             return true;
           }
           return false;
@@ -79,9 +79,7 @@ function getRule(req: MockRequest) {
   }
 
   if (params.name) {
-    dataSource = dataSource.filter((data) =>
-      data.name.includes(params.name || "")
-    );
+    dataSource = dataSource.filter((data) => data.name.includes(params.name || ''));
   }
 
   let finalPageSize = 10;
@@ -105,23 +103,21 @@ function postRule(req: MockRequest & { method: string }) {
 
   switch (req.method) {
     /* eslint no-case-declarations:0 */
-    case "DELETE":
-      tableListDataSource = tableListDataSource.filter(
-        (item) => key.indexOf(item.key) === -1
-      );
+    case 'DELETE':
+      tableListDataSource = tableListDataSource.filter((item) => key.indexOf(item.key) === -1);
       break;
-    case "POST":
+    case 'POST':
       (() => {
         const i = Math.ceil(Math.random() * 10000);
         const newRule = {
           key: tableListDataSource.length,
-          href: "https://ant.design",
+          href: 'https://ant.design',
           avatar: [
-            "https://gw.alipayobjects.com/zos/rmsportal/eeHMaZBwmTvLdIwMfBpg.png",
-            "https://gw.alipayobjects.com/zos/rmsportal/udxAbMEhpwthVVcjLXik.png",
+            'https://gw.alipayobjects.com/zos/rmsportal/eeHMaZBwmTvLdIwMfBpg.png',
+            'https://gw.alipayobjects.com/zos/rmsportal/udxAbMEhpwthVVcjLXik.png',
           ][i % 2],
           name,
-          owner: "曲丽丽",
+          owner: '曲丽丽',
           desc,
           callNo: Math.floor(Math.random() * 1000),
           status: (Math.floor(Math.random() * 10) % 2).toString(),
@@ -134,7 +130,7 @@ function postRule(req: MockRequest & { method: string }) {
       })();
       return;
 
-    case "PUT":
+    case 'PUT':
       (() => {
         let newRule = {};
         tableListDataSource = tableListDataSource.map((item) => {
@@ -163,22 +159,22 @@ function postRule(req: MockRequest & { method: string }) {
 
 export default defineMock([
   {
-    url: "/api/rule",
+    url: '/api/rule',
     body: getRule,
   },
   {
-    url: "/api/rule",
-    method: "POST",
+    url: '/api/rule',
+    method: 'POST',
     body: postRule,
   },
   {
-    url: "/api/rule",
-    method: "PUT",
+    url: '/api/rule',
+    method: 'PUT',
     body: postRule,
   },
   {
-    url: "/api/rule",
-    method: "DELETE",
+    url: '/api/rule',
+    method: 'DELETE',
     body: postRule,
   },
 ]);

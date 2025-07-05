@@ -1,6 +1,6 @@
 import { Radar } from '@ant-design/plots';
 import { PageContainer } from '@ant-design/pro-components';
-import {  useRequest } from 'ahooks';
+import { useRequest } from 'ahooks';
 import { Avatar, Card, Col, List, Row, Skeleton, Statistic } from 'antd';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -92,7 +92,7 @@ const ExtraContent: FC<Record<string, any>> = () => {
 const Workplace: FC = () => {
   const { styles } = useStyles();
   const { loading: projectLoading, data: projectNotice = [] } = useRequest(queryProjectNotice);
-  
+
   const { loading: activitiesLoading, data: activities = [] } = useRequest(queryActivities);
   const { data } = useRequest(fakeChartData);
   const renderActivities = (item: ActivitiesType) => {

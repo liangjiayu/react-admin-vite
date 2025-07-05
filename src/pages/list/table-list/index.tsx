@@ -52,7 +52,7 @@ const handleUpdate = async (fields: FormValueType, currentRow?: TableListItem) =
     hide();
     message.success('配置成功');
     return true;
-  } catch  {
+  } catch {
     hide();
     message.error('配置失败请重试！');
     return false;
@@ -75,7 +75,7 @@ const handleRemove = async (selectedRows: TableListItem[]) => {
     hide();
     message.success('删除成功，即将刷新');
     return true;
-  } catch  {
+  } catch {
     hide();
     message.error('删除失败，请重试');
     return false;

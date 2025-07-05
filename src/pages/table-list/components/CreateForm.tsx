@@ -1,17 +1,17 @@
-import { addRule } from "@/services/ant-design-pro/rule";
-import { PlusOutlined } from "@ant-design/icons";
+import { addRule } from '@/services/ant-design-pro/rule';
+import { PlusOutlined } from '@ant-design/icons';
 import {
   type ActionType,
   ModalForm,
   ProFormText,
   ProFormTextArea,
-} from "@ant-design/pro-components";
-import { useRequest } from "ahooks";
-import { Button, message } from "antd";
-import type { FC } from "react";
+} from '@ant-design/pro-components';
+import { useRequest } from 'ahooks';
+import { Button, message } from 'antd';
+import type { FC } from 'react';
 
 interface CreateFormProps {
-  reload?: ActionType["reload"];
+  reload?: ActionType['reload'];
 }
 const CreateForm: FC<CreateFormProps> = (props) => {
   const { reload } = props;
@@ -24,18 +24,18 @@ const CreateForm: FC<CreateFormProps> = (props) => {
   const { run, loading } = useRequest(addRule, {
     manual: true,
     onSuccess: () => {
-      messageApi.success("Added successfully");
+      messageApi.success('Added successfully');
       reload?.();
     },
     onError: () => {
-      messageApi.error("Adding failed, please try again!");
+      messageApi.error('Adding failed, please try again!');
     },
   });
   return (
     <>
       {contextHolder}
       <ModalForm
-        title={"新建规则"}
+        title={'新建规则'}
         trigger={
           <Button type="primary" icon={<PlusOutlined />}>
             新建
@@ -58,7 +58,7 @@ const CreateForm: FC<CreateFormProps> = (props) => {
           rules={[
             {
               required: true,
-              message: "规则名称为必填项",
+              message: '规则名称为必填项',
             },
           ]}
           width="md"
