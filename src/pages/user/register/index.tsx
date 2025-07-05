@@ -14,7 +14,6 @@ import {
 import type { Store } from "antd/es/form/interface";
 import type { FC } from "react";
 import { useEffect, useState } from "react";
-import type { StateType } from "./service";
 import { fakeRegister } from "./service";
 import { useRequest } from "ahooks";
 import useStyles from "./style.style";
