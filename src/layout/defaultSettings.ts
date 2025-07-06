@@ -8,8 +8,8 @@ const Settings: ProLayoutProps = {
   fixedHeader: false,
   fixSiderbar: true,
   colorWeak: false,
-  title: 'Ant Design Pro',
-  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  title: 'React Admin Vite',
+  logo: '/logo.svg',
   iconfontUrl: '',
   siderWidth: 256,
   token: {

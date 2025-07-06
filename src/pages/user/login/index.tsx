@@ -121,7 +121,7 @@ const Login: React.FC = () => {
             minWidth: 280,
             maxWidth: '75vw',
           }}
-          logo={<img alt="logo" src="/logo.svg" />}
+          logo={<img alt="logo" src="/logo.png" />}
           title="Ant Design"
           subTitle={'Ant Design 是西湖区最具影响力的 Web 设计规范'}
           initialValues={{
