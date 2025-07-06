@@ -2,7 +2,7 @@ import { message } from 'antd';
 import axios, { type AxiosRequestConfig } from 'axios';
 
 const instance = axios.create({
-  // baseURL: "https://api.example.com",
+  baseURL: import.meta.env.PROD ? 'https://proapi.azurewebsites.net' : '/',
   // timeout: 10000,
   // headers: {
   //   "Content-Type": "application/json",
