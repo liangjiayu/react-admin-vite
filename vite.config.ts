@@ -6,6 +6,7 @@ import { mockDevServerPlugin } from 'vite-plugin-mock-dev-server';
 // https://vite.dev/config/
 export default defineConfig(() => {
   return {
+    base: '/react-admin-vite/',
     resolve: {
       alias: {
         '@': '/src/',
