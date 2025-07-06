@@ -10,7 +10,7 @@
     "lint:fix": "eslint . --fix",
     "prettier": "prettier -c --write . --cache",
     "preview": "vite preview",
-    "openapi2ts": "openapi2ts"
+    "openapi": "node config/openapi.js"
   },
   "dependencies": {
     "@ant-design/icons": "^6.0.0",
