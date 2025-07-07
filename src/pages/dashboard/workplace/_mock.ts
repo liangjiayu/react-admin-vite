@@ -1,6 +1,14 @@
+import { DataItem } from '@antv/g2plot/esm/interface/config';
 import dayjs from 'dayjs';
 import { defineMock } from 'vite-plugin-mock-dev-server';
-import type { DataItem, OfflineDataType, SearchDataType } from './data.d';
+
+export type SearchDataType = {
+  index: number;
+  keyword: string;
+  count: number;
+  range: number;
+  status: number;
+};
 
 // mock data
 const visitData: DataItem[] = [];
@@ -405,18 +413,15 @@ const getChartData = () => {
 
 export default defineMock([
   {
-    url: '/api/workplace',
-    method: 'GET',
+    url: '/api/project/notice',
     body: getNotice,
   },
   {
-    url: '/api/workplace/activity',
-    method: 'GET',
+    url: '/api/activities',
     body: getActivities,
   },
   {
-    url: '/api/workplace/chart',
-    method: 'GET',
+    url: '/api/fake_workplace_chart_data',
     body: getChartData,
   },
 ]);

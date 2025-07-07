@@ -159,7 +159,6 @@ const router = createBrowserRouter(
       ],
     },
   ],
-  { basename: '/react-admin-vite/' },
 );
 
 export default router;
