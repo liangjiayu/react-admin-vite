@@ -8,6 +8,9 @@ type AccessControlProps = {
   children?: React.ReactNode;
 };
 
+/**
+ * 权限验证组件
+ */
 const AccessControl: React.FC<AccessControlProps> = ({ children }) => {
   const matches = useMatches();
   const accessStore = useAccessStore();
