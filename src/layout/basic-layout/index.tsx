@@ -1,10 +1,10 @@
 import { ProLayout } from '@ant-design/pro-components';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router';
-import defaultSettings from './default-settings';
+import defaultSettings from './defaultSettings';
 import Footer from '@/layout/widgets/footer';
 import { Question, AvatarInfo } from '@/layout/widgets/right-content';
 import AccessControl from '@/components/access-control';
-import MENU_CONFIG from './menu-config';
+import menuConfig from './menuConfig';
 import './styles.less';
 
 const BasicLayout = () => {
@@ -18,7 +18,7 @@ const BasicLayout = () => {
       location={location}
       menuItemRender={(item, dom) => <Link to={item.path || ''}>{dom}</Link>}
       menuDataRender={() => {
-        return MENU_CONFIG;
+        return menuConfig;
       }}
       footerRender={() => <Footer />}
       actionsRender={() => [<Question key="doc" />]}
