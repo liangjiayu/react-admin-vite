@@ -1,1 +1,5 @@
+/* 引用 tw样式 */
 @import 'tailwindcss';
+
+/* 全局样式 */
+@import './global.css';
