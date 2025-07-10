@@ -3,7 +3,8 @@ import { RouterProvider } from 'react-router';
 import { useGlobalStore } from './store/globalStore';
 import { useEffect } from 'react';
 import { useAccessStore } from './store/accessStore';
-import { Spin } from 'antd';
+import { Spin, ConfigProvider } from 'antd';
+import customAntdTheme from '../config/antdTheme';
 
 const App = () => {
   const { globalLoading, fetchInitData, setGlobalLoading } = useGlobalStore();
@@ -27,7 +28,11 @@ const App = () => {
     );
   }
 
-  return <RouterProvider router={router} />;
+  return (
+    <ConfigProvider theme={customAntdTheme}>
+      <RouterProvider router={router} />
+    </ConfigProvider>
+  );
 };
 
 export default App;
