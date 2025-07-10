@@ -29,7 +29,7 @@ import { queryAdvancedProfile } from './service';
 import useStyles from './style.style';
 
 const { Step } = Steps;
-const ButtonGroup = Button.Group;
+const ButtonGroup = Space.Compact;
 
 const action = (
   <RouteContext.Consumer>
@@ -252,7 +252,7 @@ const Advanced: FC = () => {
     );
     if (status === 'process') {
       return (
-        <Popover placement="topLeft" arrowPointAtCenter content={popoverContent}>
+        <Popover placement="topLeft" arrow={{ pointAtCenter: true }} content={popoverContent}>
           <span>{dot}</span>
         </Popover>
       );
