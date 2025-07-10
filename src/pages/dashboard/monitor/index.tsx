@@ -36,7 +36,7 @@ const Monitor: FC = () => {
               marginBottom: 24,
             }}
           >
-            <Card title="活动实时交易情况" bordered={false}>
+            <Card title="活动实时交易情况" variant="borderless">
               <Row>
                 <Col md={6} sm={12} xs={24}>
                   <Statistic
@@ -66,7 +66,7 @@ const Monitor: FC = () => {
               style={{
                 marginBottom: 24,
               }}
-              bordered={false}
+              variant="borderless"
             >
               <ActiveChart />
             </Card>
@@ -75,10 +75,12 @@ const Monitor: FC = () => {
               style={{
                 marginBottom: 24,
               }}
-              bodyStyle={{
-                textAlign: 'center',
+              styles={{
+                body: {
+                  textAlign: 'center',
+                },
               }}
-              bordered={false}
+              variant="borderless"
             >
               <Gauge
                 height={180}
@@ -113,7 +115,7 @@ const Monitor: FC = () => {
               marginBottom: 24,
             }}
           >
-            <Card title="各品类占比" bordered={false}>
+            <Card title="各品类占比" variant="borderless">
               <Row
                 style={{
                   padding: '16px 0',
@@ -143,9 +145,11 @@ const Monitor: FC = () => {
             <Card
               title="热门搜索"
               loading={loading}
-              bordered={false}
-              bodyStyle={{
-                overflow: 'hidden',
+              variant="borderless"
+              styles={{
+                body: {
+                  overflow: 'hidden',
+                },
               }}
             >
               <WordCloud
@@ -168,11 +172,13 @@ const Monitor: FC = () => {
           >
             <Card
               title="资源剩余"
-              bodyStyle={{
-                textAlign: 'center',
-                fontSize: 0,
+              styles={{
+                body: {
+                  textAlign: 'center',
+                  fontSize: 0,
+                },
               }}
-              bordered={false}
+              variant="borderless"
             >
               <Liquid height={160} percent={0.35} />
             </Card>

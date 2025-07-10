@@ -127,7 +127,7 @@ const Articles: FC = () => {
 
   return (
     <>
-      <Card bordered={false}>
+      <Card variant="borderless">
         <Form
           layout="inline"
           form={form}
@@ -196,8 +196,12 @@ const Articles: FC = () => {
       </Card>
       <Card
         style={{ marginTop: 24 }}
-        bordered={false}
-        bodyStyle={{ padding: '8px 32px 32px 32px' }}
+        variant="borderless"
+        styles={{
+          body:{
+            padding: '8px 32px 32px 32px',
+          }
+        }}
       >
         <List<ListItemDataType>
           size="large"

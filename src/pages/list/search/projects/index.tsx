@@ -85,7 +85,7 @@ const Projects: FC = () => {
   };
   return (
     <div className={styles.coverCardList}>
-      <Card bordered={false}>
+      <Card variant="borderless">
         <Form
           layout="inline"
           onValuesChange={(_, values) => {

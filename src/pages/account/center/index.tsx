@@ -197,7 +197,7 @@ const Center: React.FC = () => {
       <Row gutter={24}>
         <Col lg={7} md={24}>
           <Card
-            bordered={false}
+            variant="borderless"
             style={{
               marginBottom: 24,
             }}
@@ -240,7 +240,7 @@ const Center: React.FC = () => {
         <Col lg={17} md={24}>
           <Card
             className={styles.tabsCard}
-            bordered={false}
+            variant="borderless"
             tabList={operationTabList}
             activeTabKey={tabKey}
             onTabChange={(_tabKey: string) => {

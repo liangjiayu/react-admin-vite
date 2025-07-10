@@ -24,7 +24,7 @@ const ProportionSales = ({
     <Card
       loading={loading}
       className={styles.salesCard}
-      bordered={false}
+      variant="borderless"
       title="销售额类别占比"
       style={{
         height: '100%',
