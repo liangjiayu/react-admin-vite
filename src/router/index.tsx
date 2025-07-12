@@ -10,6 +10,14 @@ const router = createBrowserRouter([
         index: true,
         Component: lazy(() => import('@/pages/home')),
       },
+      {
+        path: '/crud-table',
+        Component: lazy(() => import('@/pages/crud-table')),
+      },
+      {
+        path: '*',
+        Component: lazy(() => import('@/pages/exception/404')),
+      },
     ],
   },
   {

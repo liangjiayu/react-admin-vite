@@ -11,23 +11,9 @@ import { MenuDataItem } from '@ant-design/pro-components';
 
 const MENU_CONFIG: MenuDataItem[] = [
   {
-    path: '/dashboard',
-    name: '仪表盘',
+    path: '/crud-table',
+    name: 'CRUD表格',
     icon: <DashboardOutlined />,
-    children: [
-      {
-        path: '/dashboard/analysis',
-        name: '分析页',
-      },
-      {
-        path: '/dashboard/monitor',
-        name: '监控页',
-      },
-      {
-        path: '/dashboard/workplace',
-        name: '工作台',
-      },
-    ],
   },
   {
     path: '/form',
