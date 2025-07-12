@@ -4,7 +4,7 @@ import { Button, Space } from 'antd';
 import ApiServices from '@/services/ant-design-pro';
 import { useAppConfigModal } from './components/AppConfigModal';
 import { PlusOutlined } from '@ant-design/icons';
-import { DrawerActionType } from '@/constants';
+import { ModalActionType } from '@/constants';
 import { App as AntdApp } from 'antd';
 
 const CrudTable = () => {
@@ -17,7 +17,7 @@ const CrudTable = () => {
     },
   });
 
-  const handleDelete = (record: any) => {
+  const handleDelete = (record: OpenAPI.RuleListItem) => {
     modal.confirm({
       title: '确认删除该应用？',
       content: `${record.name}`,
@@ -31,7 +31,7 @@ const CrudTable = () => {
     });
   };
 
-  const columns: ProColumns<API.RuleListItem>[] = [
+  const columns: ProColumns<OpenAPI.RuleListItem>[] = [
     {
       title: '规则名称',
       dataIndex: 'name',
@@ -94,7 +94,7 @@ const CrudTable = () => {
               onClick={() => {
                 appConfigModal.setModalParams({
                   open: true,
-                  drawerBizType: DrawerActionType.EDIT,
+                  modalActionType: ModalActionType.EDIT,
                   title: `编辑应用 - ${record.name}`,
                   initialValues: record,
                 });
@@ -118,7 +118,7 @@ const CrudTable = () => {
 
   return (
     <>
-      <ProTable<API.RuleListItem, API.PageParams>
+      <ProTable<OpenAPI.RuleListItem, OpenAPI.PageParams>
         columns={columns}
         actionRef={actionRef}
         rowKey="key"
@@ -143,7 +143,7 @@ const CrudTable = () => {
             onClick={() => {
               appConfigModal.setModalParams({
                 open: true,
-                drawerBizType: DrawerActionType.CREATE,
+                modalActionType: ModalActionType.CREATE,
                 title: '新建应用',
               });
             }}

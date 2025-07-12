@@ -4,7 +4,8 @@ export const INITIAL_PAGINATION = {
   pageSize: 20,
 };
 
-export enum DrawerActionType {
+/** 弹窗操作类型 */
+export enum ModalActionType {
   CREATE = 'CREATE',
   EDIT = 'EDIT',
   VIEW = 'VIEW',

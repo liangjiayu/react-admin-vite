@@ -3,8 +3,8 @@
 import request from '@/utils/request';
 
 /** 登录接口 POST /api/login/account */
-export async function login(body: API.LoginParams, options?: { [key: string]: any }) {
-  return request<API.LoginResult>('/api/login/account', {
+export async function login(body: OpenAPI.LoginParams, options?: { [key: string]: any }) {
+  return request<OpenAPI.LoginResult>('/api/login/account', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -17,10 +17,10 @@ export async function login(body: API.LoginParams, options?: { [key: string]: an
 /** 发送验证码 POST /api/login/captcha */
 export async function getFakeCaptcha(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.getFakeCaptchaParams,
+  params: OpenAPI.getFakeCaptchaParams,
   options?: { [key: string]: any },
 ) {
-  return request<API.FakeCaptcha>('/api/login/captcha', {
+  return request<OpenAPI.FakeCaptcha>('/api/login/captcha', {
     method: 'POST',
     params: {
       ...params,

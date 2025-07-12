@@ -1,4 +1,4 @@
-import { DrawerActionType } from '@/constants';
+import { ModalActionType } from '@/constants';
 import {
   ModalForm,
   ProFormSelect,
@@ -14,8 +14,8 @@ export type AppConfigModalProps = {
   width?: number | string;
   title?: string;
   open: boolean;
-  initialValues?: any;
-  drawerBizType: DrawerActionType;
+  initialValues?: OpenAPI.RuleListItem;
+  modalActionType: ModalActionType;
   onClose: () => void;
   onFinish?: () => void;
 };
@@ -25,20 +25,21 @@ const AppConfigModal: React.FC<AppConfigModalProps> = ({
   title,
   open = false,
   initialValues,
-  drawerBizType,
+  modalActionType,
   onClose,
   onFinish,
 }) => {
   const { message } = AntdApp.useApp();
 
-  const isEdit = drawerBizType === DrawerActionType.EDIT;
+  const isEdit = modalActionType === ModalActionType.EDIT;
 
-  const isCreate = drawerBizType === DrawerActionType.CREATE;
+  const isCreate = modalActionType === ModalActionType.CREATE;
 
-  const isView = drawerBizType === DrawerActionType.VIEW;
+  const isView = modalActionType === ModalActionType.VIEW;
 
   const onFinishByForm = async (values: any) => {
     console.log('values', values);
+    console.log('isCreate', isCreate);
 
     try {
       if (isEdit) {
@@ -111,7 +112,7 @@ export function useAppConfigModal(_params?: {
   const [modalParams, setModalParams] = useState<Omit<AppConfigModalProps, 'onClose' | 'onFinish'>>(
     {
       open: false,
-      drawerBizType: DrawerActionType.CREATE,
+      modalActionType: ModalActionType.CREATE,
     },
   );
 

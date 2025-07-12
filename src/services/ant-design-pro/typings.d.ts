@@ -1,4 +1,4 @@
-declare namespace API {
+declare namespace OpenAPI {
   type CurrentUser = {
     name?: string;
     avatar?: string;
