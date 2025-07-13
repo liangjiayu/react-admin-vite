@@ -15,6 +15,15 @@ const router = createBrowserRouter([
         Component: lazy(() => import('@/pages/crud-table')),
       },
       {
+        path: '/basic-features',
+        children: [
+          {
+            path: '/basic-features/icon-feature',
+            Component: lazy(() => import('@/pages/basic-features/icon-feature')),
+          },
+        ],
+      },
+      {
         path: '*',
         Component: lazy(() => import('@/pages/exception/404')),
       },

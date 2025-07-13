@@ -31,7 +31,7 @@ const App = () => {
 
   return (
     <ConfigProvider theme={customAntdTheme} locale={zhCN}>
-      <AntdApp>
+      <AntdApp style={{ height: '100%' }}>
         <RouterProvider router={router} />
       </AntdApp>
     </ConfigProvider>

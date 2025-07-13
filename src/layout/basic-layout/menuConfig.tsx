@@ -16,21 +16,13 @@ const MENU_CONFIG: MenuDataItem[] = [
     icon: <DashboardOutlined />,
   },
   {
-    path: '/form',
-    name: '表单页',
+    path: '/basic-features',
+    name: '基础功能',
     icon: <FormOutlined />,
     children: [
       {
-        path: '/form/basic-form',
-        name: '基础表单',
-      },
-      {
-        path: '/form/step-form',
-        name: '分步表单',
-      },
-      {
-        path: '/form/advanced-form',
-        name: '高级表单',
+        path: '/basic-features/icon-feature',
+        name: '图标功能',
       },
     ],
   },

@@ -1,5 +1,15 @@
 /* 引用 tw样式 */
 @import 'tailwindcss';
 
+@layer base {
+  svg {
+    display: inline-block;
+  }
+  .lucide {
+    width: 1em;
+    height: 1em;
+  }
+}
+
 /* 全局样式 */
 @import './global.css';
