@@ -28,6 +28,10 @@ const Side_Menu_Config: MenuDataItem[] = [
         path: '/basic-features/style-feature',
         name: '样式功能',
       },
+      {
+        path: '/basic-features/store-feature',
+        name: '状态管理',
+      },
     ],
   },
   {

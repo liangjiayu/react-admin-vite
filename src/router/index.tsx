@@ -25,6 +25,10 @@ const router = createBrowserRouter([
             path: '/basic-features/style-feature',
             Component: lazy(() => import('@/pages/basic-features/style-feature')),
           },
+          {
+            path: '/basic-features/store-feature',
+            Component: lazy(() => import('@/pages/basic-features/store-feature')),
+          },
         ],
       },
       {
