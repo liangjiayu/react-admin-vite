@@ -4,7 +4,7 @@ import defaultSettings from './defaultSettings';
 import Footer from '@/layout/widgets/footer';
 import { Question, AvatarInfo } from '@/layout/widgets/right-content';
 import AccessControl from '@/components/access-control';
-import menuConfig from './menuConfig';
+import sideMenuConfig from '../../../config/sideMenuConfig';
 import './styles.less';
 
 const BasicLayout = () => {
@@ -18,7 +18,7 @@ const BasicLayout = () => {
       location={location}
       menuItemRender={(item, dom) => <Link to={item.path || ''}>{dom}</Link>}
       menuDataRender={() => {
-        return menuConfig;
+        return sideMenuConfig;
       }}
       footerRender={() => <Footer />}
       actionsRender={() => [<Question key="doc" />]}
