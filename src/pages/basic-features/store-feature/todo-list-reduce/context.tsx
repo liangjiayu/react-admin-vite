@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useReducer } from 'react';
 import {
   TodoAction,
   TodoContextValue,
@@ -10,15 +10,11 @@ import {
   REMOVE_ALL_ITEMS,
   TOGGLE_ALL,
   REMOVE_COMPLETED_ITEMS,
-  SET_MODE
+  SET_MODE,
+  TodosProviderProps,
 } from './types';
 
-export const initialState: TodoState = {
-  mode: 'ALL',
-  todos: [],
-};
-
-export function todoReducer(state: TodoState, action: TodoAction) {
+function todoReducer(state: TodoState, action: TodoAction) {
   switch (action.type) {
     case ADD_ITEM: {
       return {
@@ -95,6 +91,15 @@ export function todoReducer(state: TodoState, action: TodoAction) {
 }
 
 export const TodoContext = createContext<TodoContextValue | undefined>(undefined);
+
+export function TodosProvider({ children }: TodosProviderProps) {
+  const [state, dispatch] = useReducer(todoReducer, {
+    mode: 'ALL',
+    todos: [],
+  });
+
+  return <TodoContext.Provider value={{ state, dispatch }}>{children}</TodoContext.Provider>;
+}
 
 export function useTodoContext() {
   const context = useContext(TodoContext);

@@ -1,10 +1,11 @@
 import { ClearOutlined } from '@ant-design/icons';
 import { Input, Tooltip } from 'antd';
 import { useTodoContext } from '../context';
+import { ADD_ITEM, REMOVE_ALL_ITEMS } from '../types';
 import { useState } from 'react';
 
 const Header = () => {
-  const { addItem, removeAllItems } = useTodoContext();
+  const { dispatch } = useTodoContext();
   const [inputValue, setInputValue] = useState('');
 
   return (
@@ -16,7 +17,7 @@ const Header = () => {
             <ClearOutlined
               className="cursor-pointer"
               onClick={() => {
-                removeAllItems();
+                dispatch({ type: REMOVE_ALL_ITEMS });
               }}
             />
           </Tooltip>
@@ -27,7 +28,7 @@ const Header = () => {
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
             setInputValue('');
-            addItem(e.currentTarget.value);
+            dispatch({ type: ADD_ITEM, payload: { title: e.currentTarget.value } });
           }
         }}
       />

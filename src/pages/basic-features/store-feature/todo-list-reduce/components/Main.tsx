@@ -2,6 +2,7 @@ import { DeleteOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Input, Empty } from 'antd';
 import { createStyles } from 'antd-style';
 import { useTodoContext } from '../context';
+import { REMOVE_ITEM, TOGGLE_ITEM, UPDATE_ITEM } from '../types';
 import { useMemo } from 'react';
 
 const useStyle = createStyles({
@@ -19,20 +20,20 @@ const useStyle = createStyles({
 
 const Main = () => {
   const { styles } = useStyle();
-  const { todos, mode, toggleItem, updateItem, removeItem } = useTodoContext();
+  const { state, dispatch } = useTodoContext();
 
   const visibleTodos = useMemo(() => {
-    const list = todos.filter((item) => {
-      if (mode === 'ACTIVE') {
+    const list = state.todos.filter((item) => {
+      if (state.mode === 'ACTIVE') {
         return !item.completed;
       }
-      if (mode === 'COMPLETED') {
+      if (state.mode === 'COMPLETED') {
         return item.completed;
       }
       return true;
     });
     return list;
-  }, [mode, todos]);
+  }, [state]);
 
   return (
     <div className="rounded-[8px] border border-gray-300">
@@ -46,7 +47,7 @@ const Main = () => {
               className={styles['custom-checkbox']}
               checked={item?.completed}
               onChange={() => {
-                toggleItem(item.id);
+                dispatch({ type: TOGGLE_ITEM, payload: { id: item.id } });
               }}
             />
             <Input
@@ -54,7 +55,10 @@ const Main = () => {
               size="large"
               defaultValue={item?.title}
               onBlur={(e) => {
-                updateItem(item.id, e.currentTarget.value);
+                dispatch({
+                  type: UPDATE_ITEM,
+                  payload: { id: item.id, title: e.currentTarget.value },
+                });
               }}
               style={{ textDecoration: item?.completed ? 'line-through' : 'none' }}
               placeholder="待办事项为空"
@@ -63,7 +67,7 @@ const Main = () => {
               type="text"
               icon={<DeleteOutlined />}
               onClick={() => {
-                removeItem(item.id);
+                dispatch({ type: REMOVE_ITEM, payload: { id: item.id } });
               }}
             />
           </div>

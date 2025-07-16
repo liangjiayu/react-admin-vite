@@ -7,7 +7,7 @@ export const TOGGLE_ALL = 'TOGGLE_ALL';
 export const REMOVE_COMPLETED_ITEMS = 'REMOVE_COMPLETED_ITEMS';
 export const SET_MODE = 'SET_MODE';
 
-export type Todo = {
+export type TodoItem = {
   id: number;
   title: string;
   completed: boolean;
@@ -17,7 +17,7 @@ export type FilterMode = 'ALL' | 'ACTIVE' | 'COMPLETED';
 
 export type TodoState = {
   mode: FilterMode;
-  todos: Todo[];
+  todos: TodoItem[];
 };
 
 export type TodoAction =
@@ -35,4 +35,8 @@ export type TodoDispatch = (action: TodoAction) => void;
 export type TodoContextValue = {
   state: TodoState;
   dispatch: TodoDispatch;
+};
+
+export type TodosProviderProps = {
+  children: React.ReactNode;
 };
