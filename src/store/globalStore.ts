@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { currentUser as queryCurrentUser } from '@/services/ant-design-pro/api';
 
 type GlobalState = {
-  currentUser: API.CurrentUser | null;
+  currentUser: OpenAPI.CurrentUser | null;
   globalLoading: boolean;
 };
 
