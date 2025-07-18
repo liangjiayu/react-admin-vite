@@ -1,14 +1,29 @@
 import TodoList from './todo-list';
 import TodoListReduce from './todo-list-reduce';
 import TodoListZustand from './todo-list-zustand';
+import { Tabs } from 'antd';
 
 const StoreFeature = () => {
   return (
-    <div className="flex flex-col gap-4">
-      <TodoList />
-      <TodoListReduce />
-      <TodoListZustand />
-    </div>
+    <Tabs
+      items={[
+        {
+          label: 'react-context',
+          key: 'react-context',
+          children: <TodoList />,
+        },
+        {
+          label: 'react-reduce',
+          key: 'react-reduce',
+          children: <TodoListReduce />,
+        },
+        {
+          label: 'zustand',
+          key: 'zustand',
+          children: <TodoListZustand />,
+        },
+      ]}
+    ></Tabs>
   );
 };
 
