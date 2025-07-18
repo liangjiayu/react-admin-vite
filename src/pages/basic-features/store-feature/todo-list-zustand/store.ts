@@ -1,12 +1,5 @@
 import { create } from 'zustand';
-
-export type TodoItem = {
-  id: number;
-  title: string;
-  completed: boolean;
-};
-
-export type FilterMode = 'ALL' | 'ACTIVE' | 'COMPLETED';
+import { TodoItem, FilterMode } from '../types';
 
 type TodoStore = {
   todos: TodoItem[];

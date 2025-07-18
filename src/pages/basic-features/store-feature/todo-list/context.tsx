@@ -1,13 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 import { noop } from 'lodash-es';
-
-export type TodoItem = {
-  id: number;
-  title: string;
-  completed: boolean;
-};
-
-export type FilterMode = 'ALL' | 'ACTIVE' | 'COMPLETED';
+import { TodoItem, FilterMode } from '../types';
 
 export type TodosProviderProps = {
   children: React.ReactNode;
