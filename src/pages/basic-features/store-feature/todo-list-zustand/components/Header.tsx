@@ -1,10 +1,10 @@
 import { ClearOutlined } from '@ant-design/icons';
 import { Input, Tooltip } from 'antd';
 import { useState } from 'react';
-import { useTodoStore } from '../store';
+import { useTodoContext } from '../context';
 
 const Header = () => {
-  const { addItem, removeAllItems } = useTodoStore();
+  const { addItem, removeAllItems } = useTodoContext();
   const [inputValue, setInputValue] = useState('');
 
   return (

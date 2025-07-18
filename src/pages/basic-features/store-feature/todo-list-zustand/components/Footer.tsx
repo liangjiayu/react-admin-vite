@@ -1,9 +1,9 @@
 import { Button, Radio } from 'antd';
-import { useTodoStore } from '../store';
 import { useMemo } from 'react';
+import { useTodoContext } from '../context';
 
 const Footer = () => {
-  const { mode, todos, setMode, removeCompletedItems } = useTodoStore();
+  const { mode, todos, setMode, removeCompletedItems } = useTodoContext();
 
   const activeTodos = useMemo(() => todos.filter((todo) => !todo.completed), [mode, todos]);
 

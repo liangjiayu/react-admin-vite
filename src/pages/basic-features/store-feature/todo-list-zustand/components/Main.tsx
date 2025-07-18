@@ -1,8 +1,8 @@
 import { DeleteOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Input, Empty } from 'antd';
 import { createStyles } from 'antd-style';
-import { useTodoStore } from '../store';
 import { useMemo } from 'react';
+import { useTodoContext } from '../context';
 
 const useStyle = createStyles({
   'custom-checkbox': {
@@ -19,7 +19,7 @@ const useStyle = createStyles({
 
 const Main = () => {
   const { styles } = useStyle();
-  const { todos, mode, toggleItem, updateItem, removeItem } = useTodoStore();
+  const { todos, mode, toggleItem, updateItem, removeItem } = useTodoContext();
 
   const visibleTodos = useMemo(() => {
     const list = todos.filter((item) => {
