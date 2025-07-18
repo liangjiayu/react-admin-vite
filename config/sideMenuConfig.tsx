@@ -9,7 +9,7 @@ import {
 } from '@ant-design/icons';
 import { MenuDataItem } from '@ant-design/pro-components';
 
-const MENU_CONFIG: MenuDataItem[] = [
+const Side_Menu_Config: MenuDataItem[] = [
   {
     path: '/crud-table',
     name: 'CRUD表格',
@@ -23,6 +23,14 @@ const MENU_CONFIG: MenuDataItem[] = [
       {
         path: '/basic-features/icon-feature',
         name: '图标功能',
+      },
+      {
+        path: '/basic-features/style-feature',
+        name: '样式功能',
+      },
+      {
+        path: '/basic-features/store-feature',
+        name: '状态管理',
       },
     ],
   },
@@ -129,4 +137,4 @@ const MENU_CONFIG: MenuDataItem[] = [
   },
 ];
 
-export default MENU_CONFIG;
+export default Side_Menu_Config;
