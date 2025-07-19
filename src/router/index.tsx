@@ -29,6 +29,10 @@ const router = createBrowserRouter([
             path: '/basic-features/store-feature',
             Component: lazy(() => import('@/pages/basic-features/store-feature')),
           },
+          {
+            path: '/basic-features/article-demo',
+            Component: lazy(() => import('@/pages/basic-features/article-demo')),
+          },
         ],
       },
       {

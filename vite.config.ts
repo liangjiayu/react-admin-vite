@@ -22,7 +22,7 @@ export default defineConfig(() => {
     ],
     server: {
       proxy: {
-        '^/api': 'https://proapi.azurewebsites.net',
+        '^/api': 'http://127.0.0.1:7100',
       },
     },
   };
