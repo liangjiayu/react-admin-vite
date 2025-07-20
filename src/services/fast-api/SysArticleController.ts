@@ -2,12 +2,12 @@
 /* eslint-disable */
 import request from "@/utils/request";
 
-/** 创建文章数据 POST /api/sysArticles/create */
-export async function createArticle(
-  body: FastAPI.ArticleSaveRequest,
+/** 创建文章数据 POST /api/sysArticle/create */
+export async function createSysArticle(
+  body: FastAPI.SysArticleSaveRequest,
   options?: { [key: string]: any }
 ) {
-  return request<number>("/api/sysArticles/create", {
+  return request<number>("/api/sysArticle/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -17,13 +17,13 @@ export async function createArticle(
   });
 }
 
-/** 删除文章数据 POST /api/sysArticles/deleted */
-export async function deletedArticle(
+/** 删除文章数据 POST /api/sysArticle/delete */
+export async function deleteSysArticle(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: FastAPI.deletedArticleParams,
+  params: FastAPI.deleteSysArticleParams,
   options?: { [key: string]: any }
 ) {
-  return request<boolean>("/api/sysArticles/deleted", {
+  return request<boolean>("/api/sysArticle/delete", {
     method: "POST",
     params: {
       ...params,
@@ -32,13 +32,13 @@ export async function deletedArticle(
   });
 }
 
-/** 获取文章列表 GET /api/sysArticles/pageList */
-export async function getArticleByPage(
+/** 获取文章列表 GET /api/sysArticle/pageList */
+export async function getSysArticleByPage(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: FastAPI.getArticleByPageParams,
+  params: FastAPI.getSysArticleByPageParams,
   options?: { [key: string]: any }
 ) {
-  return request<FastAPI.IPageSysArticles>("/api/sysArticles/pageList", {
+  return request<FastAPI.IPageSysArticle>("/api/sysArticle/pageList", {
     method: "GET",
     params: {
       ...params,
@@ -47,12 +47,12 @@ export async function getArticleByPage(
   });
 }
 
-/** 更新文章数据 POST /api/sysArticles/update */
-export async function updateArticle(
-  body: FastAPI.ArticleSaveRequest,
+/** 更新文章数据 POST /api/sysArticle/update */
+export async function updateSysArticle(
+  body: FastAPI.SysArticleSaveRequest,
   options?: { [key: string]: any }
 ) {
-  return request<boolean>("/api/sysArticles/update", {
+  return request<boolean>("/api/sysArticle/update", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

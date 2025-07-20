@@ -17,12 +17,12 @@ const CrudTable = () => {
     },
   });
 
-  const handleDelete = (record: FastAPI.SysArticles) => {
+  const handleDelete = (record: FastAPI.SysArticle) => {
     modal.confirm({
       title: '确认删除该应用？',
       content: `${record.title}`,
       onOk: async () => {
-        await FastApiServices.SysArticlesController.deletedArticle({
+        await FastApiServices.SysArticleController.deleteSysArticle({
           id: record.id as number,
         });
         message.success('提示：删除成功');
@@ -31,7 +31,7 @@ const CrudTable = () => {
     });
   };
 
-  const columns: ProColumns<FastAPI.SysArticles>[] = [
+  const columns: ProColumns<FastAPI.SysArticle>[] = [
     {
       title: '文章名称',
       dataIndex: 'title',
@@ -40,11 +40,13 @@ const CrudTable = () => {
       title: '创建时间',
       dataIndex: 'createdAt',
       valueType: 'dateTime',
+      hideInSearch: true,
     },
     {
       title: '更新时间',
       dataIndex: 'updatedAt',
       valueType: 'dateTime',
+      hideInSearch: true,
     },
     {
       title: '操作',
@@ -82,14 +84,14 @@ const CrudTable = () => {
 
   return (
     <>
-      <ProTable<FastAPI.SysArticles>
+      <ProTable<FastAPI.SysArticle>
         columns={columns}
         actionRef={actionRef}
         rowKey="id"
         cardBordered
         request={async (params) => {
-          const res = await FastApiServices.SysArticlesController.getArticleByPage({
-            pageNum: params.current,
+          const res = await FastApiServices.SysArticleController.getSysArticleByPage({
+            current: params.current,
             pageSize: params.pageSize,
             title: params?.title,
           });

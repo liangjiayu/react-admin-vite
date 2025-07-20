@@ -1,21 +1,4 @@
 declare namespace FastAPI {
-  type ArticleSaveRequest = {
-    /** 文章id */
-    id?: number;
-    /** 文章标题 */
-    title?: string;
-    /** 文章内容 */
-    content?: string;
-    /** 作者ID */
-    authorId?: number;
-    /** 分类ID */
-    categoryId?: number;
-    /** 文章状态 */
-    status?: string;
-    /** 阅读量 */
-    viewCount?: number;
-  };
-
   type CommonResultBoolean = {
     /** 状态码，成功为200，其他情况为异常 */
     code?: number;
@@ -34,13 +17,13 @@ declare namespace FastAPI {
     data?: number;
   };
 
-  type CommonResultIPageSysArticles = {
+  type CommonResultIPageSysArticle = {
     /** 状态码，成功为200，其他情况为异常 */
     code?: number;
     /** 异常信息 */
     message?: string;
     /** 结果数据主体 */
-    data?: IPageSysArticles;
+    data?: IPageSysArticle;
   };
 
   type CommonResultIPageSysUsers = {
@@ -69,21 +52,21 @@ declare namespace FastAPI {
     primary?: boolean;
   };
 
-  type deletedArticleParams = {
-    id: number;
-  };
-
   type deletedSysUserParams = {
     /** 用户id */
     id: number;
   };
 
-  type getArticleByPageParams = {
+  type deleteSysArticleParams = {
+    id: number;
+  };
+
+  type getSysArticleByPageParams = {
     /** 文章标题 */
     title?: string;
-    /** 页码，从1开始 */
-    pageNum?: number;
-    /** 分页大小 */
+    /** 页码，默认为1 */
+    current?: number;
+    /** 分页大小，默认为10 */
     pageSize?: number;
   };
 
@@ -100,9 +83,9 @@ declare namespace FastAPI {
     startTime?: string;
     /** 结束时间，格式为yyyy-MM-dd HH:mm:ss */
     endTime?: string;
-    /** 页码，从1开始 */
-    pageNum?: number;
-    /** 分页大小 */
+    /** 页码，默认为1 */
+    current?: number;
+    /** 分页大小，默认为10 */
     pageSize?: number;
   };
 
@@ -111,23 +94,23 @@ declare namespace FastAPI {
     id: number;
   };
 
-  type IPageSysArticles = {
+  type IPageSysArticle = {
     size?: number;
-    total?: number;
-    records?: SysArticles[];
-    pages?: number;
     current?: number;
+    records?: SysArticle[];
+    total?: number;
+    pages?: number;
   };
 
   type IPageSysUsers = {
     size?: number;
-    total?: number;
-    records?: SysUsers[];
-    pages?: number;
     current?: number;
+    records?: SysUsers[];
+    total?: number;
+    pages?: number;
   };
 
-  type SysArticles = {
+  type SysArticle = {
     /** 文章ID */
     id?: number;
     /** 文章标题 */
@@ -148,6 +131,23 @@ declare namespace FastAPI {
     updatedAt?: string;
     /** 逻辑删除时间 */
     deletedAt?: string;
+  };
+
+  type SysArticleSaveRequest = {
+    /** 文章ID */
+    id?: number;
+    /** 文章标题 */
+    title?: string;
+    /** 文章内容 */
+    content?: string;
+    /** 作者ID */
+    authorId?: number;
+    /** 分类ID */
+    categoryId?: number;
+    /** 文章状态 */
+    status?: string;
+    /** 阅读量 */
+    viewCount?: number;
   };
 
   type SysUserCreateDto = {

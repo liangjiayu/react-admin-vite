@@ -8,7 +8,7 @@ export type ArticleConfigModalProps = {
   width?: number | string;
   title?: string;
   open: boolean;
-  initialValues?: any;
+  initialValues?: FastAPI.SysArticle;
   modalActionType: ModalActionType;
   onClose: () => void;
   onFinish?: () => void;
@@ -37,12 +37,12 @@ const ArticleConfigModal: React.FC<ArticleConfigModalProps> = ({
 
     try {
       if (isEdit) {
-        await FastApiServices.SysArticlesController.updateArticle({
+        await FastApiServices.SysArticleController.updateSysArticle({
           ...values,
-          id: initialValues.id,
+          id: initialValues?.id,
         });
       } else {
-        await FastApiServices.SysArticlesController.createArticle({ ...values });
+        await FastApiServices.SysArticleController.createSysArticle({ ...values });
       }
     } catch {
       return false;
