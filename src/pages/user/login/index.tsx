@@ -87,6 +87,7 @@ const Login: React.FC = () => {
     try {
       await FastApiServices.FakeUserController.loginAccount({
         ...values,
+        type,
       });
       const defaultLoginSuccessMessage = '登录成功！';
       message.success(defaultLoginSuccessMessage);
