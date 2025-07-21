@@ -1,8 +1,9 @@
 import { create } from 'zustand';
-import { currentUser as queryCurrentUser } from '@/services/ant-design-pro/api';
+import { FastApiServices } from '@/services';
+
 
 type GlobalState = {
-  currentUser: OpenAPI.CurrentUser | null;
+  currentUser: FastAPI.CurrentUserDTO | null;
   globalLoading: boolean;
 };
 
@@ -17,7 +18,7 @@ export const useGlobalStore = create<GlobalState & GlobalActions>((set, get) => 
   globalLoading: true,
 
   fetchUserInfo: async () => {
-    const userInfo = await queryCurrentUser();
+    const userInfo = await FastApiServices.FakeUserController.getCurrentUser();
     set({ currentUser: userInfo });
   },
 

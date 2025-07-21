@@ -22,7 +22,7 @@ export default defineConfig(() => {
     ],
     server: {
       proxy: {
-        '^/api': 'http://8.134.97.57:7100',
+        '^/api': 'http://127.0.0.1:7100',
       },
     },
   };

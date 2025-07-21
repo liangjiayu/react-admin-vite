@@ -21,10 +21,10 @@ const __rootDir = resolve(__filename, '../..');
 //   dataFields: ['data'],
 // });
 
-/** 第二份协议 */
+/** FastApi 协议 */
 generateService({
   // schemaPath: join(__rootDir, 'config/swagger.json'),
-  schemaPath: 'http://8.134.97.57:7100/api-docs',
+  schemaPath: 'http://127.0.0.1:7100/api-docs',
   requestLibPath: "import request from '@/utils/request'",
   projectName: 'fast-api',
   namespace: 'FastAPI',

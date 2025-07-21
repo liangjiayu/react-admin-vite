@@ -8,6 +8,15 @@ declare namespace FastAPI {
     data?: boolean;
   };
 
+  type CommonResultCurrentUserDTO = {
+    /** 状态码，成功为200，其他情况为异常 */
+    code?: number;
+    /** 异常信息 */
+    message?: string;
+    /** 结果数据主体 */
+    data?: CurrentUserDTO;
+  };
+
   type CommonResultInteger = {
     /** 状态码，成功为200，其他情况为异常 */
     code?: number;
@@ -35,6 +44,15 @@ declare namespace FastAPI {
     data?: IPageSysUsers;
   };
 
+  type CommonResultString = {
+    /** 状态码，成功为200，其他情况为异常 */
+    code?: number;
+    /** 异常信息 */
+    message?: string;
+    /** 结果数据主体 */
+    data?: string;
+  };
+
   type CommonResultSysUsers = {
     /** 状态码，成功为200，其他情况为异常 */
     code?: number;
@@ -50,6 +68,23 @@ declare namespace FastAPI {
     /** 联系人手机号码 */
     phone?: string;
     primary?: boolean;
+  };
+
+  type CurrentUserDTO = {
+    name?: string;
+    avatar?: string;
+    userid?: string;
+    email?: string;
+    signature?: string;
+    title?: string;
+    group?: string;
+    notifyCount?: number;
+    unreadCount?: number;
+    country?: string;
+    access?: string;
+    tags?: TagDTO[];
+    address?: string;
+    phone?: string;
   };
 
   type deletedSysUserParams = {
@@ -97,16 +132,16 @@ declare namespace FastAPI {
   type IPageSysArticle = {
     size?: number;
     current?: number;
-    records?: SysArticle[];
     total?: number;
+    records?: SysArticle[];
     pages?: number;
   };
 
   type IPageSysUsers = {
     size?: number;
     current?: number;
-    records?: SysUsers[];
     total?: number;
+    records?: SysUsers[];
     pages?: number;
   };
 
@@ -212,6 +247,11 @@ declare namespace FastAPI {
     profileDescription?: string;
     /** 用户元数据，存储额外的自定义信息 */
     metadata?: SysUsersMetaData;
+  };
+
+  type TagDTO = {
+    key?: string;
+    label?: string;
   };
 
   type updateSysUserParams = {
