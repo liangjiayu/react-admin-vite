@@ -99,6 +99,8 @@ declare namespace FastAPI {
   type getSysArticleByPageParams = {
     /** 文章标题 */
     title?: string;
+    /** 文章状态 */
+    status?: number;
     /** 页码，默认为1 */
     current?: number;
     /** 分页大小，默认为10 */
@@ -132,17 +134,17 @@ declare namespace FastAPI {
   type IPageSysArticle = {
     size?: number;
     current?: number;
+    pages?: number;
     total?: number;
     records?: SysArticle[];
-    pages?: number;
   };
 
   type IPageSysUsers = {
     size?: number;
     current?: number;
+    pages?: number;
     total?: number;
     records?: SysUsers[];
-    pages?: number;
   };
 
   type SysArticle = {
@@ -157,7 +159,7 @@ declare namespace FastAPI {
     /** 分类ID */
     categoryId?: number;
     /** 文章状态 */
-    status?: string;
+    status?: number;
     /** 阅读量 */
     viewCount?: number;
     /** 创建时间 */
@@ -180,7 +182,7 @@ declare namespace FastAPI {
     /** 分类ID */
     categoryId?: number;
     /** 文章状态 */
-    status?: string;
+    status?: number;
     /** 阅读量 */
     viewCount?: number;
   };

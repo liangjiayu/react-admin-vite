@@ -10,10 +10,10 @@ const router = createBrowserRouter([
         index: true,
         Component: lazy(() => import('@/pages/home')),
       },
-      // {
-      //   path: '/crud-table',
-      //   Component: lazy(() => import('@/pages/crud-table')),
-      // },
+      {
+        path: '/crud-table',
+        Component: lazy(() => import('@/pages/crud-table')),
+      },
       {
         path: '/basic-features',
         children: [
@@ -28,10 +28,6 @@ const router = createBrowserRouter([
           {
             path: '/basic-features/store-feature',
             Component: lazy(() => import('@/pages/basic-features/store-feature')),
-          },
-          {
-            path: '/basic-features/article-demo',
-            Component: lazy(() => import('@/pages/basic-features/article-demo')),
           },
         ],
       },

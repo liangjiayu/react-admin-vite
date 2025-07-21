@@ -1,29 +1,29 @@
 import { ActionType, ProColumns, ProTable } from '@ant-design/pro-components';
 import { useRef } from 'react';
 import { Button, Space } from 'antd';
-import ApiServices from '@/services/ant-design-pro';
-import { useAppConfigModal } from './components/AppConfigModal';
+import { useArticleConfigModal } from './components/ArticleConfigModal';
 import { PlusOutlined } from '@ant-design/icons';
 import { ModalActionType } from '@/constants';
 import { App as AntdApp } from 'antd';
+import { FastApiServices } from '@/services';
 
 const CrudTable = () => {
   const actionRef = useRef<ActionType>(undefined);
   const { message, modal } = AntdApp.useApp();
 
-  const appConfigModal = useAppConfigModal({
+  const articleConfigModal = useArticleConfigModal({
     handleOnFinish() {
       actionRef.current?.reload();
     },
   });
 
-  const handleDelete = (record: OpenAPI.RuleListItem) => {
+  const handleDelete = (record: FastAPI.SysArticle) => {
     modal.confirm({
-      title: '确认删除该应用？',
-      content: `${record.name}`,
+      title: '确认删除该文章？',
+      content: `${record.title}`,
       onOk: async () => {
-        await ApiServices.rule.removeRule({
-          data: { key: record?.key?.toString() },
+        await FastApiServices.SysArticleController.deleteSysArticle({
+          id: record.id as number,
         });
         message.success('提示：删除成功');
         actionRef.current?.reload();
@@ -31,56 +31,42 @@ const CrudTable = () => {
     });
   };
 
-  const columns: ProColumns<OpenAPI.RuleListItem>[] = [
+  const columns: ProColumns<FastAPI.SysArticle>[] = [
     {
-      title: '规则名称',
-      dataIndex: 'name',
-      render: (text) => {
-        return <a>{text}</a>;
-      },
+      title: '文章名称',
+      dataIndex: 'title',
     },
     {
-      title: '描述',
-      dataIndex: 'desc',
-    },
-    {
-      title: '服务调用次数',
-      dataIndex: 'callNo',
+      title: '文章内容',
+      dataIndex: 'content',
       hideInSearch: true,
-      renderText: (val: string) => `${val}${'万'}`,
     },
     {
-      title: '状态',
+      title: '文章状态',
       dataIndex: 'status',
       valueEnum: {
-        0: {
-          text: '关闭',
-          status: 'Default',
-        },
-        1: {
-          text: '运行中',
-          status: 'Processing',
-        },
-        2: {
-          text: '已上线',
-          status: 'Success',
-        },
-        3: {
-          text: '异常',
-          status: 'Error',
-        },
+        1: { text: '上架', color: 'green' },
+        2: { text: '下架', color: 'red' },
       },
     },
     {
-      title: '使用进度',
-      dataIndex: 'progress',
-      valueType: 'percent',
+      title: '浏览量',
+      dataIndex: 'viewCount',
       hideInSearch: true,
     },
     {
-      title: '上次调度时间',
+      title: '创建时间',
+      dataIndex: 'createdAt',
+      valueType: 'dateTime',
+      hideInSearch: true,
+      width: 170,
+    },
+    {
+      title: '更新时间',
       dataIndex: 'updatedAt',
       valueType: 'dateTime',
+      hideInSearch: true,
+      width: 170,
     },
     {
       title: '操作',
@@ -92,10 +78,10 @@ const CrudTable = () => {
           <Space>
             <a
               onClick={() => {
-                appConfigModal.setModalParams({
+                articleConfigModal.setModalParams({
                   open: true,
                   modalActionType: ModalActionType.EDIT,
-                  title: `编辑应用 - ${record.name}`,
+                  title: `编辑文章 - ${record.title}`,
                   initialValues: record,
                 });
               }}
@@ -118,18 +104,21 @@ const CrudTable = () => {
 
   return (
     <>
-      <ProTable<OpenAPI.RuleListItem, OpenAPI.PageParams>
+      <ProTable<FastAPI.SysArticle>
         columns={columns}
         actionRef={actionRef}
-        rowKey="key"
+        rowKey="id"
+        cardBordered
         request={async (params) => {
-          const res = await ApiServices.rule.rule({
-            ...params,
+          const res = await FastApiServices.SysArticleController.getSysArticleByPage({
             current: params.current,
             pageSize: params.pageSize,
+            title: params?.title,
+            status: params?.status,
           });
+
           return {
-            data: res?.data || [],
+            data: res?.records || [],
             total: res?.total || 0,
           };
         }}
@@ -141,21 +130,21 @@ const CrudTable = () => {
           <Button
             key="CREATE"
             onClick={() => {
-              appConfigModal.setModalParams({
+              articleConfigModal.setModalParams({
                 open: true,
                 modalActionType: ModalActionType.CREATE,
-                title: '新建应用',
+                title: '新建文章',
               });
             }}
             type="primary"
             icon={<PlusOutlined />}
           >
-            新建应用
+            新建文章
           </Button>,
         ]}
       />
 
-      {appConfigModal.element}
+      {articleConfigModal.element}
     </>
   );
 };
