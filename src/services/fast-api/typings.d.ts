@@ -82,7 +82,6 @@ declare namespace FastAPI {
     unreadCount?: number;
     country?: string;
     access?: string;
-    tags?: TagDTO[];
     address?: string;
     phone?: string;
   };
@@ -134,17 +133,17 @@ declare namespace FastAPI {
   type IPageSysArticle = {
     size?: number;
     current?: number;
-    pages?: number;
-    total?: number;
     records?: SysArticle[];
+    total?: number;
+    pages?: number;
   };
 
   type IPageSysUsers = {
     size?: number;
     current?: number;
-    pages?: number;
-    total?: number;
     records?: SysUsers[];
+    total?: number;
+    pages?: number;
   };
 
   type SysArticle = {
@@ -249,11 +248,6 @@ declare namespace FastAPI {
     profileDescription?: string;
     /** 用户元数据，存储额外的自定义信息 */
     metadata?: SysUsersMetaData;
-  };
-
-  type TagDTO = {
-    key?: string;
-    label?: string;
   };
 
   type updateSysUserParams = {

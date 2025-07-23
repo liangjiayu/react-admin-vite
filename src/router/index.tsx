@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router';
 import BasicLayout from '../layout/basic-layout';
 import { lazy } from 'react';
+import basicFeatures from './modules/basic-features';
 
 const router = createBrowserRouter([
   {
@@ -14,23 +15,7 @@ const router = createBrowserRouter([
         path: '/crud-table',
         Component: lazy(() => import('@/pages/crud-table')),
       },
-      {
-        path: '/basic-features',
-        children: [
-          {
-            path: '/basic-features/icon-feature',
-            Component: lazy(() => import('@/pages/basic-features/icon-feature')),
-          },
-          {
-            path: '/basic-features/style-feature',
-            Component: lazy(() => import('@/pages/basic-features/style-feature')),
-          },
-          {
-            path: '/basic-features/store-feature',
-            Component: lazy(() => import('@/pages/basic-features/store-feature')),
-          },
-        ],
-      },
+      ...basicFeatures,
       {
         path: '*',
         Component: lazy(() => import('@/pages/exception/404')),
@@ -43,6 +28,23 @@ const router = createBrowserRouter([
       {
         path: '/user/login',
         Component: lazy(() => import('@/pages/user/login')),
+      },
+    ],
+  },
+  {
+    path: '/aaa',
+    children: [
+      {
+        path: '/aaa/bbb',
+        Component: () => {
+          return <div>bbb</div>;
+        },
+      },
+      {
+        path: '/aaa/ccc',
+        Component: () => {
+          return <div>ccc</div>;
+        },
       },
     ],
   },
