@@ -1,10 +1,10 @@
 import { ProLayout } from '@ant-design/pro-components';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router';
-import defaultSettings from './defaultSettings';
 import Footer from '@/layout/widgets/footer';
 import { Question, AvatarInfo } from '@/layout/widgets/right-content';
 import AccessControl from '@/components/access-control';
 import sideMenuConfig from '../../../config/sideMenuConfig';
+import sidebarSetting from '../../../config/sidebarSetting';
 import routes from '@/router/routes';
 import './styles.less';
 import { generateMenuItems } from './utils';
@@ -20,7 +20,7 @@ const BasicLayout = () => {
 
   return (
     <ProLayout
-      {...defaultSettings}
+      {...sidebarSetting}
       children={<AccessControl children={<Outlet />} />}
       location={location}
       menuItemRender={(item, dom) => (
