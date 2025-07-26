@@ -5,21 +5,37 @@ import Footer from '@/layout/widgets/footer';
 import { Question, AvatarInfo } from '@/layout/widgets/right-content';
 import AccessControl from '@/components/access-control';
 import sideMenuConfig from '../../../config/sideMenuConfig';
+import routes from '@/router/routes';
 import './styles.less';
+import { generateMenuItems } from './utils';
+import { useMemo } from 'react';
 
 const BasicLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const routesMenuConfig = useMemo(() => {
+    return generateMenuItems(routes?.[0].children || []);
+  }, [routes]);
 
   return (
     <ProLayout
       {...defaultSettings}
       children={<AccessControl children={<Outlet />} />}
       location={location}
-      menuItemRender={(item, dom) => <Link to={item.path || ''}>{dom}</Link>}
-      menuDataRender={() => {
-        return sideMenuConfig;
+      menuItemRender={(item, dom) => (
+        <Link to={item.path || ''} target={item.target}>
+          {dom}
+        </Link>
+      )}
+      postMenuData={() => {
+        /**
+         * 提供两周方式生成菜单数据，推荐使用 sideMenuConfig。
+         * 使用配置文件的方式，路由和菜单完全独立，可以保证菜单的灵活性。
+         */
+        return routesMenuConfig || sideMenuConfig;
       }}
+      menu={{ locale: false }}
       footerRender={() => <Footer />}
       actionsRender={() => [<Question key="doc" />]}
       avatarProps={{
