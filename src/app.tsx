@@ -23,7 +23,7 @@ const App = () => {
 
   if (globalLoading) {
     return (
-      <Spin size="large" tip={<div className="text-gray-500 text-[15px] mt-2">资源加载中...</div>}>
+      <Spin size="large" tip={<div className="mt-2 text-[15px] text-gray-500">资源加载中...</div>}>
         <div className="h-[100vh]"></div>
       </Spin>
     );

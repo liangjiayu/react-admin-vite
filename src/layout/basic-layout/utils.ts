@@ -33,3 +33,19 @@ export const generateMenuItems = (routes: AppRouteProps[]): MenuDataItem[] => {
       };
     });
 };
+
+/**
+ * 寻找 BasicLayout组件 返回组件的引用
+ */
+export function findBasicLayoutRoute(routes: AppRouteProps[]) {
+  for (const route of routes) {
+    if (route?.Component?.name === 'BasicLayout') {
+      return route;
+    }
+    if (route.children) {
+      const found: any = findBasicLayoutRoute(route.children);
+      if (found) return found;
+    }
+  }
+  return null;
+}

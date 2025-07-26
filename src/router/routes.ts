@@ -1,13 +1,17 @@
-import BasicLayout from '../layout/basic-layout';
-import coreModule from './modules/core';
-import aloneModule from './modules/alone-module';
+import BasicLayout from '@/layout/basic-layout';
+import aloneModules from './modules/alone-module';
+import BlankLayout from '@/layout/blank-layout';
+import codeModules from './modules/core-modules';
 
 const routes = [
   {
     Component: BasicLayout,
-    children: [...coreModule],
+    children: [...codeModules],
   },
-  ...aloneModule,
+  {
+    Component: BlankLayout,
+    children: [...aloneModules],
+  },
 ];
 
 export default routes;

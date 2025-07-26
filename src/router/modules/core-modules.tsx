@@ -1,17 +1,17 @@
 import { lazy } from 'react';
 import basicFeatures from './basic-features';
 import { AppRouteProps } from '../types';
-import { DashboardOutlined } from '@ant-design/icons';
+import { DashboardOutlined, WarningOutlined } from '@ant-design/icons';
 
 /**
  * 通常放置侧栏布局下的页面
  */
 export default [
   {
-    index: true,
+    path: '/',
     Component: lazy(() => import('@/pages/home')),
     handle: {
-      hideInMenu: true,
+      name: '首页',
     },
   },
   {
@@ -23,6 +23,33 @@ export default [
     },
   },
   ...basicFeatures,
+  {
+    path: '/exception',
+    handle: {
+      name: '异常页',
+      icon: <WarningOutlined />,
+    },
+    children: [
+      {
+        path: '/exception/403',
+        handle: {
+          name: '403',
+        },
+      },
+      {
+        path: '/exception/404',
+        handle: {
+          name: '404',
+        },
+      },
+      {
+        path: '/exception/500',
+        handle: {
+          name: '500',
+        },
+      },
+    ],
+  },
   {
     path: '*',
     Component: lazy(() => import('@/pages/exception/404')),

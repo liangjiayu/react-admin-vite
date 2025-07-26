@@ -11,3 +11,5 @@ export enum ModalActionType {
   VIEW = 'VIEW',
   COPY = 'COPY',
 }
+
+export const SITE_APP_TITLE = import.meta.env.VITE_SITE_APP_TITLE;

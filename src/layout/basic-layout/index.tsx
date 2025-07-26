@@ -9,13 +9,16 @@ import routes from '@/router/routes';
 import './styles.less';
 import { generateMenuItems } from './utils';
 import { useMemo } from 'react';
+import useTitleUpdater from '../widgets/hooks/useTitleUpdater';
 
 const BasicLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  useTitleUpdater();
 
   const routesMenuConfig = useMemo(() => {
-    return generateMenuItems(routes?.[0].children || []);
+    /** 固定第一个为侧栏菜单的路由信息 */
+    return generateMenuItems(routes[0].children || []);
   }, [routes]);
 
   return (
