@@ -1,4 +1,4 @@
-import { type ThemeConfig } from 'antd';
+import type { ThemeConfig } from 'antd';
 
 /**
  * 自定义的Ant Design主题配置

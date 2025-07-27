@@ -1,26 +1,26 @@
-import { ModalActionType } from '@/constants';
 import {
   ModalForm,
+  ProFormDigit,
   ProFormSelect,
   ProFormText,
   ProFormTextArea,
-  ProFormDatePicker,
 } from '@ant-design/pro-components';
-import React, { useState } from 'react';
-import ApiServices from '@/services/ant-design-pro';
 import { App as AntdApp } from 'antd';
+import React, { useState } from 'react';
+import { ModalActionType } from '@/constants';
+import { FastApiServices } from '@/services';
 
-export type AppConfigModalProps = {
+export type ArticleConfigModalProps = {
   width?: number | string;
   title?: string;
   open: boolean;
-  initialValues?: OpenAPI.RuleListItem;
+  initialValues?: FastAPI.SysArticle;
   modalActionType: ModalActionType;
   onClose: () => void;
   onFinish?: () => void;
 };
 
-const AppConfigModal: React.FC<AppConfigModalProps> = ({
+const ArticleConfigModal: React.FC<ArticleConfigModalProps> = ({
   width = 600,
   title,
   open = false,
@@ -43,11 +43,14 @@ const AppConfigModal: React.FC<AppConfigModalProps> = ({
 
     try {
       if (isEdit) {
-        await ApiServices.rule.updateRule({
-          data: { key: initialValues?.key, ...values },
+        await FastApiServices.SysArticleController.updateSysArticle({
+          ...values,
+          id: initialValues?.id,
         });
       } else {
-        await ApiServices.rule.addRule({ data: values });
+        await FastApiServices.SysArticleController.createSysArticle({
+          ...values,
+        });
       }
     } catch {
       return false;
@@ -73,52 +76,54 @@ const AppConfigModal: React.FC<AppConfigModalProps> = ({
       onFinish={onFinishByForm}
     >
       <ProFormText
-        label="规则名称"
-        name="name"
-        placeholder="请输入规则名称"
+        label="文章标题"
+        name="title"
+        placeholder="请输入文章标题"
         rules={[{ required: true }]}
       />
-      <ProFormTextArea label="描述" name="desc" placeholder="请输入描述" />
+      <ProFormTextArea
+        label="文章内容"
+        name="content"
+        placeholder="请输入文章内容"
+      />
       <ProFormSelect
         label="状态"
         name="status"
         placeholder="请选择状态"
         options={[
-          { label: '关闭', value: '0' },
-          { label: '运行中', value: '1' },
-          { label: '已上线', value: '2' },
-          { label: '异常', value: '3' },
+          { label: '上架', value: 1 },
+          { label: '下架', value: 2 },
         ]}
+        rules={[{ required: true }]}
       />
-      <ProFormDatePicker
-        label="调度时间"
-        name="updatedAt"
-        placeholder="请选择调度时间"
-        width="sm"
+      <ProFormDigit
+        label="浏览量"
+        name="viewCount"
+        placeholder="请输入浏览量"
       />
     </ModalForm>
   );
 };
 
-export default AppConfigModal;
+export default ArticleConfigModal;
 
-export function useAppConfigModal(_params?: {
+export function useArticleConfigModal(_params?: {
   /** 弹窗关闭回调 */
   handleOnClose?: () => void;
   /** 弹窗完成回调 */
   handleOnFinish?: () => void;
 }) {
   /** 弹窗状态 */
-  const [modalParams, setModalParams] = useState<Omit<AppConfigModalProps, 'onClose' | 'onFinish'>>(
-    {
-      open: false,
-      modalActionType: ModalActionType.CREATE,
-    },
-  );
+  const [modalParams, setModalParams] = useState<
+    Omit<ArticleConfigModalProps, 'onClose' | 'onFinish'>
+  >({
+    open: false,
+    modalActionType: ModalActionType.CREATE,
+  });
 
   const element = (
     <>
-      <AppConfigModal
+      <ArticleConfigModal
         {...modalParams}
         onClose={() => {
           setModalParams({

@@ -1,5 +1,3 @@
-import { login } from '@/services/ant-design-pro/login';
-import { getFakeCaptcha } from '@/services/ant-design-pro/login';
 import {
   AlipayCircleOutlined,
   LockOutlined,
@@ -17,7 +15,7 @@ import {
 import { Alert, message, Tabs } from 'antd';
 import { createStyles } from 'antd-style';
 import React, { useState } from 'react';
-import { useGlobalStore } from '@/store/globalStore';
+import { FastApiServices } from '@/services';
 
 const useStyles = createStyles(({ token }) => {
   return {
@@ -58,9 +56,18 @@ const ActionIcons = () => {
   const { styles } = useStyles();
   return (
     <>
-      <AlipayCircleOutlined key="AlipayCircleOutlined" className={styles.action} />
-      <TaobaoCircleOutlined key="TaobaoCircleOutlined" className={styles.action} />
-      <WeiboCircleOutlined key="WeiboCircleOutlined" className={styles.action} />
+      <AlipayCircleOutlined
+        key="AlipayCircleOutlined"
+        className={styles.action}
+      />
+      <TaobaoCircleOutlined
+        key="TaobaoCircleOutlined"
+        className={styles.action}
+      />
+      <WeiboCircleOutlined
+        key="WeiboCircleOutlined"
+        className={styles.action}
+      />
     </>
   );
 };
@@ -79,35 +86,31 @@ const LoginMessage: React.FC<{
     />
   );
 };
+
 const Login: React.FC = () => {
-  const [userLoginState, setUserLoginState] = useState<API.LoginResult>({});
   const [type, setType] = useState<string>('account');
-  const { fetchUserInfo } = useGlobalStore();
   const { styles } = useStyles();
-  const handleSubmit = async (values: API.LoginParams) => {
+  const [hasError, setHasError] = useState(false);
+
+  const handleSubmit = async (values: any) => {
     try {
-      // 登录
-      const msg = await login({
+      await FastApiServices.FakeUserController.loginAccount({
         ...values,
         type,
       });
-      if (msg.status === 'ok') {
-        const defaultLoginSuccessMessage = '登录成功！';
-        message.success(defaultLoginSuccessMessage);
-        await fetchUserInfo();
-        const urlParams = new URL(window.location.href).searchParams;
-        window.location.href = urlParams.get('redirect') || '/';
-        return;
-      }
-      // 如果失败去设置用户错误信息
-      setUserLoginState(msg);
+      const defaultLoginSuccessMessage = '登录成功！';
+      message.success(defaultLoginSuccessMessage);
+      const urlParams = new URL(window.location.href).searchParams;
+      window.location.href = urlParams.get('redirect') || '/';
+      return;
     } catch (error) {
       const defaultLoginFailureMessage = '登录失败，请重试！';
       console.log(error);
       message.error(defaultLoginFailureMessage);
+      setHasError(true);
     }
   };
-  const { status, type: loginType } = userLoginState;
+
   return (
     <div className={styles.container}>
       <div
@@ -129,7 +132,7 @@ const Login: React.FC = () => {
           }}
           actions={['其他登录方式 :', <ActionIcons key="icons" />]}
           onFinish={async (values) => {
-            await handleSubmit(values as API.LoginParams);
+            await handleSubmit(values);
           }}
         >
           <Tabs
@@ -148,9 +151,6 @@ const Login: React.FC = () => {
             ]}
           />
 
-          {status === 'error' && loginType === 'account' && (
-            <LoginMessage content={'错误的用户名和密码(admin/ant.design)'} />
-          )}
           {type === 'account' && (
             <>
               <ProFormText
@@ -173,7 +173,7 @@ const Login: React.FC = () => {
                   size: 'large',
                   prefix: <LockOutlined />,
                 }}
-                placeholder={'密码: ant.design'}
+                placeholder={'密码: 123456'}
                 rules={[
                   {
                     required: true,
@@ -181,10 +181,12 @@ const Login: React.FC = () => {
                   },
                 ]}
               />
+              {hasError && (
+                <LoginMessage content={'错误的用户名和密码(admin/123456)'} />
+              )}
             </>
           )}
 
-          {status === 'error' && loginType === 'mobile' && <LoginMessage content="验证码错误" />}
           {type === 'mobile' && (
             <>
               <ProFormText
@@ -228,15 +230,17 @@ const Login: React.FC = () => {
                   },
                 ]}
                 onGetCaptcha={async (phone) => {
-                  const result = await getFakeCaptcha({
-                    phone,
-                  });
+                  const result =
+                    await FastApiServices.FakeUserController.loginCaptcha({
+                      phone,
+                    });
                   if (!result) {
                     return;
                   }
                   message.success('获取验证码成功！验证码为：1234');
                 }}
               />
+              {hasError && <LoginMessage content={'错误的验证码！'} />}
             </>
           )}
           <div

@@ -35,7 +35,7 @@ const IconFontCase = () => {
       type="inner"
       size="small"
       extra={
-        <a href="https://www.iconfont.cn/" target="_blank">
+        <a href="https://www.iconfont.cn/" target="_blank" rel="noopener">
           搜索图标
         </a>
       }

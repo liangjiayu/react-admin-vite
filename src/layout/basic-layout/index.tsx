@@ -1,24 +1,44 @@
 import { ProLayout } from '@ant-design/pro-components';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router';
-import defaultSettings from './defaultSettings';
-import Footer from '@/layout/widgets/footer';
-import { Question, AvatarInfo } from '@/layout/widgets/right-content';
 import AccessControl from '@/components/access-control';
+import Footer from '@/layout/widgets/footer';
+import { AvatarInfo, Question } from '@/layout/widgets/right-content';
+import routes from '@/router/routes';
+import sidebarSetting from '../../../config/sidebarSetting';
 import sideMenuConfig from '../../../config/sideMenuConfig';
 import './styles.less';
+import { useMemo } from 'react';
+import useTitleUpdater from '../widgets/hooks/useTitleUpdater';
+import { generateMenuItems } from './utils';
 
 const BasicLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  useTitleUpdater();
+
+  const routesMenuConfig = useMemo(() => {
+    /** 固定第一个为侧栏菜单的路由信息 */
+    return generateMenuItems(routes[0].children || []);
+  }, [routes]);
 
   return (
     <ProLayout
-      {...defaultSettings}
-      children={<AccessControl children={<Outlet />} />}
+      {...sidebarSetting}
       location={location}
-      menuItemRender={(item, dom) => <Link to={item.path || ''}>{dom}</Link>}
-      menuDataRender={() => {
-        return sideMenuConfig;
+      menuItemRender={(item, dom) => (
+        <Link to={item.path || ''} target={item.target}>
+          {dom}
+        </Link>
+      )}
+      menu={{
+        locale: false,
+        request: async () => {
+          /**
+           * 提供两种方式生成菜单数据，推荐使用 sideMenuConfig。
+           * 使用配置文件的方式，路由和菜单完全独立，可以保证菜单的灵活性。
+           */
+          return routesMenuConfig || sideMenuConfig;
+        },
       }}
       footerRender={() => <Footer />}
       actionsRender={() => [<Question key="doc" />]}
@@ -52,7 +72,11 @@ const BasicLayout = () => {
         e.preventDefault();
         navigate('/');
       }}
-    />
+    >
+      <AccessControl>
+        <Outlet />
+      </AccessControl>
+    </ProLayout>
   );
 };
 

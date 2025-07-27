@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 import { mockDevServerPlugin } from 'vite-plugin-mock-dev-server';
 import svgr from 'vite-plugin-svgr';
 
@@ -17,12 +17,15 @@ export default defineConfig(() => {
       tailwindcss(),
       svgr(),
       mockDevServerPlugin({
-        include: ['mock/**/*.mock.{js,ts,cjs,mjs,json,json5}', 'src/pages/**/_mock.{js,ts}'],
+        include: [
+          'mock/**/*.mock.{js,ts,cjs,mjs,json,json5}',
+          'src/pages/**/_mock.{js,ts}',
+        ],
       }),
     ],
     server: {
       proxy: {
-        '^/api': 'https://proapi.azurewebsites.net',
+        '^/api': 'http://8.134.97.57:7100',
       },
     },
   };

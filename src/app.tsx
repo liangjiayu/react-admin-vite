@@ -1,11 +1,11 @@
-import router from './router/index';
-import { RouterProvider } from 'react-router';
-import { useGlobalStore } from './store/globalStore';
-import { useEffect } from 'react';
-import { useAccessStore } from './store/accessStore';
-import { Spin, ConfigProvider, App as AntdApp } from 'antd';
-import customAntdTheme from '../config/antdTheme';
+import { App as AntdApp, ConfigProvider, Spin } from 'antd';
 import zhCN from 'antd/locale/zh_CN';
+import { useEffect } from 'react';
+import { RouterProvider } from 'react-router';
+import customAntdTheme from '../config/antdTheme';
+import router from './router/index';
+import { useAccessStore } from './store/accessStore';
+import { useGlobalStore } from './store/globalStore';
 
 const App = () => {
   const { globalLoading, fetchInitData, setGlobalLoading } = useGlobalStore();
@@ -23,7 +23,12 @@ const App = () => {
 
   if (globalLoading) {
     return (
-      <Spin size="large" tip={<div className="text-gray-500 text-[15px] mt-2">资源加载中...</div>}>
+      <Spin
+        size="large"
+        tip={
+          <div className="mt-2 text-[15px] text-gray-500">资源加载中...</div>
+        }
+      >
         <div className="h-[100vh]"></div>
       </Spin>
     );

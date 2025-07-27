@@ -1,7 +1,7 @@
+import { Tabs } from 'antd';
 import TodoList from './todo-list';
 import TodoListReduce from './todo-list-reduce';
 import TodoListZustand from './todo-list-zustand';
-import { Tabs } from 'antd';
 
 const StoreFeature = () => {
   return (

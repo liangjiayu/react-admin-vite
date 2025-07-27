@@ -1,12 +1,15 @@
 import { Button, Radio } from 'antd';
+import { useMemo } from 'react';
 import { useTodoContext } from '../context';
 import { REMOVE_COMPLETED_ITEMS, SET_MODE } from '../types';
-import { useMemo } from 'react';
 
 const Footer = () => {
   const { state, dispatch } = useTodoContext();
 
-  const activeTodos = useMemo(() => state.todos.filter((todo) => !todo.completed), [state]);
+  const activeTodos = useMemo(
+    () => state.todos.filter((todo) => !todo.completed),
+    [state],
+  );
 
   return (
     <div className="mt-4 flex items-center justify-between">

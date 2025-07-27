@@ -1,6 +1,6 @@
 import { Card, Steps } from 'antd';
-import moduleStyles from './index.module.less';
 import { createStyles } from 'antd-style';
+import moduleStyles from './index.module.less';
 
 const useStyles = createStyles({
   'custom-steps': {
@@ -11,7 +11,7 @@ const useStyles = createStyles({
 });
 
 const ModifyAntdStyle = () => {
-  const { styles:cijStyles } = useStyles();
+  const { styles: cijStyles } = useStyles();
   return (
     <Card title="修改 Antd 内部样式">
       <Card title="css-in-js 方式" type="inner" style={{ marginBottom: 30 }}>
