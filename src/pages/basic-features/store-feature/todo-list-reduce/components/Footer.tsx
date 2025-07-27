@@ -1,7 +1,7 @@
 import { Button, Radio } from 'antd';
+import { useMemo } from 'react';
 import { useTodoContext } from '../context';
 import { REMOVE_COMPLETED_ITEMS, SET_MODE } from '../types';
-import { useMemo } from 'react';
 
 const Footer = () => {
   const { state, dispatch } = useTodoContext();

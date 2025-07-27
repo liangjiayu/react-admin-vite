@@ -1,6 +1,6 @@
 import { Button, Radio } from 'antd';
-import { useTodoContext } from '../context';
 import { useMemo } from 'react';
+import { useTodoContext } from '../context';
 
 const Footer = () => {
   const { mode, todos, setMode, removeCompletedItems } = useTodoContext();

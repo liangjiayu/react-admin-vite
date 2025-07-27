@@ -1,18 +1,18 @@
-import { Card } from 'antd';
 import {
+  CopyFilled,
+  CopyOutlined,
+  DeleteOutlined,
+  DiffFilled,
+  EditFilled,
   EditOutlined,
   FormOutlined,
-  CopyOutlined,
-  ScissorOutlined,
-  DeleteOutlined,
-  SnippetsOutlined,
-  EditFilled,
-  CopyFilled,
-  SnippetsFilled,
-  DiffFilled,
   HighlightFilled,
   PieChartFilled,
+  ScissorOutlined,
+  SnippetsFilled,
+  SnippetsOutlined,
 } from '@ant-design/icons';
+import { Card } from 'antd';
 
 const cases = [
   {

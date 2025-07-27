@@ -1,6 +1,6 @@
 import { Card, Steps } from 'antd';
-import moduleStyles from './index.module.less';
 import { createStyles } from 'antd-style';
+import moduleStyles from './index.module.less';
 
 const useStyles = createStyles({
   'custom-steps': {

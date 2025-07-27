@@ -1,8 +1,8 @@
-import { useAccessStore } from '@/store/accessStore';
 import { Result } from 'antd';
 import type React from 'react';
 import { useMemo } from 'react';
 import { useMatches } from 'react-router';
+import { useAccessStore } from '@/store/accessStore';
 
 type AccessControlProps = {
   children?: React.ReactNode;

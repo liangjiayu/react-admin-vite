@@ -1,15 +1,15 @@
 import { ProLayout } from '@ant-design/pro-components';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router';
-import Footer from '@/layout/widgets/footer';
-import { Question, AvatarInfo } from '@/layout/widgets/right-content';
 import AccessControl from '@/components/access-control';
-import sideMenuConfig from '../../../config/sideMenuConfig';
-import sidebarSetting from '../../../config/sidebarSetting';
+import Footer from '@/layout/widgets/footer';
+import { AvatarInfo, Question } from '@/layout/widgets/right-content';
 import routes from '@/router/routes';
+import sidebarSetting from '../../../config/sidebarSetting';
+import sideMenuConfig from '../../../config/sideMenuConfig';
 import './styles.less';
-import { generateMenuItems } from './utils';
 import { useMemo } from 'react';
 import useTitleUpdater from '../widgets/hooks/useTitleUpdater';
+import { generateMenuItems } from './utils';
 
 const BasicLayout = () => {
   const location = useLocation();

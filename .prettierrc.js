@@ -1,16 +1,16 @@
 export default {
   singleQuote: true,
-  trailingComma: "all",
+  trailingComma: 'all',
   printWidth: 100,
-  proseWrap: "never",
-  endOfLine: "lf",
+  proseWrap: 'never',
+  endOfLine: 'lf',
   overrides: [
     {
-      files: ".prettierrc",
+      files: '.prettierrc',
       options: {
-        parser: "json",
+        parser: 'json',
       },
     },
   ],
-  plugins: ["prettier-plugin-tailwindcss"],
+  plugins: ['prettier-plugin-tailwindcss'],
 };

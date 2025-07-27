@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react';
-import { createTodoStore } from './store';
 import { useStore } from 'zustand';
+import { createTodoStore } from './store';
 
 const TodoContext = createContext<ReturnType<typeof createTodoStore> | null>(
   null,

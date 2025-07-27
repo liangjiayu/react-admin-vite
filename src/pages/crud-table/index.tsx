@@ -1,15 +1,14 @@
+import { PlusOutlined } from '@ant-design/icons';
 import {
   type ActionType,
   type ProColumns,
   ProTable,
 } from '@ant-design/pro-components';
+import { App as AntdApp, Button, Space } from 'antd';
 import { useRef } from 'react';
-import { Button, Space } from 'antd';
-import { useArticleConfigModal } from './components/ArticleConfigModal';
-import { PlusOutlined } from '@ant-design/icons';
 import { ModalActionType } from '@/constants';
-import { App as AntdApp } from 'antd';
 import { FastApiServices } from '@/services';
+import { useArticleConfigModal } from './components/ArticleConfigModal';
 
 const CrudTable = () => {
   const actionRef = useRef<ActionType>(undefined);

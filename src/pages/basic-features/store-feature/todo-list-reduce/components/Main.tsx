@@ -1,9 +1,9 @@
 import { DeleteOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Input, Empty } from 'antd';
+import { Button, Checkbox, Empty, Input } from 'antd';
 import { createStyles } from 'antd-style';
+import { useMemo } from 'react';
 import { useTodoContext } from '../context';
 import { REMOVE_ITEM, TOGGLE_ITEM, UPDATE_ITEM } from '../types';
-import { useMemo } from 'react';
 
 const useStyle = createStyles({
   'custom-checkbox': {

@@ -1,8 +1,8 @@
+import { LogoutOutlined } from '@ant-design/icons';
+import { Avatar, Dropdown } from 'antd';
+import { useNavigate } from 'react-router';
 import { FastApiServices } from '@/services';
 import { useGlobalStore } from '@/store/globalStore';
-import { LogoutOutlined } from '@ant-design/icons';
-import { Dropdown, Avatar } from 'antd';
-import { useNavigate } from 'react-router';
 
 const AvatarInfo = () => {
   const { currentUser } = useGlobalStore();

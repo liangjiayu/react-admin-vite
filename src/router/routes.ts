@@ -1,6 +1,6 @@
 import BasicLayout from '@/layout/basic-layout';
-import aloneModules from './modules/alone-module';
 import BlankLayout from '@/layout/blank-layout';
+import aloneModules from './modules/alone-module';
 import codeModules from './modules/core-modules';
 
 const routes = [

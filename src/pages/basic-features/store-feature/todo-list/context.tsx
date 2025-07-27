@@ -1,6 +1,6 @@
-import { createContext, useContext, useState } from 'react';
 import { noop } from 'lodash-es';
-import type { TodoItem, FilterMode } from '../types';
+import { createContext, useContext, useState } from 'react';
+import type { FilterMode, TodoItem } from '../types';
 
 export type TodosProviderProps = {
   children: React.ReactNode;

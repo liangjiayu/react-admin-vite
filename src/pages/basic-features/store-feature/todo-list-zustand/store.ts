@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { TodoItem, FilterMode } from '../types';
+import type { FilterMode, TodoItem } from '../types';
 
 type TodoStore = {
   todos: TodoItem[];

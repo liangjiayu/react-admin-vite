@@ -1,17 +1,17 @@
 import { createContext, useContext, useReducer } from 'react';
 import {
+  ADD_ITEM,
+  REMOVE_ALL_ITEMS,
+  REMOVE_COMPLETED_ITEMS,
+  REMOVE_ITEM,
+  SET_MODE,
+  TOGGLE_ALL,
+  TOGGLE_ITEM,
   type TodoAction,
   type TodoContextValue,
   type TodoState,
-  ADD_ITEM,
-  UPDATE_ITEM,
-  REMOVE_ITEM,
-  TOGGLE_ITEM,
-  REMOVE_ALL_ITEMS,
-  TOGGLE_ALL,
-  REMOVE_COMPLETED_ITEMS,
-  SET_MODE,
   type TodosProviderProps,
+  UPDATE_ITEM,
 } from './types';
 
 function todoReducer(state: TodoState, action: TodoAction) {

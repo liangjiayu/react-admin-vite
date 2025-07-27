@@ -1,7 +1,7 @@
 import { ClearOutlined } from '@ant-design/icons';
 import { Input, Tooltip } from 'antd';
-import { useTodoContext } from '../context';
 import { useState } from 'react';
+import { useTodoContext } from '../context';
 
 const Header = () => {
   const { addItem, removeAllItems } = useTodoContext();

@@ -1,4 +1,4 @@
-import type { TodoItem, FilterMode } from '../types';
+import type { FilterMode, TodoItem } from '../types';
 
 export const ADD_ITEM = 'ADD_ITEM';
 export const UPDATE_ITEM = 'UPDATE_ITEM';

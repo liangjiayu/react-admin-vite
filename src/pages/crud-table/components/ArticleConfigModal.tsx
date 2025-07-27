@@ -1,13 +1,13 @@
-import { ModalActionType } from '@/constants';
 import {
   ModalForm,
+  ProFormDigit,
   ProFormSelect,
   ProFormText,
   ProFormTextArea,
-  ProFormDigit,
 } from '@ant-design/pro-components';
-import React, { useState } from 'react';
 import { App as AntdApp } from 'antd';
+import React, { useState } from 'react';
+import { ModalActionType } from '@/constants';
 import { FastApiServices } from '@/services';
 
 export type ArticleConfigModalProps = {

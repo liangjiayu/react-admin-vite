@@ -1,7 +1,7 @@
-import { lazy } from 'react';
-import basicFeatures from './basic-features';
-import type { AppRouteProps } from '../types';
 import { House, Table2, TriangleAlert } from 'lucide-react';
+import { lazy } from 'react';
+import type { AppRouteProps } from '../types';
+import basicFeatures from './basic-features';
 
 /**
  * 通常放置侧栏布局下的页面
