@@ -1,5 +1,5 @@
-import { AppRouteProps } from '@/router/types';
-import { MenuDataItem } from '@ant-design/pro-components';
+import type { AppRouteProps } from '@/router/types';
+import type { MenuDataItem } from '@ant-design/pro-components';
 
 /**
  * 根据路由生成动态菜单

@@ -24,7 +24,6 @@ const BasicLayout = () => {
   return (
     <ProLayout
       {...sidebarSetting}
-      children={<AccessControl children={<Outlet />} />}
       location={location}
       menuItemRender={(item, dom) => (
         <Link to={item.path || ''} target={item.target}>
@@ -73,7 +72,11 @@ const BasicLayout = () => {
         e.preventDefault();
         navigate('/');
       }}
-    />
+    >
+      <AccessControl>
+        <Outlet />
+      </AccessControl>
+    </ProLayout>
   );
 };
 

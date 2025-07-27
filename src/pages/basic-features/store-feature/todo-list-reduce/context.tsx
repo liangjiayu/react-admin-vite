@@ -1,8 +1,8 @@
 import { createContext, useContext, useReducer } from 'react';
 import {
-  TodoAction,
-  TodoContextValue,
-  TodoState,
+  type TodoAction,
+  type TodoContextValue,
+  type TodoState,
   ADD_ITEM,
   UPDATE_ITEM,
   REMOVE_ITEM,
@@ -11,7 +11,7 @@ import {
   TOGGLE_ALL,
   REMOVE_COMPLETED_ITEMS,
   SET_MODE,
-  TodosProviderProps,
+  type TodosProviderProps,
 } from './types';
 
 function todoReducer(state: TodoState, action: TodoAction) {

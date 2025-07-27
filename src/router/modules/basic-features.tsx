@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { AppRouteProps } from '../types';
+import type { AppRouteProps } from '../types';
 import { PencilRuler } from 'lucide-react';
 
 export default [

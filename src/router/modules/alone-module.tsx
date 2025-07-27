@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { AppRouteProps } from '../types';
+import type { AppRouteProps } from '../types';
 
 /**
  * 通常放置一些不需要侧栏布局的页面

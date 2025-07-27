@@ -72,7 +72,7 @@ const LucideCase = () => {
       type="inner"
       size="small"
       extra={
-        <a href="https://lucide.dev/icons/" target="_blank">
+        <a href="https://lucide.dev/icons/" target="_blank" rel="noopener">
           搜索图标
         </a>
       }

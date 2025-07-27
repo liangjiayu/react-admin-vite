@@ -13,7 +13,7 @@ const TodoList = () => {
         extra={
           <a
             href="https://github.com/liangjiayu/react-admin-vite/blob/dev/src/pages/basic-features/store-feature/todo-list-zustand/store.ts"
-            target="_blank"
+            target="_blank" rel="noopener"
           >
             查看源码
           </a>

@@ -1,4 +1,4 @@
-import { ActionType, ProColumns, ProTable } from '@ant-design/pro-components';
+import { type ActionType, type ProColumns, ProTable } from '@ant-design/pro-components';
 import { useRef } from 'react';
 import { Button, Space } from 'antd';
 import { useArticleConfigModal } from './components/ArticleConfigModal';

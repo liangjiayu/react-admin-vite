@@ -59,7 +59,7 @@ const IconifyOnline = () => {
       type="inner"
       size="small"
       extra={
-        <a href="https://icon-sets.iconify.design/" target="_blank">
+        <a href="https://icon-sets.iconify.design/" target="_blank" rel="noopener">
           搜索图标
         </a>
       }

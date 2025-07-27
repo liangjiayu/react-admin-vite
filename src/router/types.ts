@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { NonIndexRouteObject } from 'react-router';
+import type { ReactNode } from 'react';
+import type { NonIndexRouteObject } from 'react-router';
 
 export type RouteMeta = {
   /**

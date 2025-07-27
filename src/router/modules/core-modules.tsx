@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import basicFeatures from './basic-features';
-import { AppRouteProps } from '../types';
+import type { AppRouteProps } from '../types';
 import { House, Table2, TriangleAlert } from 'lucide-react';
 
 /**
