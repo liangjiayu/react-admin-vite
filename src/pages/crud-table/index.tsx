@@ -1,4 +1,8 @@
-import { type ActionType, type ProColumns, ProTable } from '@ant-design/pro-components';
+import {
+  type ActionType,
+  type ProColumns,
+  ProTable,
+} from '@ant-design/pro-components';
 import { useRef } from 'react';
 import { Button, Space } from 'antd';
 import { useArticleConfigModal } from './components/ArticleConfigModal';
@@ -110,12 +114,13 @@ const CrudTable = () => {
         rowKey="id"
         cardBordered
         request={async (params) => {
-          const res = await FastApiServices.SysArticleController.getSysArticleByPage({
-            current: params.current,
-            pageSize: params.pageSize,
-            title: params?.title,
-            status: params?.status,
-          });
+          const res =
+            await FastApiServices.SysArticleController.getSysArticleByPage({
+              current: params.current,
+              pageSize: params.pageSize,
+              title: params?.title,
+              status: params?.status,
+            });
 
           return {
             data: res?.records || [],

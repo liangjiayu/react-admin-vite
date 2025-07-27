@@ -6,7 +6,10 @@ import { useMemo } from 'react';
 const Footer = () => {
   const { state, dispatch } = useTodoContext();
 
-  const activeTodos = useMemo(() => state.todos.filter((todo) => !todo.completed), [state]);
+  const activeTodos = useMemo(
+    () => state.todos.filter((todo) => !todo.completed),
+    [state],
+  );
 
   return (
     <div className="mt-4 flex items-center justify-between">

@@ -19,7 +19,10 @@ function todoReducer(state: TodoState, action: TodoAction) {
     case ADD_ITEM: {
       return {
         ...state,
-        todos: [{ id: Date.now(), title: action.payload.title, completed: false }, ...state.todos],
+        todos: [
+          { id: Date.now(), title: action.payload.title, completed: false },
+          ...state.todos,
+        ],
       };
     }
 
@@ -90,7 +93,9 @@ function todoReducer(state: TodoState, action: TodoAction) {
   }
 }
 
-export const TodoContext = createContext<TodoContextValue | undefined>(undefined);
+export const TodoContext = createContext<TodoContextValue | undefined>(
+  undefined,
+);
 
 export function TodosProvider({ children }: TodosProviderProps) {
   const [state, dispatch] = useReducer(todoReducer, {
@@ -98,7 +103,11 @@ export function TodosProvider({ children }: TodosProviderProps) {
     todos: [],
   });
 
-  return <TodoContext.Provider value={{ state, dispatch }}>{children}</TodoContext.Provider>;
+  return (
+    <TodoContext.Provider value={{ state, dispatch }}>
+      {children}
+    </TodoContext.Provider>
+  );
 }
 
 export function useTodoContext() {

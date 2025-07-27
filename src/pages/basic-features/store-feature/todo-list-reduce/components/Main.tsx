@@ -60,7 +60,9 @@ const Main = () => {
                   payload: { id: item.id, title: e.currentTarget.value },
                 });
               }}
-              style={{ textDecoration: item?.completed ? 'line-through' : 'none' }}
+              style={{
+                textDecoration: item?.completed ? 'line-through' : 'none',
+              }}
               placeholder="待办事项为空"
             />
             <Button
@@ -75,7 +77,11 @@ const Main = () => {
       })}
 
       {visibleTodos?.length === 0 && (
-        <Empty description="暂无数据" image={Empty.PRESENTED_IMAGE_SIMPLE} className="py-[40px]" />
+        <Empty
+          description="暂无数据"
+          image={Empty.PRESENTED_IMAGE_SIMPLE}
+          className="py-[40px]"
+        />
       )}
     </div>
   );

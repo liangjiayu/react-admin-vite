@@ -28,7 +28,10 @@ const Header = () => {
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
             setInputValue('');
-            dispatch({ type: ADD_ITEM, payload: { title: e.currentTarget.value } });
+            dispatch({
+              type: ADD_ITEM,
+              payload: { title: e.currentTarget.value },
+            });
           }
         }}
       />

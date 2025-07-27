@@ -1,4 +1,8 @@
-import { DashboardOutlined, FormOutlined, WarningOutlined } from '@ant-design/icons';
+import {
+  DashboardOutlined,
+  FormOutlined,
+  WarningOutlined,
+} from '@ant-design/icons';
 import { MenuDataItem } from '@ant-design/pro-components';
 
 const Side_Menu_Config: MenuDataItem[] = [

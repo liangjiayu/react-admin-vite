@@ -37,7 +37,12 @@ const cases = [
 
 const LocalSvgCase = () => {
   return (
-    <Card title="本地svg方案" type="inner" size="small" style={{ marginBottom: 20 }}>
+    <Card
+      title="本地svg方案"
+      type="inner"
+      size="small"
+      style={{ marginBottom: 20 }}
+    >
       <div className="grid grid-cols-6 gap-1">
         {cases.map((item) => (
           <div

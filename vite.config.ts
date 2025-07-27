@@ -17,7 +17,10 @@ export default defineConfig(() => {
       tailwindcss(),
       svgr(),
       mockDevServerPlugin({
-        include: ['mock/**/*.mock.{js,ts,cjs,mjs,json,json5}', 'src/pages/**/_mock.{js,ts}'],
+        include: [
+          'mock/**/*.mock.{js,ts,cjs,mjs,json,json5}',
+          'src/pages/**/_mock.{js,ts}',
+        ],
       }),
     ],
     server: {

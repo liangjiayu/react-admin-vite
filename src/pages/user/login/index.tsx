@@ -56,9 +56,18 @@ const ActionIcons = () => {
   const { styles } = useStyles();
   return (
     <>
-      <AlipayCircleOutlined key="AlipayCircleOutlined" className={styles.action} />
-      <TaobaoCircleOutlined key="TaobaoCircleOutlined" className={styles.action} />
-      <WeiboCircleOutlined key="WeiboCircleOutlined" className={styles.action} />
+      <AlipayCircleOutlined
+        key="AlipayCircleOutlined"
+        className={styles.action}
+      />
+      <TaobaoCircleOutlined
+        key="TaobaoCircleOutlined"
+        className={styles.action}
+      />
+      <WeiboCircleOutlined
+        key="WeiboCircleOutlined"
+        className={styles.action}
+      />
     </>
   );
 };
@@ -172,7 +181,9 @@ const Login: React.FC = () => {
                   },
                 ]}
               />
-              {hasError && <LoginMessage content={'错误的用户名和密码(admin/123456)'} />}
+              {hasError && (
+                <LoginMessage content={'错误的用户名和密码(admin/123456)'} />
+              )}
             </>
           )}
 
@@ -219,9 +230,10 @@ const Login: React.FC = () => {
                   },
                 ]}
                 onGetCaptcha={async (phone) => {
-                  const result = await FastApiServices.FakeUserController.loginCaptcha({
-                    phone,
-                  });
+                  const result =
+                    await FastApiServices.FakeUserController.loginCaptcha({
+                      phone,
+                    });
                   if (!result) {
                     return;
                   }

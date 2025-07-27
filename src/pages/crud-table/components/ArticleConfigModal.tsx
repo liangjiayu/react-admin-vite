@@ -48,7 +48,9 @@ const ArticleConfigModal: React.FC<ArticleConfigModalProps> = ({
           id: initialValues?.id,
         });
       } else {
-        await FastApiServices.SysArticleController.createSysArticle({ ...values });
+        await FastApiServices.SysArticleController.createSysArticle({
+          ...values,
+        });
       }
     } catch {
       return false;
@@ -79,7 +81,11 @@ const ArticleConfigModal: React.FC<ArticleConfigModalProps> = ({
         placeholder="请输入文章标题"
         rules={[{ required: true }]}
       />
-      <ProFormTextArea label="文章内容" name="content" placeholder="请输入文章内容" />
+      <ProFormTextArea
+        label="文章内容"
+        name="content"
+        placeholder="请输入文章内容"
+      />
       <ProFormSelect
         label="状态"
         name="status"
@@ -90,7 +96,11 @@ const ArticleConfigModal: React.FC<ArticleConfigModalProps> = ({
         ]}
         rules={[{ required: true }]}
       />
-      <ProFormDigit label="浏览量" name="viewCount" placeholder="请输入浏览量" />
+      <ProFormDigit
+        label="浏览量"
+        name="viewCount"
+        placeholder="请输入浏览量"
+      />
     </ModalForm>
   );
 };
