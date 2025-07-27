@@ -1,6 +1,6 @@
 import { generateService } from '@umijs/openapi';
-import { join, resolve } from 'path';
-import { fileURLToPath } from 'url';
+import { join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __rootDir = resolve(__filename, '../..');
@@ -24,7 +24,7 @@ const __rootDir = resolve(__filename, '../..');
 /** FastApi 协议 */
 generateService({
   // schemaPath: join(__rootDir, 'config/swagger.json'),
-  schemaPath: 'http://127.0.0.1:7100/api-docs',
+  schemaPath: 'http://8.134.97.57:7100/api-docs',
   requestLibPath: "import request from '@/utils/request'",
   projectName: 'fast-api',
   namespace: 'FastAPI',
