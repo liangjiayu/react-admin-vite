@@ -1,13 +1,13 @@
 import { lazy } from 'react';
 import { AppRouteProps } from '../types';
-import { FormOutlined } from '@ant-design/icons';
+import { PencilRuler } from 'lucide-react';
 
 export default [
   {
     path: '/basic-features',
     handle: {
       name: '基础功能',
-      icon: <FormOutlined />,
+      icon: <PencilRuler />,
     },
     children: [
       {

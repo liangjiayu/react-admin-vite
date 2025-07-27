@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import basicFeatures from './basic-features';
 import { AppRouteProps } from '../types';
-import { DashboardOutlined, WarningOutlined } from '@ant-design/icons';
+import { House, Table2, TriangleAlert } from 'lucide-react';
 
 /**
  * 通常放置侧栏布局下的页面
@@ -12,6 +12,7 @@ export default [
     Component: lazy(() => import('@/pages/home')),
     handle: {
       name: '首页',
+      icon: <House />,
     },
   },
   {
@@ -19,7 +20,7 @@ export default [
     Component: lazy(() => import('@/pages/crud-table')),
     handle: {
       name: 'CRUD表格',
-      icon: <DashboardOutlined />,
+      icon: <Table2 />,
     },
   },
   ...basicFeatures,
@@ -27,23 +28,26 @@ export default [
     path: '/exception',
     handle: {
       name: '异常页',
-      icon: <WarningOutlined />,
+      icon: <TriangleAlert />,
     },
     children: [
       {
         path: '/exception/403',
+        Component: lazy(() => import('@/pages/exception/403')),
         handle: {
           name: '403',
         },
       },
       {
         path: '/exception/404',
+        Component: lazy(() => import('@/pages/exception/404')),
         handle: {
           name: '404',
         },
       },
       {
         path: '/exception/500',
+        Component: lazy(() => import('@/pages/exception/500')),
         handle: {
           name: '500',
         },

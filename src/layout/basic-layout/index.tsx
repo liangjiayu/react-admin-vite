@@ -31,14 +31,16 @@ const BasicLayout = () => {
           {dom}
         </Link>
       )}
-      postMenuData={() => {
-        /**
-         * 提供两周方式生成菜单数据，推荐使用 sideMenuConfig。
-         * 使用配置文件的方式，路由和菜单完全独立，可以保证菜单的灵活性。
-         */
-        return routesMenuConfig || sideMenuConfig;
+      menu={{
+        locale: false,
+        request: async () => {
+          /**
+           * 提供两种方式生成菜单数据，推荐使用 sideMenuConfig。
+           * 使用配置文件的方式，路由和菜单完全独立，可以保证菜单的灵活性。
+           */
+          return routesMenuConfig || sideMenuConfig;
+        },
       }}
-      menu={{ locale: false }}
       footerRender={() => <Footer />}
       actionsRender={() => [<Question key="doc" />]}
       avatarProps={{
