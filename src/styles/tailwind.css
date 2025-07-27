@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+@layer base {
+  svg {
+    display: inline-block;
+  }
+  .lucide {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+/**
+ * 定义tw主题变量
+ * @See https://tailwindcss.com/docs/theme
+ */
+@theme {
+  --color-primary: #2166f7;
+}
