@@ -2,7 +2,7 @@ import { Result } from 'antd';
 import type React from 'react';
 import { useMemo } from 'react';
 import { useMatches } from 'react-router';
-import { useAccessStore } from '@/store/accessStore';
+import useAccess from '@/hooks/use-access';
 
 type AccessControlProps = {
   children?: React.ReactNode;
@@ -13,12 +13,12 @@ type AccessControlProps = {
  */
 const AccessControl: React.FC<AccessControlProps> = ({ children }) => {
   const matches = useMatches();
-  const accessStore = useAccessStore();
+  const accessStore = useAccess();
   const currentRoute = matches[matches.length - 1];
 
   const hasAccess = useMemo(() => {
     // 获取路由要求的权限（如 'isAdmin'）
-    const requiredPermission = (currentRoute.handle as any)?.access as
+    const requiredPermission = currentRoute.handle?.access as
       | keyof typeof accessStore
       | undefined;
 

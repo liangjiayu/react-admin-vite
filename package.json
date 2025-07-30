@@ -15,6 +15,11 @@
     "prepare": "husky",
     "openapi": "node config/openapi.js"
   },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json,css}": [
+      "biome check --write --no-errors-on-unmatched"
+    ]
+  },
   "dependencies": {
     "@ant-design/icons": "^6.0.0",
     "@ant-design/pro-components": "^2.8.9",
@@ -52,10 +57,5 @@
     "vite": "^6.3.5",
     "vite-plugin-mock-dev-server": "^1.8.7",
     "vite-plugin-svgr": "^4.3.0"
-  },
-  "lint-staged": {
-    "*.{ts,tsx,js,jsx,json,css}": [
-      "biome check --write --no-errors-on-unmatched"
-    ]
   }
 }

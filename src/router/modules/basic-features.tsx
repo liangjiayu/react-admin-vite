@@ -32,6 +32,13 @@ export default [
         },
       },
       {
+        path: '/basic-features/access-feature',
+        Component: lazy(() => import('@/pages/basic-features/access-feature')),
+        handle: {
+          name: '权限功能',
+        },
+      },
+      {
         path: 'https://www.baidu.com',
         handle: {
           name: '外部链接',

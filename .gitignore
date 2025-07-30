@@ -23,6 +23,6 @@ dist-ssr
 *.sw?
 
 /coverage
-# package-lock.json
-# pnpm-lock.yaml
+package-lock.json
+pnpm-lock.yaml
 .history
