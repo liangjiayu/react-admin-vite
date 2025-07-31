@@ -8,7 +8,7 @@ import sidebarSetting from '../../../config/sidebarSetting';
 import sideMenuConfig from '../../../config/sideMenuConfig';
 import './styles.less';
 import { useMemo } from 'react';
-import useTitleUpdater from '../widgets/hooks/useTitleUpdater';
+import useTitleUpdater from '../widgets/hooks/use-title-updater';
 import { generateMenuItems } from './utils';
 
 const BasicLayout = () => {

@@ -4,8 +4,8 @@ import { useEffect } from 'react';
 import { RouterProvider } from 'react-router';
 import customAntdTheme from '../config/antdTheme';
 import router from './router/index';
-import { useAccessStore } from './store/accessStore';
-import { useGlobalStore } from './store/globalStore';
+import { useAccessStore } from './store/access-store';
+import { useGlobalStore } from './store/global-store';
 
 const App = () => {
   const { globalLoading, fetchInitData, setGlobalLoading } = useGlobalStore();

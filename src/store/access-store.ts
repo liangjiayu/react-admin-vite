@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { useGlobalStore } from './globalStore';
+import { useGlobalStore } from './global-store';
 
 type AccessState = {
   isAdmin: boolean;

@@ -1,4 +1,4 @@
-import { useAccessStore } from '@/store/accessStore';
+import { useAccessStore } from '@/store/access-store';
 
 const useAccess = () => {
   const accessStore = useAccessStore();
