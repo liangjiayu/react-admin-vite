@@ -2,7 +2,7 @@ import { App as AntdApp, ConfigProvider, Spin } from 'antd';
 import zhCN from 'antd/locale/zh_CN';
 import { useEffect } from 'react';
 import { RouterProvider } from 'react-router';
-import customAntdTheme from '../config/antdTheme';
+import customAntdTheme from '../config/antd-theme';
 import router from './router/index';
 import { useAccessStore } from './store/access-store';
 import { useGlobalStore } from './store/global-store';
