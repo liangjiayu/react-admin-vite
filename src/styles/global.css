@@ -1,3 +1,7 @@
 #root .ant-pro-layout-container {
   min-height: 100vh;
 }
+
+.ui-table-fixed table {
+  table-layout: fixed !important;
+}
