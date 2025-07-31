@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "packageManager": "pnpm@10.12.4",
+  "author": "Jasper Le",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -14,6 +15,11 @@
     "preview": "vite preview",
     "prepare": "husky",
     "openapi": "node config/openapi.js"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json,css}": [
+      "biome check --write --no-errors-on-unmatched"
+    ]
   },
   "dependencies": {
     "@ant-design/icons": "^6.0.0",
@@ -47,14 +53,10 @@
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "react-router": "^7.6.2",
+    "tailwind-merge": "^3.3.1",
     "typescript": "~5.8.3",
     "vite": "^6.3.5",
     "vite-plugin-mock-dev-server": "^1.8.7",
     "vite-plugin-svgr": "^4.3.0"
-  },
-  "lint-staged": {
-    "*.{ts,tsx,js,jsx,json,css}": [
-      "biome check --write --no-errors-on-unmatched"
-    ]
   }
 }

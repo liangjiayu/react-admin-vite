@@ -1,6 +1,6 @@
-import CssCase from './components/CssCase';
-import ModifyAntdStyle from './components/ModifyAntdStyle';
-import TwCase from './components/TwCase';
+import CssCase from './components/css-case';
+import ModifyAntdStyle from './components/modify-antd-style';
+import TwCase from './components/tw-case';
 
 const StyleFeature = () => {
   return (

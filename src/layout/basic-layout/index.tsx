@@ -4,11 +4,11 @@ import AccessControl from '@/components/access-control';
 import Footer from '@/layout/widgets/footer';
 import { AvatarInfo, Question } from '@/layout/widgets/right-content';
 import routes from '@/router/routes';
-import sidebarSetting from '../../../config/sidebarSetting';
-import sideMenuConfig from '../../../config/sideMenuConfig';
+import sideMenuConfig from '../../../config/side-menu-config';
+import sidebarSetting from '../../../config/sidebar-setting';
 import './styles.less';
 import { useMemo } from 'react';
-import useTitleUpdater from '../widgets/hooks/useTitleUpdater';
+import useTitleUpdater from '../widgets/hooks/use-title-updater';
 import { generateMenuItems } from './utils';
 
 const BasicLayout = () => {

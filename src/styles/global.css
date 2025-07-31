@@ -1,9 +1,7 @@
-/* #root,
-body,
-html {
-  height: 100%;
+#root .ant-pro-layout-container {
+  min-height: 100vh;
 }
 
-.ant-pro-layout {
-  height: 100%;
-} */
+.ui-table-fixed table {
+  table-layout: fixed !important;
+}

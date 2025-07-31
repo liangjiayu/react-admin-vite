@@ -8,7 +8,7 @@ import { App as AntdApp, Button, Space } from 'antd';
 import { useRef } from 'react';
 import { ModalActionType } from '@/constants';
 import { FastApiServices } from '@/services';
-import { useArticleConfigModal } from './components/ArticleConfigModal';
+import { useArticleConfigModal } from './components/article-config-modal';
 
 const CrudTable = () => {
   const actionRef = useRef<ActionType>(undefined);

@@ -7,7 +7,7 @@ import { SITE_APP_TITLE } from '@/constants';
  */
 const useTitleUpdater = () => {
   const matches = useMatches();
-  const currentMatch = matches[matches.length - 1] as any;
+  const currentMatch = matches[matches.length - 1];
   const title = currentMatch?.handle?.name;
 
   useEffect(() => {

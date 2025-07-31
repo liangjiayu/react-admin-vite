@@ -1,12 +1,12 @@
 import { message } from 'antd';
 import axios, { type AxiosRequestConfig } from 'axios';
 
+/**
+ * axios中文文档
+ * @see https://www.axios-http.cn/docs/req_config
+ */
 const instance = axios.create({
   // baseURL: import.meta.env.PROD ? 'https://proapi.azurewebsites.net' : '/',
-  // timeout: 10000,
-  // headers: {
-  //   "Content-Type": "application/json",
-  // },
 });
 
 // 请求拦截器
@@ -22,10 +22,6 @@ instance.interceptors.response.use(
     if (response?.data?.code !== 0) {
       return Promise.reject(response.data);
     }
-    // 有total的数据结构，认为是分页数据
-    // if (response?.data?.total) {
-    //   return response.data;
-    // }
     // 有data的数据结构，直接返回主体数据
     if (response?.data?.data) {
       return response.data.data;
@@ -35,7 +31,7 @@ instance.interceptors.response.use(
   (error) => {
     const serverMsg = error?.response?.data?.message;
 
-    /** 状态码为401，统一用户信息未认证，跳转到登录页面 */
+    /** 状态码为401，用户未认证，跳转到登录页面 */
     if (error.status === 401) {
       window.location.href = '/user/login';
       return;

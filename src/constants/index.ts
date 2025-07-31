@@ -12,4 +12,5 @@ export enum ModalActionType {
   COPY = 'COPY',
 }
 
+/** 网站标题 */
 export const SITE_APP_TITLE = import.meta.env.VITE_SITE_APP_TITLE;

@@ -1,4 +1,4 @@
-import AvatarInfo from './AvatarInfo';
-import Question from './Question';
+import AvatarInfo from './avatar-info';
+import Question from './question';
 
 export { Question, AvatarInfo };

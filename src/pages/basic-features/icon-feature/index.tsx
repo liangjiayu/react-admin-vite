@@ -1,9 +1,9 @@
 import { Card } from 'antd';
-import AntIconCase from './components/AntIconCase';
-import IconFontCase from './components/IconFontCase';
-import IconifyOnline from './components/IconifyOnline';
-import LocalSvgCase from './components/LocalSvgCase';
-import LucideCase from './components/LucideCase';
+import AntIconCase from './components/ant-icon-case';
+import IconFontCase from './components/icon-font-case';
+import IconifyOnline from './components/iconify-online';
+import LocalSvgCase from './components/local-svg-case';
+import LucideCase from './components/lucide-case';
 
 const IconFeature = () => {
   return (

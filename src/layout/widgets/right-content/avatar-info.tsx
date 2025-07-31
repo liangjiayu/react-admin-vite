@@ -2,7 +2,7 @@ import { LogoutOutlined } from '@ant-design/icons';
 import { Avatar, Dropdown } from 'antd';
 import { useNavigate } from 'react-router';
 import { FastApiServices } from '@/services';
-import { useGlobalStore } from '@/store/globalStore';
+import { useGlobalStore } from '@/store/global-store';
 
 const AvatarInfo = () => {
   const { currentUser } = useGlobalStore();

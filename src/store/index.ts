@@ -1,2 +1,2 @@
-export * from './accessStore';
-export * from './globalStore';
+export * from './access-store';
+export * from './global-store';

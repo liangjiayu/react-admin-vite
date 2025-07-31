@@ -1,4 +1,4 @@
-import { House, Table2, TriangleAlert } from 'lucide-react';
+import { House, ShieldBan, Table2, TriangleAlert } from 'lucide-react';
 import { lazy } from 'react';
 import type { AppRouteProps } from '../types';
 import basicFeatures from './basic-features';
@@ -21,6 +21,15 @@ export default [
     handle: {
       name: 'CRUD表格',
       icon: <Table2 />,
+    },
+  },
+  {
+    path: '/admin-manager',
+    element: <div className="text-[50px]">只有admin才可以看到</div>,
+    handle: {
+      name: '权限页面',
+      icon: <ShieldBan />,
+      access: 'isAdmin',
     },
   },
   ...basicFeatures,
