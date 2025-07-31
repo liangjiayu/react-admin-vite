@@ -6,7 +6,7 @@ interface ImportMetaEnv {
   readonly VITE_SITE_APP_TITLE: string;
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: false
+// biome-ignore lint/correctness/noUnusedVariables: -
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }

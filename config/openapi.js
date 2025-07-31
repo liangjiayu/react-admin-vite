@@ -7,8 +7,7 @@ const __rootDir = resolve(__filename, '../..');
 
 // generateService({
 //   /** 协议地址，支持本地和远程URL */
-//   // schemaPath: join(__rootDir, 'config/swagger.json'),
-//   schemaPath: 'https://gw.alipayobjects.com/os/antfincdn/M%24jrzTTYJN/oneapi.json',
+//   schemaPath: join(__rootDir, 'config/swagger.json'),
 //   /** 自定义请求库 */
 //   requestLibPath: "import request from '@/utils/request'",
 //   /** 项目名称 */
@@ -21,7 +20,11 @@ const __rootDir = resolve(__filename, '../..');
 //   dataFields: ['data'],
 // });
 
-/** FastApi 协议 */
+/**
+ * FastApi 协议
+ * openapi 自动生成接口函数工具
+ * @see https://github.com/chenshuai2144/openapi2typescript
+ */
 generateService({
   // schemaPath: join(__rootDir, 'config/swagger.json'),
   schemaPath: 'http://8.134.97.57:7100/api-docs',

@@ -2,7 +2,6 @@ import type { ThemeConfig } from 'antd';
 
 /**
  * 自定义的Ant Design主题配置
- *
  * @see https://ant.design/theme-editor-cn
  */
 const customAntdTheme: ThemeConfig = {

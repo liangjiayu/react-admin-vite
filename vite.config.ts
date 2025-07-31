@@ -17,7 +17,10 @@ const __APP_INFO__ = {
   lastBuildTime: dayjs(new Date()).format('YYYY-MM-DD HH:mm:ss'),
 };
 
-// https://vite.dev/config/
+/**
+ * vite 配置
+ * @see https://cn.vite.dev/config/
+ */
 export default defineConfig(() => {
   return {
     resolve: {
