@@ -27,18 +27,25 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
       - name: Build project
         run: pnpm run build
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # 上传构建后的产物
-          path: './dist'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Upload to OSS
+        run: |
+          wget http://gosspublic.alicdn.com/ossutil/1.7.1/ossutil64 -O ossutil64
+          chmod +x ossutil64
+          ./ossutil64 config \
+            -i ${{ secrets.ALICLOUD_ACCESS_KEY }} \
+            -k ${{ secrets.ALICLOUD_SECRET_KEY }}
+          ./ossutil64 cp -r ./dist/ oss://react-admin-vite/front/ --update
+      
+      # - name: Setup Pages
+      #   uses: actions/configure-pages@v5
+      # - name: Upload artifact
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     path: './dist'
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v4
