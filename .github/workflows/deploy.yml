@@ -35,7 +35,7 @@ jobs:
         run: |
           wget http://gosspublic.alicdn.com/ossutil/1.7.1/ossutil64 -O ossutil64
           chmod +x ossutil64
-          ./ossutil64 config \
+          ./ossutil64 config -e oss-cn-guangzhou.aliyuncs.com \
             -i ${{ secrets.ALICLOUD_ACCESS_KEY }} \
             -k ${{ secrets.ALICLOUD_SECRET_KEY }}
           ./ossutil64 cp -r ./dist/ oss://react-admin-vite/front/ --update
