@@ -34,7 +34,7 @@ jobs:
       - name: upload files to OSS
         uses: tiyee/aliyun-oss-auto-upload@v2.0.7
         with:
-          region: oss-cn-guangzhou
+          region: oss-cn-guangzhou.aliyuncs.com
           access-key-id: ${{ secrets.ALICLOUD_ACCESS_KEY }}
           access-key-secret: ${{ secrets.ALICLOUD_SECRET_KEY }}
           bucket: react-admin-vite
