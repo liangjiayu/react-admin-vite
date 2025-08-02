@@ -23,10 +23,7 @@ const __APP_INFO__ = {
  */
 export default defineConfig(({ mode }) => {
   return {
-    base:
-      mode === 'production'
-        ? 'http://cdn.liangjiayu.top/react-admin-vite/prod/'
-        : '/',
+    base: '/',
     resolve: {
       alias: {
         '@': '/src/',
