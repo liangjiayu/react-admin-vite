@@ -45,7 +45,7 @@ jobs:
           endpoint: oss-cn-guangzhou.aliyuncs.com
           bucket: react-admin-vite
           assets: |
-            /dist/:/prod/
+            dist/**:/prod/
       
       # - name: Setup Pages
       #   uses: actions/configure-pages@v5
