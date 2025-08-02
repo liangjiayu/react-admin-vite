@@ -32,14 +32,14 @@ jobs:
       - name: Build project
         run: pnpm run build
       - name: upload files to OSS
-        uses: tiyee/aliyun-oss-auto-upload@v2.0.7
+        uses: vesoft-inc/upload-oss
         with:
-          region: oss-cn-guangzhou
-          access-key-id: ${{ secrets.ALICLOUD_ACCESS_KEY }}
-          access-key-secret: ${{ secrets.ALICLOUD_SECRET_KEY }}
+          key-id: ${{ secrets.ALICLOUD_ACCESS_KEY }}
+          key-secret: ${{ secrets.ALICLOUD_SECRET_KEY }}
+          endpoint: oss-cn-guangzhou.aliyuncs.com
           bucket: react-admin-vite
-          local-folder: ./dist/
-          remote-dir: ./prod/
+          asset-path: ./dist/
+          target-path: ./prod/
       
       # - name: Setup Pages
       #   uses: actions/configure-pages@v5
