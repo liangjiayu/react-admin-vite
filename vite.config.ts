@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => {
   return {
     base:
       mode === 'production'
-        ? 'http://cdn.liangjiayu.top/react-admin-vite/'
+        ? 'http://cdn.liangjiayu.top/react-admin-vite/prod/'
         : '/',
     resolve: {
       alias: {
