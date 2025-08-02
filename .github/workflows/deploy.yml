@@ -39,4 +39,4 @@ jobs:
           endpoint: oss-cn-guangzhou.aliyuncs.com
           bucket: fast-fe-static
           assets: |
-            dist/**:/react-admin-vite/prod
+            dist/**:/react-admin-vite/prod/
