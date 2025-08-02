@@ -32,14 +32,20 @@ jobs:
       - name: Build project
         run: pnpm run build
       - name: upload files to OSS
-        uses: vesoft-inc/upload-oss@v1.0.0
+        uses: JohnGuan/oss-upload-action@main
         with:
+          # key-id: ${{ secrets.ALICLOUD_ACCESS_KEY }}
+          # key-secret: ${{ secrets.ALICLOUD_SECRET_KEY }}
+          # endpoint: oss-cn-guangzhou.aliyuncs.com
+          # bucket: react-admin-vite
+          # asset-path: ./dist/
+          # target-path: ./prod/
           key-id: ${{ secrets.ALICLOUD_ACCESS_KEY }}
           key-secret: ${{ secrets.ALICLOUD_SECRET_KEY }}
           endpoint: oss-cn-guangzhou.aliyuncs.com
           bucket: react-admin-vite
-          asset-path: ./dist/
-          target-path: ./prod/
+          assets: |
+            /dist/:/prod/
       
       # - name: Setup Pages
       #   uses: actions/configure-pages@v5
