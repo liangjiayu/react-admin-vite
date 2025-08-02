@@ -32,13 +32,14 @@ jobs:
       - name: Build project
         run: pnpm run build
       - name: upload files to OSS
-        uses: fangbinwei/aliyun-oss-website-action@v1
+        uses: tiyee/aliyun-oss-auto-upload@v2
         with:
-          accessKeyId: ${{ secrets.ALICLOUD_ACCESS_KEY }}
-          accessKeySecret: ${{ secrets.ALICLOUD_SECRET_KEY }}
+          region: oss-cn-guangzhou.aliyuncs.com
+          access-key-id: ${{ secrets.ALICLOUD_ACCESS_KEY }}
+          access-key-secret: ${{ secrets.ALICLOUD_SECRET_KEY }}
           bucket: react-admin-vite
-          endpoint: oss-cn-guangzhou.aliyuncs.com
-          folder: ./dist/
+          local-folder: ./dist/
+          remote-dir: ./prod/
       
       # - name: Setup Pages
       #   uses: actions/configure-pages@v5
