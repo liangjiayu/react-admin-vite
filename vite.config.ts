@@ -21,9 +21,12 @@ const __APP_INFO__ = {
  * vite 配置
  * @see https://cn.vite.dev/config/
  */
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
   return {
-    base: 'http://cdn.liangjiayu.top/prod/',
+    base:
+      mode === 'production'
+        ? 'http://cdn.liangjiayu.top/react-admin-vite/'
+        : '/',
     resolve: {
       alias: {
         '@': '/src/',

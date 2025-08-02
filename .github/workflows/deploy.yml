@@ -34,25 +34,9 @@ jobs:
       - name: upload files to OSS
         uses: JohnGuan/oss-upload-action@main
         with:
-          # key-id: ${{ secrets.ALICLOUD_ACCESS_KEY }}
-          # key-secret: ${{ secrets.ALICLOUD_SECRET_KEY }}
-          # endpoint: oss-cn-guangzhou.aliyuncs.com
-          # bucket: react-admin-vite
-          # asset-path: ./dist/
-          # target-path: ./prod/
           key-id: ${{ secrets.ALICLOUD_ACCESS_KEY }}
           key-secret: ${{ secrets.ALICLOUD_SECRET_KEY }}
           endpoint: oss-cn-guangzhou.aliyuncs.com
-          bucket: react-admin-vite
+          bucket: fast-fe-static
           assets: |
-            dist/**:/prod/
-      
-      # - name: Setup Pages
-      #   uses: actions/configure-pages@v5
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v3
-      #   with:
-      #     path: './dist'
-      # - name: Deploy to GitHub Pages
-      #   id: deployment
-      #   uses: actions/deploy-pages@v4
+            dist/**:/react-admin-vite/prod
