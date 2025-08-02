@@ -23,6 +23,7 @@ const __APP_INFO__ = {
  */
 export default defineConfig(() => {
   return {
+    base: 'http://cdn.liangjiayu.top/prod/',
     resolve: {
       alias: {
         '@': '/src/',

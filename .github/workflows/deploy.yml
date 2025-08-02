@@ -31,14 +31,14 @@ jobs:
         run: pnpm install
       - name: Build project
         run: pnpm run build
-      - name: Upload to OSS
-        run: |
-          wget http://gosspublic.alicdn.com/ossutil/1.7.1/ossutil64 -O ossutil64
-          chmod +x ossutil64
-          ./ossutil64 config -e oss-cn-guangzhou.aliyuncs.com \
-            -i ${{ secrets.ALICLOUD_ACCESS_KEY }} \
-            -k ${{ secrets.ALICLOUD_SECRET_KEY }}
-          ./ossutil64 cp -r ./dist/ oss://react-admin-vite/front/ --update
+      - name: upload files to OSS
+        uses: fangbinwei/aliyun-oss-website-action@v1
+        with:
+          accessKeyId: ${{ secrets.ALICLOUD_ACCESS_KEY }}
+          accessKeySecret: ${{ secrets.ALICLOUD_SECRET_KEY }}
+          bucket: react-admin-vite
+          endpoint: oss-cn-guangzhou.aliyuncs.com
+          folder: ./dist/
       
       # - name: Setup Pages
       #   uses: actions/configure-pages@v5
