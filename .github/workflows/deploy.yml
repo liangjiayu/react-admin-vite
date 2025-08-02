@@ -32,7 +32,7 @@ jobs:
       - name: Build project
         run: pnpm run build
       - name: upload files to OSS
-        uses: vesoft-inc/upload-oss
+        uses: vesoft-inc/upload-oss@v1.0.0
         with:
           key-id: ${{ secrets.ALICLOUD_ACCESS_KEY }}
           key-secret: ${{ secrets.ALICLOUD_SECRET_KEY }}
