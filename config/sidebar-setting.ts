@@ -1,4 +1,5 @@
 import type { ProLayoutProps } from '@ant-design/pro-components';
+import { SITE_LOGO_URL } from '@/constants';
 
 /**
  * 侧边栏配置
@@ -11,7 +12,7 @@ const Settings: ProLayoutProps = {
   fixedHeader: false,
   fixSiderbar: true,
   title: 'React Admin Vite',
-  logo: '/logo.svg',
+  logo: SITE_LOGO_URL,
   siderWidth: 256,
   token: {},
 };

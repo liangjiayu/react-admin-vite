@@ -14,3 +14,6 @@ export enum ModalActionType {
 
 /** 网站标题 */
 export const SITE_APP_TITLE = import.meta.env.VITE_SITE_APP_TITLE;
+
+/** 网站logo */
+export const SITE_LOGO_URL = `${import.meta.env.BASE_URL}logo.svg`;

@@ -15,6 +15,7 @@ import {
 import { Alert, message, Tabs } from 'antd';
 import { createStyles } from 'antd-style';
 import React, { useState } from 'react';
+import { SITE_LOGO_URL } from '@/constants';
 import { FastApiServices } from '@/services';
 
 const useStyles = createStyles(({ token }) => {
@@ -124,7 +125,7 @@ const Login: React.FC = () => {
             minWidth: 280,
             maxWidth: '75vw',
           }}
-          logo={<img alt="logo" src="/logo.svg" />}
+          logo={<img alt="logo" src={SITE_LOGO_URL} />}
           title="React Admin"
           subTitle={'一个基于 React 的中后台管理系统解决方案'}
           initialValues={{
