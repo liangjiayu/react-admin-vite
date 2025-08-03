@@ -40,8 +40,8 @@ jobs:
       - name: Upload files to OSS
         uses: JohnGuan/oss-upload-action@main
         with:
-          key-id: ${{ secrets.ALICLOUD_ACCESS_KEY }}
-          key-secret: ${{ secrets.ALICLOUD_SECRET_KEY }}
+          key-id: ${{ secrets.ACCESS_KEY_ID }}
+          key-secret: ${{ secrets.ACCESS_KEY_SECRET }}
           region: oss-cn-guangzhou
           bucket: fast-fe-static
           assets: |
