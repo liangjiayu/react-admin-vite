@@ -1,19 +1,10 @@
-name: Deploy To GitHub Pages
+name: Deploy To Ali Cloud
 
 on:
-  # 仅在推送到默认分支时运行
   push:
     branches: ['main']
 
-  # 这个选项可以使你手动在 Action tab 页面触发工作流
   workflow_dispatch:
-
-# 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 
 jobs:
   deploy:
@@ -32,12 +23,12 @@ jobs:
         run: pnpm install
       - name: Build project
         run: pnpm vite build --base=http://cdn.liangjiayu.top/react-admin-vite/prod/
-      - name: upload files to OSS
+      - name: Upload files to OSS
         uses: JohnGuan/oss-upload-action@main
         with:
           key-id: ${{ secrets.ALICLOUD_ACCESS_KEY }}
           key-secret: ${{ secrets.ALICLOUD_SECRET_KEY }}
-          endpoint: oss-cn-guangzhou.aliyuncs.com
+          region: oss-cn-guangzhou
           bucket: fast-fe-static
           assets: |
             dist/**:/react-admin-vite/prod/
