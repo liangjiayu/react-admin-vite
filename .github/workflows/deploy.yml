@@ -5,6 +5,19 @@ on:
     branches: ['main']
 
   workflow_dispatch:
+    inputs:
+      deploy_env:
+        description: '部署环境'  
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - prod
+
+env:
+  CDN_URL: //cdn.liangjiayu.top
+  OSS_TARGET_PATH: /react-admin-vite/${{ inputs.deploy_env }}/
 
 jobs:
   deploy:
@@ -22,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Build project
-        run: pnpm vite build --base=http://cdn.liangjiayu.top/react-admin-vite/prod/
+        run: pnpm vite build --base="${{ env.CDN_URL }}${{ env.OSS_TARGET_PATH }}"
       - name: Upload files to OSS
         uses: JohnGuan/oss-upload-action@main
         with:
@@ -31,4 +44,9 @@ jobs:
           region: oss-cn-guangzhou
           bucket: fast-fe-static
           assets: |
-            dist/**:/react-admin-vite/prod/
+            dist/**:${{ env.OSS_TARGET_PATH }}
+
+      - name: Deploy Success
+        run: |
+          echo "✅ 已部署到 ${{ inputs.deploy_env  }} 环境"
+          echo "访问地址: ${{ env.CDN_URL }}${{ env.OSS_TARGET_PATH }}"
