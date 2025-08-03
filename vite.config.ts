@@ -21,7 +21,7 @@ const __APP_INFO__ = {
  * vite 配置
  * @see https://cn.vite.dev/config/
  */
-export default defineConfig(({ mode }) => {
+export default defineConfig(() => {
   return {
     base: '/',
     resolve: {

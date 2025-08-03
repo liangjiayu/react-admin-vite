@@ -27,10 +27,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
       - name: Build project
-        run: pnpm run build
+        run: pnpm vite build --base=http://cdn.liangjiayu.top/react-admin-vite/prod/
       - name: upload files to OSS
         uses: JohnGuan/oss-upload-action@main
         with:
