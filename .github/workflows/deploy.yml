@@ -9,15 +9,16 @@ on:
       deploy_env:
         description: '部署环境'  
         required: true
-        default: 'staging'
+        default: 'prod'
         type: choice
         options:
-          - staging
+          - daily
           - prod
 
 env:
+  DEPLOY_ENV: ${{ inputs.deploy_env || 'prod' }}
   CDN_URL: //cdn.liangjiayu.top
-  OSS_TARGET_PATH: /react-admin-vite/${{ inputs.deploy_env }}/
+  APP_NAME: react-admin-vite
 
 jobs:
   deploy:
@@ -35,7 +36,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Build project
-        run: pnpm vite build --base="${{ env.CDN_URL }}${{ env.OSS_TARGET_PATH }}"
+        run: pnpm vite build --base="${{ env.CDN_URL }}/${{ env.APP_NAME }}/${{ env.DEPLOY_ENV }}/"
       - name: Upload files to OSS
         uses: JohnGuan/oss-upload-action@main
         with:
@@ -44,9 +45,9 @@ jobs:
           region: oss-cn-guangzhou
           bucket: fast-fe-static
           assets: |
-            dist/**:${{ env.OSS_TARGET_PATH }}
+            dist/**:/${{ env.APP_NAME }}/${{ env.DEPLOY_ENV }}/
 
       - name: Deploy Success
         run: |
-          echo "✅ 已部署到 ${{ inputs.deploy_env  }} 环境"
-          echo "访问地址: ${{ env.CDN_URL }}${{ env.OSS_TARGET_PATH }}"
+          echo "✅ 已部署到 ${{ env.DEPLOY_ENV  }} 环境"
+          echo "访问地址: ${{ env.CDN_URL }}/${{ env.APP_NAME }}/${{ env.DEPLOY_ENV }}/"
