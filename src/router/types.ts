@@ -19,7 +19,7 @@ export type RouteMeta = {
    */
   hideInMenu?: boolean;
   /**
-   * 外部链接
+   * 外部链接打开方式
    */
   target?: '_blank' | '_self';
 };
