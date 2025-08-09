@@ -6,23 +6,23 @@ import axios, { type AxiosRequestConfig } from 'axios';
  * @see https://www.axios-http.cn/docs/req_config
  */
 const instance = axios.create({
-  // baseURL: import.meta.env.PROD ? 'https://proapi.azurewebsites.net' : '/',
+  // baseURL:  '/',
 });
 
-// 请求拦截器
+/** 请求拦截器 */
 // instance.interceptors.request.use(
 //   (config) => {},
 //   (error) => {}
 // );
 
-// 响应拦截器
+/** 响应拦截器 */
 instance.interceptors.response.use(
   (response) => {
     /** 根据服务端的数据结构，统一处理异常的情况 */
     if (response?.data?.code !== 0) {
       return Promise.reject(response.data);
     }
-    // 有data的数据结构，直接返回主体数据
+    /** 有data的数据结构，直接返回主体数据 */
     if (response?.data?.data) {
       return response.data.data;
     }
