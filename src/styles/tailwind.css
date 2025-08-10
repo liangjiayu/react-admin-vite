@@ -16,4 +16,5 @@
  */
 @theme {
   --color-primary: #2166f7;
+  --radius-primary: 10px;
 }
