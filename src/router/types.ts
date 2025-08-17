@@ -24,7 +24,7 @@ export type RouteMeta = {
   target?: '_blank' | '_self';
 };
 
-export type AppRouteProps = Omit<NonIndexRouteObject, 'children'> & {
+export type AppRouteProps = Omit<NonIndexRouteObject, 'children' | 'handle'> & {
   handle?: RouteMeta;
   children?: AppRouteProps[];
 };

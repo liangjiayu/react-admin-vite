@@ -7,7 +7,7 @@ import type { AppRouteProps } from '@/router/types';
 export const generateMenuItems = (routes: AppRouteProps[]): MenuDataItem[] => {
   /**
    * 菜单权限：可以根据权限信息和路由信息，过滤掉没有权限的菜单
-   * import { useAccessStore } from '@/store/accessStore';
+   * import { useAccessStore } from '@/store/access-store';
    * const accessInfo = useAccessStore.getState();
    */
 
