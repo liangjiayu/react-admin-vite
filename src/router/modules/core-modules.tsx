@@ -25,7 +25,7 @@ export default [
   },
   {
     path: '/admin-manager',
-    element: <div className="text-[50px]">只有admin才可以看到123</div>,
+    element: <div className="text-[50px]">只有admin才可以看到123456</div>,
     handle: {
       name: '权限页面',
       icon: <ShieldBan />,
