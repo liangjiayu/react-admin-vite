@@ -36,6 +36,7 @@ const CheckUpdates: React.FC<CheckUpdatesProps> = ({
             type="link"
             size="small"
             onClick={() => {
+              start();
               notification.destroy();
             }}
           >
