@@ -2,6 +2,7 @@ import { App as AntdApp, ConfigProvider, Spin } from 'antd';
 import zhCN from 'antd/locale/zh_CN';
 import { useEffect } from 'react';
 import { RouterProvider } from 'react-router';
+import CheckUpdates from '@/components/check-updates';
 import customAntdTheme from '../config/antd-theme';
 import router from './router/index';
 import { useAccessStore } from './store/access-store';
@@ -38,6 +39,7 @@ const App = () => {
     <ConfigProvider theme={customAntdTheme} locale={zhCN}>
       <AntdApp>
         <RouterProvider router={router} />
+        <CheckUpdates />
       </AntdApp>
     </ConfigProvider>
   );
