@@ -32,7 +32,6 @@ const CheckUpdates: React.FC<CheckUpdatesProps> = ({
       btn: (
         <div className="flex gap-2">
           <Button
-            type="link"
             size="small"
             onClick={() => {
               start();
