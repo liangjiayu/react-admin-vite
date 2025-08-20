@@ -5,6 +5,6 @@
 export default {
   /** 是否开启检查更新 */
   enableCheckUpdates: true,
-  /** 检查更新轮询时间 */
-  checkUpdatesInterval: 1,
+  /** 检查更新轮询时间，单位为分钟 */
+  checkUpdatesInterval: 15,
 };

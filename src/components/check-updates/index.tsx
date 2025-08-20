@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 
 type CheckUpdatesProps = {
   /**
-   * 轮训时间，单位：分钟，默认 1 分钟
+   * 轮训时间，单位：分钟，默认 15 分钟
    */
   checkUpdatesInterval?: number;
   /**
@@ -13,7 +13,7 @@ type CheckUpdatesProps = {
 };
 
 const CheckUpdates: React.FC<CheckUpdatesProps> = ({
-  checkUpdatesInterval = 1,
+  checkUpdatesInterval = 15,
   checkUpdateUrl = '/',
 }) => {
   const { notification } = App.useApp();
@@ -108,7 +108,7 @@ const CheckUpdates: React.FC<CheckUpdatesProps> = ({
 
     timer.current = setInterval(
       checkForUpdates,
-      checkUpdatesInterval * 10 * 1000,
+      checkUpdatesInterval * 60 * 1000,
     );
   }
 
