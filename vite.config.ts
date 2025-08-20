@@ -36,6 +36,7 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@': '/src/',
+        '@config': '/config/',
       },
     },
     plugins: [
@@ -52,6 +53,7 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       port: envConfig.port,
+      host: true,
       proxy: {
         '/api': {
           target: envConfig.proxyUrl,

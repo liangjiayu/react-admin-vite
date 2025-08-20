@@ -3,12 +3,12 @@ import { useEffect, useRef } from 'react';
 
 type CheckUpdatesProps = {
   /**
-   * @zh 轮训时间，单位：分钟，默认 1 分钟
-   * @en Polling time, unit: minute, default 1 minute
-   * @default 1
+   * 轮训时间，单位：分钟，默认 1 分钟
    */
   checkUpdatesInterval?: number;
-  // 检查更新的地址
+  /**
+   * 检查更新的地址
+   */
   checkUpdateUrl?: string;
 };
 
@@ -17,8 +17,6 @@ const CheckUpdates: React.FC<CheckUpdatesProps> = ({
   checkUpdateUrl = '/',
 }) => {
   const { notification } = App.useApp();
-  let isCheckingUpdates = false;
-  //   const { t } = useTranslation();
   const currentVersionTag = useRef('');
   const lastVersionTag = useRef('');
   const timer = useRef<ReturnType<typeof setInterval>>(undefined);
@@ -30,6 +28,7 @@ const CheckUpdates: React.FC<CheckUpdatesProps> = ({
       message: '系统版本更新通知',
       description: '检测到系统有新版本发布，是否立即刷新页面？',
       duration: 0,
+      closable: false,
       btn: (
         <div className="flex gap-2">
           <Button
@@ -55,39 +54,6 @@ const CheckUpdates: React.FC<CheckUpdatesProps> = ({
         </div>
       ),
     });
-
-    // window.$notification?.open({
-    //   message: t('widgets.versionMonitorTitle'),
-    //   description: t('widgets.versionMonitorContent'),
-    //   duration: 0,
-    //   btn: (() => {
-    //     return createElement(Space, { size: 12 }, [
-    //       createElement(
-    //         Button,
-
-    //         {
-    //           onClick() {
-    //             window.$notification?.destroy();
-    //           },
-    //           key: 'cancel',
-    //         },
-    //         t('widgets.versionMonitorCancel'),
-    //       ),
-    //       createElement(
-    //         Button,
-    //         {
-    //           type: 'primary',
-    //           onClick() {
-    //             lastVersionTag.current = currentVersionTag.current;
-    //             location.reload();
-    //           },
-    //           key: 'ok',
-    //         },
-    //         t('widgets.versionMonitorConfirm'),
-    //       ),
-    //     ]);
-    //   })(),
-    // });
   }
 
   async function getVersionTag() {
@@ -103,8 +69,6 @@ const CheckUpdates: React.FC<CheckUpdatesProps> = ({
         method: 'HEAD',
         redirect: 'manual',
       });
-
-      console.log('response', response);
 
       return (
         response.headers.get('etag') || response.headers.get('last-modified')
@@ -133,20 +97,6 @@ const CheckUpdates: React.FC<CheckUpdatesProps> = ({
     }
   }
 
-  function handleVisibilitychange() {
-    if (document.hidden) {
-      stop();
-    } else {
-      if (!isCheckingUpdates) {
-        isCheckingUpdates = true;
-        checkForUpdates().finally(() => {
-          isCheckingUpdates = false;
-          start();
-        });
-      }
-    }
-  }
-
   async function start() {
     if (import.meta.env.DEV) {
       return;
@@ -169,12 +119,10 @@ const CheckUpdates: React.FC<CheckUpdatesProps> = ({
   useEffect(() => {
     /* Mounted */
     start();
-    // document.addEventListener('visibilitychange', handleVisibilitychange);
 
     /* UnMounted */
     return () => {
       stop();
-      //   document.removeEventListener('visibilitychange', handleVisibilitychange);
     };
   }, []);
   return null;

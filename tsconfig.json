@@ -19,7 +19,8 @@
     "resolveJsonModule": true,
 
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@config/*": ["config/*"]
     }
   },
   "include": ["src"],
