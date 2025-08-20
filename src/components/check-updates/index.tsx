@@ -69,6 +69,8 @@ const CheckUpdates: React.FC<CheckUpdatesProps> = ({
         redirect: 'manual',
       });
 
+      console.log('response', response.headers.get('etag'));
+
       return (
         response.headers.get('etag') || response.headers.get('last-modified')
       );
@@ -106,7 +108,7 @@ const CheckUpdates: React.FC<CheckUpdatesProps> = ({
 
     timer.current = setInterval(
       checkForUpdates,
-      checkUpdatesInterval * 60 * 1000,
+      checkUpdatesInterval * 10 * 1000,
     );
   }
 
