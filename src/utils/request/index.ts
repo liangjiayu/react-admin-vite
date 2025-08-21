@@ -6,7 +6,7 @@ import axios, { type AxiosRequestConfig } from 'axios';
  * @see https://www.axios-http.cn/docs/req_config
  */
 const instance = axios.create({
-  // baseURL:  '/',
+  withCredentials: true,
 });
 
 /** 请求拦截器 */
@@ -14,6 +14,14 @@ const instance = axios.create({
 //   (config) => {},
 //   (error) => {}
 // );
+
+/** 兼容文件上传 */
+instance.interceptors.request.use((config) => {
+  if (config.data instanceof FormData) {
+    delete config.headers['Content-Type'];
+  }
+  return config;
+});
 
 /** 响应拦截器 */
 instance.interceptors.response.use(
