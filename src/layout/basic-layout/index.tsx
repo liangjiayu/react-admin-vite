@@ -3,7 +3,6 @@ import sideMenuConfig from '@config/side-menu-config';
 import sidebarSetting from '@config/sidebar-setting';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router';
 import AccessControl from '@/components/access-control';
-import Footer from '@/layout/widgets/footer';
 import { AvatarInfo, Question } from '@/layout/widgets/right-content';
 import routes from '@/router/routes';
 import './styles.less';
@@ -40,7 +39,6 @@ const BasicLayout = () => {
           return routesMenuConfig || sideMenuConfig;
         },
       }}
-      footerRender={() => <Footer />}
       actionsRender={() => [<Question key="doc" />]}
       avatarProps={{
         render: () => {

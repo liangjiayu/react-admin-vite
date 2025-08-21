@@ -13,6 +13,11 @@ const App = () => {
   const { globalLoading, fetchInitData, setGlobalLoading } = useGlobalStore();
   const { initAccess } = useAccessStore();
 
+  /**
+   * 初始化页面，注意顺序
+   * 1. 获取初始化数据
+   * 2. 初始化权限
+   */
   const initPage = async () => {
     await fetchInitData();
     await initAccess();
