@@ -8,7 +8,7 @@ const AccessFeature = () => {
 
   return (
     <div>
-      <div className="flex gap-3 items-center">
+      <div className="flex items-center gap-3">
         <AccessBox accessible={isAdmin}>
           <Button>我是管理员</Button>
         </AccessBox>
