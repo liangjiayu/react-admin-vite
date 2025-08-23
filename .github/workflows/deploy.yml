@@ -17,7 +17,7 @@ on:
 
 env:
   DEPLOY_ENV: ${{ inputs.deploy_env || 'prod' }}
-  CDN_URL: //cdn.liangjiayu.cn
+  CDN_URL: https://cdn.liangjiayu.cn
   APP_NAME: react-admin-vite
 
 jobs:
