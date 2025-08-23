@@ -27,7 +27,7 @@ const __rootDir = resolve(__filename, '../..');
  */
 generateService({
   // schemaPath: join(__rootDir, 'config/swagger.json'),
-  schemaPath: 'http://8.134.97.57:7100/api-docs',
+  schemaPath: 'http://fast-api.liangjiayu.cn/api-docs',
   requestLibPath: "import request from '@/utils/request'",
   projectName: 'fast-api',
   namespace: 'FastAPI',
