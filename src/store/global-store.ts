@@ -4,18 +4,26 @@ import { FastApiServices } from '@/services';
 type GlobalState = {
   currentUser: FastAPI.CurrentUserDTO | null;
   globalLoading: boolean;
+  themeMode: ThemeMode;
 };
+
+export enum ThemeMode {
+  Light = 'light',
+  Dark = 'dark',
+}
 
 type GlobalActions = {
   fetchUserInfo: () => Promise<void>;
   fetchInitData: () => Promise<void>;
   setGlobalLoading: (loading: boolean) => void;
+  setThemeMode: (themeMode: ThemeMode) => void;
 };
 
 export const useGlobalStore = create<GlobalState & GlobalActions>(
   (set, get) => ({
     currentUser: null,
     globalLoading: true,
+    themeMode: ThemeMode.Light,
 
     fetchUserInfo: async () => {
       const userInfo =
@@ -43,6 +51,10 @@ export const useGlobalStore = create<GlobalState & GlobalActions>(
 
     setGlobalLoading: (loading) => {
       set({ globalLoading: loading });
+    },
+
+    setThemeMode: (themeMode) => {
+      set({ themeMode });
     },
   }),
 );

@@ -8,7 +8,7 @@ import LucideCase from './components/lucide-case';
 const IconFeature = () => {
   return (
     <div
-      className="text-[40px]"
+      className="text-[40px] text-gray-700 dark:text-gray-200"
       style={{ '--icon-case-size': '32px' } as React.CSSProperties}
     >
       <Card title="高质量图标集">

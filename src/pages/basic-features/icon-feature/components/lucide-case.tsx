@@ -81,7 +81,7 @@ const LucideCase = () => {
         {LucideCases.map((item) => (
           <div
             key={item.name}
-            className="py-[16px] text-center text-gray-700"
+            className="py-[16px] text-center"
             style={{ fontSize: 'var(--icon-case-size)' }}
           >
             {item.icon}

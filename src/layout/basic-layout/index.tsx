@@ -3,16 +3,22 @@ import sideMenuConfig from '@config/side-menu-config';
 import sidebarSetting from '@config/sidebar-setting';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router';
 import AccessControl from '@/components/access-control';
-import { AvatarInfo, Question } from '@/layout/widgets/right-content';
+import {
+  AvatarInfo,
+  Question,
+  ThemeSwitch,
+} from '@/layout/widgets/right-content';
 import routes from '@/router/routes';
 import './styles.less';
 import { useMemo } from 'react';
+import { ThemeMode, useGlobalStore } from '@/store';
 import useTitleUpdater from '../widgets/hooks/use-title-updater';
 import { generateMenuItems } from './utils';
 
 const BasicLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { themeMode } = useGlobalStore();
   useTitleUpdater();
 
   const routesMenuConfig = useMemo(() => {
@@ -20,9 +26,18 @@ const BasicLayout = () => {
     return generateMenuItems(routes[0].children || []);
   }, [routes]);
 
+  const navTheme = useMemo(() => {
+    if (themeMode === ThemeMode.Dark) {
+      return 'realDark';
+    } else {
+      return 'light';
+    }
+  }, [themeMode]);
+
   return (
     <ProLayout
       {...sidebarSetting}
+      navTheme={navTheme}
       location={location}
       menuItemRender={(item, dom) => (
         <Link to={item.path || ''} target={item.target}>
@@ -39,7 +54,14 @@ const BasicLayout = () => {
           return routesMenuConfig || sideMenuConfig;
         },
       }}
-      actionsRender={() => [<Question key="doc" />]}
+      actionsRender={() => {
+        return (
+          <div className="flex items-center gap-2">
+            <Question key="doc" />
+            <ThemeSwitch key="theme-switch" />
+          </div>
+        );
+      }}
       avatarProps={{
         render: () => {
           return <AvatarInfo />;
