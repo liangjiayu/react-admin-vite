@@ -8,7 +8,7 @@ const Question = () => {
       icon={<QuestionCircleOutlined />}
       href="https://react-admin-vite-docs.vercel.app/"
       target="_blank"
-    ></Button>
+    />
   );
 };
 

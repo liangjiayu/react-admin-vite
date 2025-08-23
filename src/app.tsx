@@ -36,7 +36,7 @@ const App = () => {
           <div className="mt-2 text-[15px] text-gray-500">资源加载中...</div>
         }
       >
-        <div className="h-[100vh]"></div>
+        <div className="h-[100vh]" />
       </Spin>
     );
   }

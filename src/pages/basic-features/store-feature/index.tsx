@@ -23,7 +23,7 @@ const StoreFeature = () => {
           children: <TodoListZustand />,
         },
       ]}
-    ></Tabs>
+    />
   );
 };
 
