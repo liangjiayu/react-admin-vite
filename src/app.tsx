@@ -1,16 +1,17 @@
 import customAntdTheme from '@config/antd-theme';
 import preferences from '@config/preferences';
-import { App as AntdApp, ConfigProvider, Spin } from 'antd';
+import { App as AntdApp, ConfigProvider, Spin, theme } from 'antd';
 import zhCN from 'antd/locale/zh_CN';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { RouterProvider } from 'react-router';
 import CheckUpdates from '@/components/check-updates';
 import router from './router/index';
 import { useAccessStore } from './store/access-store';
-import { useGlobalStore } from './store/global-store';
+import { ThemeMode, useGlobalStore } from './store/global-store';
 
 const App = () => {
-  const { globalLoading, fetchInitData, setGlobalLoading } = useGlobalStore();
+  const { globalLoading, fetchInitData, setGlobalLoading, themeMode } =
+    useGlobalStore();
   const { initAccess } = useAccessStore();
 
   /**
@@ -23,6 +24,14 @@ const App = () => {
     await initAccess();
     await setGlobalLoading(false);
   };
+
+  /** 主题算法 */
+  const themeAlgorithm = useMemo(() => {
+    if (themeMode === ThemeMode.Dark) {
+      return theme.darkAlgorithm;
+    }
+    return theme.defaultAlgorithm;
+  }, [themeMode]);
 
   useEffect(() => {
     initPage();
@@ -42,7 +51,10 @@ const App = () => {
   }
 
   return (
-    <ConfigProvider theme={customAntdTheme} locale={zhCN}>
+    <ConfigProvider
+      theme={{ ...customAntdTheme, algorithm: themeAlgorithm }}
+      locale={zhCN}
+    >
       <AntdApp>
         <RouterProvider router={router} />
         {preferences.enableCheckUpdates && (
