@@ -6,7 +6,7 @@ const Question = () => {
     <Button
       type="text"
       icon={<QuestionCircleOutlined />}
-      href="https://react-admin-vite-docs.vercel.app/"
+      href="https://admin-docs.liangjiayu.cn/"
       target="_blank"
     />
   );
