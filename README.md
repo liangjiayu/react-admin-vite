@@ -13,9 +13,6 @@
 
 ![](https://github.com/user-attachments/assets/eb7daad8-095f-4355-837d-513827b19ee7)
 
-<img alt="Image" src="https://github.com/user-attachments/assets/54ac6ee8-ad59-4628-9513-e60d207d0ace" />
-<img alt="Image" src="https://github.com/user-attachments/assets/eb7daad8-095f-4355-837d-513827b19ee7" />
-
 </div>
 
 - 基础版预览：https://admin.liangjiayu.cn
