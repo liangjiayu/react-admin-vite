@@ -1,4 +1,6 @@
-# React Admin Vite
+<h1 align="center">React Admin Vite</h1>
+
+<div align="center">
 
 开箱即用的中后台前端解决方案，采用了最新的 React19、Vite、TypeScript 等主流技术开发。
 
@@ -10,6 +12,11 @@
 ![](https://github.com/user-attachments/assets/54ac6ee8-ad59-4628-9513-e60d207d0ace)
 
 ![](https://github.com/user-attachments/assets/eb7daad8-095f-4355-837d-513827b19ee7)
+
+<img alt="Image" src="https://github.com/user-attachments/assets/54ac6ee8-ad59-4628-9513-e60d207d0ace" />
+<img alt="Image" src="https://github.com/user-attachments/assets/eb7daad8-095f-4355-837d-513827b19ee7" />
+
+</div>
 
 - 基础版预览：https://admin.liangjiayu.cn
 - 完整版预览：https://admin-full.liangjiayu.cn
