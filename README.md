@@ -56,7 +56,7 @@ pnpm dev
 pnpm build
 ```
 
-更多信息请参考 [使用文档](https://admin-docs.liangjiayu.cn)。
+更多信息请参考 [使用文档](https://admin-docs.liangjiayu.cn/zh/guide/getting-started.html)。
 
 ## 浏览器支持
 
@@ -74,3 +74,10 @@ pnpm build
 - 在日常工作中使用 React Admin Vite。
 - 通过 [Issue](https://github.com/liangjiayu/react-admin-vite/issues) 报告 bug 或提出问题。
 - 提交 [Pull Request](https://github.com/liangjiayu/react-admin-vite/pulls) 改进 项目 的代码。
+
+## 感谢
+
+感谢社区优秀的框架，以下是主要参考的框架：
+
+1. [vben-admin](https://github.com/vbenjs/vue-vben-admin)
+2. [ant-design-pro](https://github.com/ant-design/ant-design-pro)
