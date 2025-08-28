@@ -31,19 +31,27 @@
 
 ## 安装使用
 
-```bash
-# 获取项目代码
-npx tiged liangjiayu/react-admin-vite react-admin-vite
+可以使用 tiged 工具快速创建项目。
 
+```bash
+npx tiged liangjiayu/react-admin-vite react-admin-vite
+```
+
+使用 pnpm 安装依赖
+
+```bash
 cd react-admin-vite
 # 安装项目的pnpm
 corepack enable
 # 安装依赖
 pnpm install
+```
 
+本地开发的命令：
+
+```bash
 # 运行项目
 pnpm dev
-
 # 打包项目
 pnpm build
 ```
@@ -61,8 +69,8 @@ pnpm build
 
 ## 参与贡献
 
-我们非常欢迎你的贡献，你可以通过以下方式和我们一起共建 😄：
+欢迎任何类型的贡献，以下是您可以为该项目做出贡献的一些示例：
 
-- 在你的公司或个人项目中使用 React Admin Vite。
-- 通过 [Issue](https://github.com/liangjiayu/react-admin-vite/issues) 报告 bug 或进行咨询。
+- 在日常工作中使用 React Admin Vite。
+- 通过 [Issue](https://github.com/liangjiayu/react-admin-vite/issues) 报告 bug 或提出问题。
 - 提交 [Pull Request](https://github.com/liangjiayu/react-admin-vite/pulls) 改进 项目 的代码。

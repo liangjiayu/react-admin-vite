@@ -1,4 +1,4 @@
-name: Deploy To Ali Cloud
+name: Deploy To CDN
 
 on:
   push:
