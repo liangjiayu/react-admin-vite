@@ -1,5 +1,5 @@
-import { Button, Result } from 'antd';
 import { Link } from 'react-router';
+import { Button, Result } from 'antd';
 
 export default () => (
   <Result
