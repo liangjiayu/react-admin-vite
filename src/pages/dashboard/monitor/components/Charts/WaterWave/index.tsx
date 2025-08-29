@@ -188,8 +188,9 @@ class WaterWave extends Component<WaterWaveProps> {
     const { percent, title, height = 1 } = this.props;
     return (
       <div
-        className={styles.waterWave}
-        ref={(n) => (this.root = n)}
+        ref={(n) => {
+          this.root = n;
+        }}
         style={{
           transform: `scale(${radio})`,
         }}
@@ -202,14 +203,14 @@ class WaterWave extends Component<WaterWaveProps> {
           }}
         >
           <canvas
-            className={styles.waterWaveCanvasWrapper}
-            ref={(n) => (this.node = n)}
+            ref={(n) => {
+              this.node = n;
+            }}
             width={height * 2}
             height={height * 2}
           />
         </div>
         <div
-          className={styles.text}
           style={{
             width: height,
           }}

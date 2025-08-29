@@ -23,7 +23,7 @@ const ChartCard: React.FC<ChartCardProps> = (props) => {
     if (!total && total !== 0) {
       return null;
     }
-    let totalDom;
+    let totalDom: React.ReactNode | null;
     switch (typeof total) {
       case 'undefined':
         totalDom = null;
@@ -91,17 +91,7 @@ const ChartCard: React.FC<ChartCardProps> = (props) => {
     );
   };
 
-  const {
-    loading = false,
-    contentHeight,
-    title,
-    avatar,
-    action,
-    total,
-    footer,
-    children,
-    ...rest
-  } = props;
+  const { loading = false, ...rest } = props;
   return (
     <Card
       loading={loading}

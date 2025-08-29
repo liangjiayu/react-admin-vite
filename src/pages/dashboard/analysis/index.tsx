@@ -59,7 +59,7 @@ const Analysis: FC<AnalysisProps> = () => {
     return '';
   };
 
-  let salesPieData;
+  let salesPieData: any;
 
   if (salesType === 'all') {
     salesPieData = data?.salesTypeData;

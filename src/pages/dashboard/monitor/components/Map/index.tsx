@@ -11,7 +11,7 @@ const colors = [
   '#2171b5',
   '#084594',
 ];
-export default class Map extends React.Component {
+export default class MonitorMap extends React.Component {
   state = {
     data: null,
     grid: null,
