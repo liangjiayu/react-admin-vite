@@ -1,8 +1,8 @@
 import { create } from 'zustand';
-import { FastApiServices } from '@/services';
+import { ProApiServices } from '@/services';
 
 type GlobalState = {
-  currentUser: FastAPI.CurrentUserDTO | null;
+  currentUser: ProAPI.CurrentUser | null;
   globalLoading: boolean;
   themeMode: ThemeMode;
 };
@@ -26,8 +26,7 @@ export const useGlobalStore = create<GlobalState & GlobalActions>(
     themeMode: ThemeMode.Light,
 
     fetchUserInfo: async () => {
-      const userInfo =
-        await FastApiServices.FakeUserController.getCurrentUser();
+      const userInfo = await ProApiServices.api.currentUser();
       set({ currentUser: userInfo });
     },
 
