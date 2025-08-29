@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://fast-api.liangjiayu.cn/api/:path*"
+      "destination": "https://proapi.azurewebsites.net/api/:path*"
     },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
