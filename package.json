@@ -9,8 +9,8 @@
     "dev": "vite",
     "build": "vite build",
     "format": "biome format --write .",
-    "check": "biome check --linter-enabled=false .",
-    "check:fix": "biome check --write --linter-enabled=false .",
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
     "preview": "vite preview",
     "prepare": "husky",
     "openapi": "node config/openapi.js"
