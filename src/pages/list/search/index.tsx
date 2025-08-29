@@ -1,7 +1,7 @@
 import { PageContainer } from '@ant-design/pro-components';
-import { Outlet, useLocation, useMatch, useNavigate } from 'react-router';
 import { Input } from 'antd';
 import type { FC } from 'react';
+import { Outlet, useLocation, useMatch, useNavigate } from 'react-router';
 
 type SearchProps = {
   children?: React.ReactNode;
@@ -28,7 +28,9 @@ const Search: FC<SearchProps> = () => {
   const match = useMatch(location.pathname);
   const handleTabChange = (key: string) => {
     const url =
-      match?.pathname === '/' ? '' : match?.pathname.substring(0, match.pathname.lastIndexOf('/'));
+      match?.pathname === '/'
+        ? ''
+        : match?.pathname.substring(0, match.pathname.lastIndexOf('/'));
     switch (key) {
       case 'articles':
         navigate(`${url}/articles`);
@@ -50,7 +52,9 @@ const Search: FC<SearchProps> = () => {
   };
 
   const getTabKey = () => {
-    const tabKey = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
+    const tabKey = location.pathname.substring(
+      location.pathname.lastIndexOf('/') + 1,
+    );
     if (tabKey && tabKey !== '/') {
       return tabKey;
     }

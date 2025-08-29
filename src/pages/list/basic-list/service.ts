@@ -25,7 +25,9 @@ export async function removeFakeList(
   });
 }
 
-export async function addFakeList(params: ParamsType): Promise<{ list: BasicListItemDataType[] }> {
+export async function addFakeList(
+  params: ParamsType,
+): Promise<{ list: BasicListItemDataType[] }> {
   return request('/api/post_fake_list', {
     method: 'POST',
     data: {

@@ -1,5 +1,5 @@
-import type { TableListItem, TableListParams } from './data.d';
 import { defineMock, type MockRequest } from 'vite-plugin-mock-dev-server';
+import type { TableListItem, TableListParams } from './data.d';
 
 // mock tableListDataSource
 const genList = (current: number, pageSize: number) => {
@@ -79,7 +79,9 @@ function getRule(req: MockRequest) {
   }
 
   if (params.name) {
-    dataSource = dataSource.filter((data) => data.name.includes(params.name || ''));
+    dataSource = dataSource.filter((data) =>
+      data.name.includes(params.name || ''),
+    );
   }
 
   let finalPageSize = 10;
@@ -104,7 +106,9 @@ function postRule(req: MockRequest & { method: string }) {
   switch (req.method) {
     /* eslint no-case-declarations:0 */
     case 'DELETE':
-      tableListDataSource = tableListDataSource.filter((item) => key.indexOf(item.key) === -1);
+      tableListDataSource = tableListDataSource.filter(
+        (item) => key.indexOf(item.key) === -1,
+      );
       break;
     case 'POST':
       (() => {

@@ -7,8 +7,6 @@ import axios, { type AxiosRequestConfig } from 'axios';
  */
 const instance = axios.create({
   withCredentials: true,
-  // baseURL: import.meta.env.PROD ? 'https://proapi.azurewebsites.net' : '/',
-  // baseURL: 'https://proapi.azurewebsites.net',
 });
 
 /** 请求拦截器 */

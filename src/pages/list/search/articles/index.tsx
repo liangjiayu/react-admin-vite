@@ -1,4 +1,9 @@
-import { LikeOutlined, LoadingOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
+import {
+  LikeOutlined,
+  LoadingOutlined,
+  MessageOutlined,
+  StarOutlined,
+} from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Button, Card, Col, Form, List, Row, Select, Tag } from 'antd';
 import type { DefaultOptionType } from 'antd/es/select';
@@ -140,7 +145,10 @@ const Articles: FC = () => {
             <FormItem name="category">
               <TagSelect expandable>
                 {categoryOptions.map((category) => (
-                  <TagSelect.Option value={category.value!} key={category.value}>
+                  <TagSelect.Option
+                    value={category.value!}
+                    key={category.value}
+                  >
                     {category.label}
                   </TagSelect.Option>
                 ))}
@@ -198,9 +206,9 @@ const Articles: FC = () => {
         style={{ marginTop: 24 }}
         variant="borderless"
         styles={{
-          body:{
+          body: {
             padding: '8px 32px 32px 32px',
-          }
+          },
         }}
       >
         <List<ListItemDataType>

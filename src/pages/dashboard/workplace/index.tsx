@@ -5,11 +5,11 @@ import { Avatar, Card, Col, List, Row, Skeleton, Statistic } from 'antd';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import type { FC } from 'react';
+import { Link } from 'react-router';
 import EditableLinkGroup from './components/EditableLinkGroup';
 import type { ActivitiesType, CurrentUser } from './data.d';
 import { fakeChartData, queryActivities, queryProjectNotice } from './service';
 import useStyles from './style.style';
-import { Link } from 'react-router';
 
 dayjs.extend(relativeTime);
 
@@ -91,9 +91,11 @@ const ExtraContent: FC<Record<string, any>> = () => {
 };
 const Workplace: FC = () => {
   const { styles } = useStyles();
-  const { loading: projectLoading, data: projectNotice = [] } = useRequest(queryProjectNotice);
+  const { loading: projectLoading, data: projectNotice = [] } =
+    useRequest(queryProjectNotice);
 
-  const { loading: activitiesLoading, data: activities = [] } = useRequest(queryActivities);
+  const { loading: activitiesLoading, data: activities = [] } =
+    useRequest(queryActivities);
   const { data } = useRequest(fakeChartData);
   const renderActivities = (item: ActivitiesType) => {
     const events = item.template.split(/@\{([^{}]*)\}/gi).map((key) => {
@@ -133,7 +135,8 @@ const Workplace: FC = () => {
       content={
         <PageHeaderContent
           currentUser={{
-            avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
+            avatar:
+              'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
             name: '吴彦祖',
             userid: '00000001',
             email: 'antdesign@alipay.com',
@@ -229,7 +232,11 @@ const Workplace: FC = () => {
               },
             }}
           >
-            <EditableLinkGroup onAdd={() => {}} links={links} linkElement={Link} />
+            <EditableLinkGroup
+              onAdd={() => {}}
+              links={links}
+              linkElement={Link}
+            />
           </Card>
           <Card
             style={{
@@ -284,7 +291,9 @@ const Workplace: FC = () => {
                     <Col span={12} key={`members-item-${item.id}`}>
                       <a>
                         <Avatar src={item.logo} size="small" />
-                        <span className={styles.member}>{item.member.substring(0, 3)}</span>
+                        <span className={styles.member}>
+                          {item.member.substring(0, 3)}
+                        </span>
                       </a>
                     </Col>
                   );

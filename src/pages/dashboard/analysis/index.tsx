@@ -18,6 +18,7 @@ import type { AnalysisData } from './data.d';
 import { fakeChartData } from './service';
 import useStyles from './style.style';
 import { getTimeDistance } from './utils/utils';
+
 type RangePickerValue = RangePickerProps<dayjs.Dayjs>['value'];
 type AnalysisProps = {
   dashboardAndanalysis: AnalysisData;
@@ -63,7 +64,10 @@ const Analysis: FC<AnalysisProps> = () => {
   if (salesType === 'all') {
     salesPieData = data?.salesTypeData;
   } else {
-    salesPieData = salesType === 'online' ? data?.salesTypeDataOnline : data?.salesTypeDataOffline;
+    salesPieData =
+      salesType === 'online'
+        ? data?.salesTypeDataOnline
+        : data?.salesTypeDataOffline;
   }
 
   const dropdownGroup = (
@@ -93,7 +97,8 @@ const Analysis: FC<AnalysisProps> = () => {
   const handleTabChange = (key: string) => {
     setCurrentTabKey(key);
   };
-  const activeKey = currentTabKey || (data?.offlineData[0] && data?.offlineData[0].name) || '';
+  const activeKey =
+    currentTabKey || (data?.offlineData[0] && data?.offlineData[0].name) || '';
   return (
     <GridContent>
       <>

@@ -1,5 +1,5 @@
-import { defineMock } from 'vite-plugin-mock-dev-server';
 import mockjs from 'mockjs';
+import { defineMock } from 'vite-plugin-mock-dev-server';
 
 const getTags = () => {
   return {
