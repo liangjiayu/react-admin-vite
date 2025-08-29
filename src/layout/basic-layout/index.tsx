@@ -1,6 +1,7 @@
 import { ProLayout } from '@ant-design/pro-components';
 import sideMenuConfig from '@config/side-menu-config';
 import sidebarSetting from '@config/sidebar-setting';
+import { useMemo } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router';
 import AccessControl from '@/components/access-control';
 import {
@@ -9,8 +10,6 @@ import {
   ThemeSwitch,
 } from '@/layout/widgets/right-content';
 import routes from '@/router/routes';
-import './styles.less';
-import { useMemo } from 'react';
 import { ThemeMode, useGlobalStore } from '@/store';
 import useTitleUpdater from '../widgets/hooks/use-title-updater';
 import { generateMenuItems } from './utils';
