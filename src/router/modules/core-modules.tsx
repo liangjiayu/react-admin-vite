@@ -237,4 +237,8 @@ export default [
       },
     ],
   },
+  {
+    path: '*',
+    Component: lazy(() => import('@/pages/exception/404')),
+  },
 ] as AppRouteProps[];
