@@ -9,15 +9,15 @@
 [![](https://badgen.net/static/Checked%20with/Biome/blue)](https://biomejs.dev)
 [![](https://badgen.net/badge/icon/Ant%20Design?icon=https://gw.alipayobjects.com/zos/antfincdn/Pp4WPgVDB3/KDpgvguMpGfqaHPjicRK.svg&label)](https://ant.design/)
 
-![](https://github.com/user-attachments/assets/54ac6ee8-ad59-4628-9513-e60d207d0ace)
+![](https://cdn.liangjiayu.cn/images/admin-preview.png)
 
-![](https://github.com/user-attachments/assets/eb7daad8-095f-4355-837d-513827b19ee7)
+![](https://cdn.liangjiayu.cn/images/admin-preview-dark.png)
 
 </div>
 
-- 基础版预览：https://admin.liangjiayu.cn
-- 完整版预览：https://admin-full.liangjiayu.cn
-- 使用文档：https://admin-docs.liangjiayu.cn
+- [预览基础版](https://admin.liangjiayu.cn)
+- [预览完整版](https://react-admin-vite-git-all-blocks-liangjiayus-projects.vercel.app)
+- [使用文档](https://admin-docs.liangjiayu.cn)
 
 ## 特性
 
