@@ -244,15 +244,14 @@ const Center: React.FC = () => {
                 <div className={styles.team}>
                   <div className={styles.teamTitle}>团队</div>
                   <Row gutter={36}>
-                    {currentUser.notice &&
-                      currentUser.notice.map((item) => (
-                        <Col key={item.id} lg={24} xl={12}>
-                          <a href={item.href}>
-                            <Avatar size="small" src={item.logo} />
-                            {item.member}
-                          </a>
-                        </Col>
-                      ))}
+                    {currentUser.notice?.map((item) => (
+                      <Col key={item.id} lg={24} xl={12}>
+                        <a href={item.href}>
+                          <Avatar size="small" src={item.logo} />
+                          {item.member}
+                        </a>
+                      </Col>
+                    ))}
                   </Row>
                 </div>
               </div>

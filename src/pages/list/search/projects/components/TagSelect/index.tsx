@@ -2,7 +2,7 @@ import { DownOutlined, UpOutlined } from '@ant-design/icons';
 import { Tag } from 'antd';
 import classNames from 'classnames';
 import { useMergedState } from 'rc-util';
-import React, { FC, useState } from 'react';
+import React, { type FC, useState } from 'react';
 import useStyles from './index.style';
 
 const { CheckableTag } = Tag;
@@ -19,7 +19,7 @@ const TagSelectOption: React.FC<TagSelectOptionProps> & {
   <CheckableTag
     checked={!!checked}
     key={value}
-    onChange={(state) => onChange && onChange(value, state)}
+    onChange={(state) => onChange?.(value, state)}
   >
     {children}
   </CheckableTag>
@@ -72,8 +72,7 @@ const TagSelect: FC<TagSelectProps> & {
   );
 
   const isTagSelectOption = (node: TagSelectOptionElement) =>
-    node &&
-    node.type &&
+    node?.type &&
     (node.type.isTagSelectOption ||
       node.type.displayName === 'TagSelectOption');
   const getAllTags = () => {

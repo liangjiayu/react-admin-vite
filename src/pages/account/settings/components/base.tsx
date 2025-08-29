@@ -14,7 +14,7 @@ import { queryCity, queryCurrent, queryProvince } from '../service';
 import useStyles from './index.style';
 
 const validatorPhone = (
-  rule: any,
+  _rule: any,
   value: string[],
   callback: (message?: string) => void,
 ) => {
