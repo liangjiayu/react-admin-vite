@@ -1,0 +1,50 @@
+// vite-rolldown 暂时不支持 @scope 语法，暂时使用嵌套模式
+// @scope (.css-case-container)
+
+.css-case-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1560px;
+
+  // :scope {
+  @media (min-width: 1600px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  // }
+
+  .grid-item {
+    position: relative;
+
+    .thumbnail {
+      background-color: #6b7280; // gray-500
+      border-radius: 6px;
+      padding-top: 58%; // 保持宽高比
+    }
+
+    .title {
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 500;
+      margin-top: 0.5rem;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      &:hover {
+        color: #155dfc;
+      }
+    }
+
+    .meta-info {
+      display: flex;
+      color: #9ca3af; // gray-400
+      font-size: 13px;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+  }
+}
