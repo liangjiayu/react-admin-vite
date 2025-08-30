@@ -1,7 +1,4 @@
-// vite-rolldown 暂时不支持 @scope 语法，暂时使用嵌套模式
-// @scope (.css-case-container)
-
-.css-case-container {
+@scope (.css-case-container) {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
@@ -9,11 +6,11 @@
   width: 100%;
   max-width: 1560px;
 
-  // :scope {
-  @media (min-width: 1600px) {
-    grid-template-columns: repeat(5, 1fr);
+  :scope {
+    @media (min-width: 1600px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
   }
-  // }
 
   .grid-item {
     position: relative;
