@@ -53,14 +53,14 @@ const CrudTable = () => {
       title: '创建时间',
       dataIndex: 'createdAt',
       valueType: 'dateTime',
-      hideInSearch: true,
+      search: false,
       width: 170,
     },
     {
       title: '更新时间',
       dataIndex: 'updatedAt',
       valueType: 'dateTime',
-      hideInSearch: true,
+      search: false,
       width: 170,
     },
     {

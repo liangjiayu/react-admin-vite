@@ -64,5 +64,15 @@ export default defineConfig(({ mode }) => {
     define: {
       __APP_INFO__: JSON.stringify(__APP_INFO__),
     },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            react: ['react', 'react-dom', 'react-router'],
+            antd: ['antd', '@ant-design/icons'],
+          },
+        },
+      },
+    },
   };
 });

@@ -42,7 +42,7 @@ const CrudTable = () => {
     {
       title: '文章内容',
       dataIndex: 'content',
-      hideInSearch: true,
+      search: false,
     },
     {
       title: '文章状态',
@@ -55,20 +55,20 @@ const CrudTable = () => {
     {
       title: '浏览量',
       dataIndex: 'viewCount',
-      hideInSearch: true,
+      search: false,
     },
     {
       title: '创建时间',
       dataIndex: 'createdAt',
       valueType: 'dateTime',
-      hideInSearch: true,
+      search: false,
       width: 170,
     },
     {
       title: '更新时间',
       dataIndex: 'updatedAt',
       valueType: 'dateTime',
-      hideInSearch: true,
+      search: false,
       width: 170,
     },
     {
