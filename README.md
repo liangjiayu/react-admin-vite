@@ -77,7 +77,7 @@ pnpm build
 
 ## 感谢
 
-感谢社区优秀的框架，以下是主要参考的框架1：
+感谢社区优秀的框架，以下是主要参考的框架：
 
 1. [vben-admin](https://github.com/vbenjs/vue-vben-admin)
 2. [ant-design-pro](https://github.com/ant-design/ant-design-pro)
