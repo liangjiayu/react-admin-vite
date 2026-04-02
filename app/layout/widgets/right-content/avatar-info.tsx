@@ -1,7 +1,6 @@
 import { LogoutOutlined } from '@ant-design/icons';
 import { Avatar, Dropdown } from 'antd';
 import { useNavigate } from 'react-router';
-import { FastApiServices } from '@/services';
 import { useGlobalStore } from '@/store/global-store';
 
 const AvatarInfo = () => {
@@ -12,7 +11,6 @@ const AvatarInfo = () => {
    * 退出登录，并且将当前的 url 保存
    */
   const loginOut = async () => {
-    await FastApiServices.FakeUserController.outLoginAccount();
     const { search, pathname } = window.location;
     const searchParams = new URLSearchParams({
       redirect: pathname + search,

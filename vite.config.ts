@@ -33,7 +33,7 @@ export default defineConfig({
     host: true,
     proxy: {
       '/api': {
-        target: 'https://fast-api.liangjiayu.cn',
+        target: 'https://fast-api-mock.netlify.app',
         changeOrigin: true,
       },
     },

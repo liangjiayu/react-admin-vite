@@ -13,11 +13,11 @@ import { useCrudConfigModal } from './components/crud-config-modal';
 /**
  * 业务页面的crud组件，需要根据实际情况，替换对应的函数
  *
- * CrudModelVo: 服务端的实体
- * getCrudVoByPage：分页查询接口
- * createCrudFunction：新建接口
- * updateCrudFunction：更新接口
- * deleteCrudFunction：删除接口
+ * Task: 服务端的实体
+ * getTasks：分页查询接口
+ * createTask：新建接口
+ * updateTask：更新接口
+ * deleteTask：删除接口
  */
 
 const CrudTable = () => {
@@ -30,13 +30,13 @@ const CrudTable = () => {
     },
   });
 
-  const handleDelete = (record: FastAPI.CrudModelVo) => {
+  const handleDelete = (record: FastAPI.Task) => {
     modal.confirm({
-      title: '确认删除该文章？',
-      content: `${record.title}`,
+      title: '确认删除该任务？',
+      content: `${record.name}`,
       onOk: async () => {
-        await FastApiServices.deleteCrudFunction({
-          id: record.id as number,
+        await FastApiServices.Task.deleteTask({
+          id: String(record.id),
         });
         message.success('提示：删除成功');
         actionRef.current?.reload();
@@ -44,10 +44,10 @@ const CrudTable = () => {
     });
   };
 
-  const columns: ProColumns<FastAPI.CrudModelVo>[] = [
+  const columns: ProColumns<FastAPI.Task>[] = [
     {
-      title: '标题',
-      dataIndex: 'title',
+      title: '任务名称',
+      dataIndex: 'name',
     },
     {
       title: '创建时间',
@@ -57,8 +57,8 @@ const CrudTable = () => {
       width: 170,
     },
     {
-      title: '更新时间',
-      dataIndex: 'updatedAt',
+      title: '截止时间',
+      dataIndex: 'deadline',
       valueType: 'dateTime',
       search: false,
       width: 170,
@@ -76,7 +76,7 @@ const CrudTable = () => {
                 crudConfigModal.setModalParams({
                   open: true,
                   modalActionType: ModalActionType.EDIT,
-                  title: `编辑 - ${record.title}`,
+                  title: `编辑 - ${record.name}`,
                   initialValues: record,
                 });
               }}
@@ -99,20 +99,20 @@ const CrudTable = () => {
 
   return (
     <>
-      <ProTable<FastAPI.CrudModelVo>
+      <ProTable<FastAPI.Task>
         columns={columns}
         actionRef={actionRef}
         rowKey="id"
         cardBordered
         request={async (params) => {
-          const res = await FastApiServices.getCrudByPage({
-            current: params.current,
-            pageSize: params.pageSize,
-            title: params?.title,
+          const res = await FastApiServices.Task.getTasks({
+            page: String(params.current),
+            pageSize: String(params.pageSize),
+            name: params?.name,
           });
 
           return {
-            data: res?.records || [],
+            data: res?.data || [],
             total: res?.total || 0,
           };
         }}

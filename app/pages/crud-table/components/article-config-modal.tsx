@@ -1,6 +1,6 @@
 import {
   ModalForm,
-  ProFormDigit,
+  ProFormDatePicker,
   ProFormSelect,
   ProFormText,
   ProFormTextArea,
@@ -14,7 +14,7 @@ export type ArticleConfigModalProps = {
   width?: number | string;
   title?: string;
   open: boolean;
-  initialValues?: FastAPI.SysArticle;
+  initialValues?: FastAPI.Task;
   modalActionType: ModalActionType;
   onClose: () => void;
   onFinish?: () => void;
@@ -38,19 +38,14 @@ const ArticleConfigModal: React.FC<ArticleConfigModalProps> = ({
   const isView = modalActionType === ModalActionType.VIEW;
 
   const onFinishByForm = async (values: any) => {
-    console.log('values', values);
-    console.log('isCreate', isCreate);
-
     try {
       if (isEdit) {
-        await FastApiServices.SysArticleController.updateSysArticle({
-          ...values,
-          id: initialValues?.id,
-        });
+        await FastApiServices.Task.updateTask(
+          { id: String(initialValues?.id) },
+          { ...values },
+        );
       } else {
-        await FastApiServices.SysArticleController.createSysArticle({
-          ...values,
-        });
+        await FastApiServices.Task.createTask({ ...values });
       }
     } catch {
       return false;
@@ -76,30 +71,48 @@ const ArticleConfigModal: React.FC<ArticleConfigModalProps> = ({
       onFinish={onFinishByForm}
     >
       <ProFormText
-        label="文章标题"
-        name="title"
-        placeholder="请输入文章标题"
+        label="任务名称"
+        name="name"
+        placeholder="请输入任务名称"
         rules={[{ required: true }]}
-      />
-      <ProFormTextArea
-        label="文章内容"
-        name="content"
-        placeholder="请输入文章内容"
       />
       <ProFormSelect
         label="状态"
         name="status"
         placeholder="请选择状态"
         options={[
-          { label: '上架', value: 1 },
-          { label: '下架', value: 2 },
+          { label: '待办', value: 'todo' },
+          { label: '进行中', value: 'progress' },
+          { label: '已完成', value: 'done' },
         ]}
         rules={[{ required: true }]}
       />
-      <ProFormDigit
-        label="浏览量"
-        name="viewCount"
-        placeholder="请输入浏览量"
+      <ProFormSelect
+        label="优先级"
+        name="priority"
+        placeholder="请选择优先级"
+        options={[
+          { label: '低', value: 'low' },
+          { label: '中', value: 'medium' },
+          { label: '高', value: 'high' },
+        ]}
+        rules={[{ required: true }]}
+      />
+      <ProFormText
+        label="负责人"
+        name="assignee"
+        placeholder="请输入负责人"
+        rules={[{ required: true }]}
+      />
+      <ProFormTextArea
+        label="任务描述"
+        name="description"
+        placeholder="请输入任务描述"
+      />
+      <ProFormDatePicker
+        label="截止时间"
+        name="deadline"
+        placeholder="请选择截止时间"
       />
     </ModalForm>
   );

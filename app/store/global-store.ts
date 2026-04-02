@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { FastApiServices } from '@/services';
 
 type GlobalState = {
-  currentUser: FastAPI.CurrentUserDTO | null;
+  currentUser: FastAPI.CurrentUser | null;
   themeMode: ThemeMode;
 };
 
@@ -23,8 +23,7 @@ export const useGlobalStore = create<GlobalState & GlobalActions>(
     themeMode: ThemeMode.Light,
 
     fetchUserInfo: async () => {
-      const userInfo =
-        await FastApiServices.FakeUserController.getCurrentUser();
+      const userInfo = await FastApiServices.User.getCurrentUser();
       set({ currentUser: userInfo });
     },
 

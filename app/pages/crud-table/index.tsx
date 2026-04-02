@@ -20,13 +20,13 @@ const CrudTable = () => {
     },
   });
 
-  const handleDelete = (record: FastAPI.SysArticle) => {
+  const handleDelete = (record: FastAPI.Task) => {
     modal.confirm({
-      title: '确认删除该文章？',
-      content: `${record.title}`,
+      title: '确认删除该任务？',
+      content: `${record.name}`,
       onOk: async () => {
-        await FastApiServices.SysArticleController.deleteSysArticle({
-          id: record.id as number,
+        await FastApiServices.Task.deleteTask({
+          id: String(record.id),
         });
         message.success('提示：删除成功');
         actionRef.current?.reload();
@@ -34,28 +34,40 @@ const CrudTable = () => {
     });
   };
 
-  const columns: ProColumns<FastAPI.SysArticle>[] = [
+  const columns: ProColumns<FastAPI.Task>[] = [
     {
-      title: '文章名称',
-      dataIndex: 'title',
+      title: '任务名称',
+      dataIndex: 'name',
     },
     {
-      title: '文章内容',
-      dataIndex: 'content',
-      search: false,
-    },
-    {
-      title: '文章状态',
+      title: '任务状态',
       dataIndex: 'status',
       valueEnum: {
-        1: { text: '上架', color: 'green' },
-        2: { text: '下架', color: 'red' },
+        todo: { text: '待办', status: 'Default' },
+        progress: { text: '进行中', status: 'Processing' },
+        done: { text: '已完成', status: 'Success' },
       },
     },
     {
-      title: '浏览量',
-      dataIndex: 'viewCount',
+      title: '优先级',
+      dataIndex: 'priority',
       search: false,
+      valueEnum: {
+        low: { text: '低', color: 'blue' },
+        medium: { text: '中', color: 'orange' },
+        high: { text: '高', color: 'red' },
+      },
+    },
+    {
+      title: '负责人',
+      dataIndex: 'assignee',
+      search: false,
+    },
+    {
+      title: '任务描述',
+      dataIndex: 'description',
+      search: false,
+      ellipsis: true,
     },
     {
       title: '创建时间',
@@ -65,8 +77,8 @@ const CrudTable = () => {
       width: 170,
     },
     {
-      title: '更新时间',
-      dataIndex: 'updatedAt',
+      title: '截止时间',
+      dataIndex: 'deadline',
       valueType: 'dateTime',
       search: false,
       width: 170,
@@ -84,7 +96,7 @@ const CrudTable = () => {
                 articleConfigModal.setModalParams({
                   open: true,
                   modalActionType: ModalActionType.EDIT,
-                  title: `编辑文章 - ${record.title}`,
+                  title: `编辑任务 - ${record.name}`,
                   initialValues: record,
                 });
               }}
@@ -107,22 +119,21 @@ const CrudTable = () => {
 
   return (
     <>
-      <ProTable<FastAPI.SysArticle>
+      <ProTable<FastAPI.Task>
         columns={columns}
         actionRef={actionRef}
         rowKey="id"
         cardBordered
         request={async (params) => {
-          const res =
-            await FastApiServices.SysArticleController.getSysArticleByPage({
-              current: params.current,
-              pageSize: params.pageSize,
-              title: params?.title,
-              status: params?.status,
-            });
+          const res = await FastApiServices.Task.getTasks({
+            page: String(params.current),
+            pageSize: String(params.pageSize),
+            name: params?.name,
+            status: params?.status,
+          });
 
           return {
-            data: res?.records || [],
+            data: res?.data || [],
             total: res?.total || 0,
           };
         }}
@@ -137,13 +148,13 @@ const CrudTable = () => {
               articleConfigModal.setModalParams({
                 open: true,
                 modalActionType: ModalActionType.CREATE,
-                title: '新建文章',
+                title: '新建任务',
               });
             }}
             type="primary"
             icon={<PlusOutlined />}
           >
-            新建文章
+            新建任务
           </Button>,
         ]}
       />

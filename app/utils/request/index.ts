@@ -27,13 +27,13 @@ instance.interceptors.request.use((config) => {
 instance.interceptors.response.use(
   (response) => {
     /** 根据服务端的数据结构，统一处理异常的情况 */
-    if (response?.data?.code !== 0) {
-      return Promise.reject(response.data);
-    }
-    /** 有data的数据结构，直接返回主体数据 */
-    if (response?.data?.data) {
-      return response.data.data;
-    }
+    // if (response?.data?.code !== 0) {
+    //   return Promise.reject(response.data);
+    // }
+    // /** 有data的数据结构，直接返回主体数据 */
+    // if (response?.data?.data) {
+    //   return response.data.data;
+    // }
     return response.data;
   },
   (error) => {

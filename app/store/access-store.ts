@@ -32,15 +32,10 @@ export const useAccessStore = create<AccessState & AccessActions>((set) => ({
     if (!currentUser) {
       return;
     }
-    if (currentUser?.access === 'admin') {
-      set({
-        isAdmin: true,
-        canReadFoo: true,
-        canUpdateFoo: true,
-      });
-    }
-    if (currentUser?.access === 'user') {
-      set({ isUser: true });
-    }
+    set({
+      isAdmin: true,
+      canReadFoo: true,
+      canUpdateFoo: true,
+    });
   },
 }));
