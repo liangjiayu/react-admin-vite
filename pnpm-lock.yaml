@@ -58,7 +58,7 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(antd@5.26.7(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@biomejs/biome':
-        specifier: 2.1.2
+        specifier: ^2.1.2
         version: 2.1.2
       '@react-router/dev':
         specifier: ^7.13.2
