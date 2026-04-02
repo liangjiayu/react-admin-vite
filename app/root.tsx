@@ -9,6 +9,7 @@ import zhCN from 'antd/locale/zh_CN';
 import { useMemo } from 'react';
 import { Outlet, Scripts, ScrollRestoration } from 'react-router';
 import CheckUpdates from '@/components/check-updates';
+import { SITE_APP_TITLE } from '@/constants';
 import { ThemeMode, useGlobalStore } from '@/store/global-store';
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -18,7 +19,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/logo.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>React Admin Vite</title>
+        <title>{SITE_APP_TITLE}</title>
       </head>
       <body>
         {children}
