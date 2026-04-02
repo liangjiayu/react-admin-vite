@@ -24,6 +24,6 @@
       "@config/*": ["config/*"]
     }
   },
-  "include": ["app", ".react-router"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["app", "config", ".react-router"],
+  "exclude": ["node_modules", "build"]
 }

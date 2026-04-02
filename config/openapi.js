@@ -27,11 +27,11 @@ const __rootDir = resolve(__filename, '../..');
  */
 generateService({
   // schemaPath: join(__rootDir, 'config/swagger.json'),
-  schemaPath: 'https://fast-api.liangjiayu.cn/api-docs',
+  schemaPath: 'https://fast-api-mock.netlify.app/doc',
   requestLibPath: "import request from '@/utils/request'",
   projectName: 'fast-api',
   namespace: 'FastAPI',
-  serversPath: join(__rootDir, 'src/services'),
-  dataFields: ['data'],
+  serversPath: join(__rootDir, 'app/services'),
+  // dataFields: ['data'],
   isCamelCase: false,
 });
