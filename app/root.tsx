@@ -6,7 +6,7 @@ import preferences from '@config/preferences';
 import { App as AntdApp, ConfigProvider, Spin, theme } from 'antd';
 import zhCN from 'antd/locale/zh_CN';
 import { useMemo } from 'react';
-import { Outlet, Scripts, ScrollRestoration } from 'react-router';
+import { Links, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import CheckUpdates from '@/components/check-updates';
 import { SITE_APP_TITLE } from '@/constants';
 import { ThemeMode, useGlobalStore } from '@/store/global-store';
@@ -19,6 +19,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <link rel="icon" type="image/svg+xml" href="/logo.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{SITE_APP_TITLE}</title>
+        <Links />
       </head>
       <body>
         {children}
