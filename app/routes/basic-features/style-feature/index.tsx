@@ -13,3 +13,7 @@ const StyleFeature = () => {
 };
 
 export default StyleFeature;
+
+export const handle = {
+  name: '样式功能',
+};

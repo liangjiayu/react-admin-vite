@@ -32,3 +32,7 @@ const IconFeature = () => {
 };
 
 export default IconFeature;
+
+export const handle = {
+  name: '图标功能',
+};

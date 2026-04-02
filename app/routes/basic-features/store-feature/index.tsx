@@ -28,3 +28,7 @@ const StoreFeature = () => {
 };
 
 export default StoreFeature;
+
+export const handle = {
+  name: '状态管理',
+};

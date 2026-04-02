@@ -8,19 +8,19 @@ import {
 export default [
   layout('routes/basic-layout.tsx', [
     index('routes/home.tsx'),
-    route('crud-table', 'routes/crud-table.tsx'),
+    route('crud-table', 'routes/crud-table/index.tsx'),
     route('admin-manager', 'routes/admin-manager.tsx'),
     route(
       'basic-features/icon-feature',
-      'routes/basic-features/icon-feature.tsx',
+      'routes/basic-features/icon-feature/index.tsx',
     ),
     route(
       'basic-features/style-feature',
-      'routes/basic-features/style-feature.tsx',
+      'routes/basic-features/style-feature/index.tsx',
     ),
     route(
       'basic-features/store-feature',
-      'routes/basic-features/store-feature.tsx',
+      'routes/basic-features/store-feature/index.tsx',
     ),
     route(
       'basic-features/access-feature',
