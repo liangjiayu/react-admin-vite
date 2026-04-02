@@ -1,16 +1,16 @@
 // @ts-ignore
 /* eslint-disable */
-import request from "@/utils/request";
+import request from '@/utils/request';
 
 /** 创建文章数据 POST /api/sysArticle/create */
 export async function createSysArticle(
   body: FastAPI.SysArticleSaveRequest,
-  options?: { [key: string]: any }
+  options?: { [key: string]: any },
 ) {
-  return request<number>("/api/sysArticle/create", {
-    method: "POST",
+  return request<number>('/api/sysArticle/create', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: body,
     ...(options || {}),
@@ -21,10 +21,10 @@ export async function createSysArticle(
 export async function deleteSysArticle(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: FastAPI.deleteSysArticleParams,
-  options?: { [key: string]: any }
+  options?: { [key: string]: any },
 ) {
-  return request<boolean>("/api/sysArticle/delete", {
-    method: "POST",
+  return request<boolean>('/api/sysArticle/delete', {
+    method: 'POST',
     params: {
       ...params,
     },
@@ -36,10 +36,10 @@ export async function deleteSysArticle(
 export async function getSysArticleByPage(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: FastAPI.getSysArticleByPageParams,
-  options?: { [key: string]: any }
+  options?: { [key: string]: any },
 ) {
-  return request<FastAPI.IPageSysArticle>("/api/sysArticle/pageList", {
-    method: "GET",
+  return request<FastAPI.IPageSysArticle>('/api/sysArticle/pageList', {
+    method: 'GET',
     params: {
       ...params,
     },
@@ -50,12 +50,12 @@ export async function getSysArticleByPage(
 /** 更新文章数据 POST /api/sysArticle/update */
 export async function updateSysArticle(
   body: FastAPI.SysArticleSaveRequest,
-  options?: { [key: string]: any }
+  options?: { [key: string]: any },
 ) {
-  return request<boolean>("/api/sysArticle/update", {
-    method: "POST",
+  return request<boolean>('/api/sysArticle/update', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: body,
     ...(options || {}),

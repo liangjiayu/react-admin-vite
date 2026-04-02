@@ -1,6 +1,12 @@
 import type { UIMatch } from 'react-router';
-import type { RouteMeta } from '@/router/types';
 import type { dependencies, devDependencies } from '../../package.json';
+
+type RouteMeta = {
+  name?: string;
+  access?: string;
+  hideInMenu?: boolean;
+  target?: '_blank' | '_self';
+};
 
 /**
  * 覆盖 useMatches的类型定义，使用项目的 RouteMeta

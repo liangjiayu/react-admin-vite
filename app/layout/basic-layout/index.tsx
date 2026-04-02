@@ -9,21 +9,14 @@ import {
   Question,
   ThemeSwitch,
 } from '@/layout/widgets/right-content';
-import routes from '@/router/routes';
 import { ThemeMode, useGlobalStore } from '@/store';
 import useTitleUpdater from '../widgets/hooks/use-title-updater';
-import { generateMenuItems } from './utils';
 
 const BasicLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { themeMode } = useGlobalStore();
   useTitleUpdater();
-
-  const routesMenuConfig = useMemo(() => {
-    /** 固定第一个为侧栏菜单的路由信息 */
-    return generateMenuItems(routes[0].children || []);
-  }, [routes]);
 
   const navTheme = useMemo(() => {
     if (themeMode === ThemeMode.Dark) {
@@ -45,13 +38,7 @@ const BasicLayout = () => {
       )}
       menu={{
         locale: false,
-        request: async () => {
-          /**
-           * 提供两种方式生成菜单数据，推荐使用 sideMenuConfig。
-           * 使用配置文件的方式，路由和菜单完全独立，可以保证菜单的灵活性。
-           */
-          return routesMenuConfig || sideMenuConfig;
-        },
+        request: async () => sideMenuConfig,
       }}
       actionsRender={() => {
         return (

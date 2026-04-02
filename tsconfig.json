@@ -20,10 +20,10 @@
 
     /* Others */
     "paths": {
-      "@/*": ["src/*"],
+      "@/*": ["app/*"],
       "@config/*": ["config/*"]
     }
   },
-  "include": ["src"],
+  "include": ["app", ".react-router"],
   "exclude": ["node_modules", "dist"]
 }
