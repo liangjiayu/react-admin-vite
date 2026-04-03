@@ -24,6 +24,11 @@ dist-ssr
 *.sln
 *.sw?
 
+# Environment variables
+.env
+.env.*
+!.env.example
+
 /coverage
 package-lock.json
 # pnpm-lock.yaml

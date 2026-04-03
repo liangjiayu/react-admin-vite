@@ -4,7 +4,6 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "bundler",
-    "baseUrl": "./",
 
     /* Linting */
     "strict": true,
@@ -20,8 +19,8 @@
 
     /* Others */
     "paths": {
-      "@/*": ["app/*"],
-      "@config/*": ["config/*"]
+      "@/*": ["./app/*"],
+      "@config/*": ["./config/*"]
     }
   },
   "include": ["app", "config", ".react-router"],
