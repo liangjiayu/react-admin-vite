@@ -1,11 +1,5 @@
 import type { MenuDataItem } from '@ant-design/pro-components';
-import {
-  House,
-  PencilRuler,
-  ShieldBan,
-  Table2,
-  TriangleAlert,
-} from 'lucide-react';
+import { House, PencilRuler, Table2, TriangleAlert } from 'lucide-react';
 
 const Side_Menu_Config: MenuDataItem[] = [
   {
@@ -19,33 +13,9 @@ const Side_Menu_Config: MenuDataItem[] = [
     icon: <Table2 size={16} />,
   },
   {
-    path: '/admin-manager',
-    name: '权限页面',
-    icon: <ShieldBan size={16} />,
-  },
-  {
-    path: '/basic-features',
-    name: '基础功能',
+    path: '/icon-feature',
+    name: '图标功能',
     icon: <PencilRuler size={16} />,
-    children: [
-      {
-        path: '/basic-features/icon-feature',
-        name: '图标功能',
-      },
-      {
-        path: '/basic-features/style-feature',
-        name: '样式功能',
-      },
-      {
-        path: '/basic-features/store-feature',
-        name: '状态管理',
-      },
-      {
-        path: 'https://www.baidu.com',
-        name: '外部链接',
-        target: '_blank',
-      },
-    ],
   },
   {
     path: '/exception',

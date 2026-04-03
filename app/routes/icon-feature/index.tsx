@@ -1,7 +1,6 @@
 import { Card } from 'antd';
 import AntIconCase from './components/ant-icon-case';
 import IconFontCase from './components/icon-font-case';
-import IconifyOnline from './components/iconify-online';
 import LocalSvgCase from './components/local-svg-case';
 import LucideCase from './components/lucide-case';
 
@@ -16,9 +15,6 @@ const IconFeature = () => {
           <AntIconCase />
           <LucideCase />
         </div>
-      </Card>
-      <Card title="第三方图标集" style={{ marginTop: 40 }}>
-        <IconifyOnline />
       </Card>
 
       <Card title="自定义图标" style={{ marginTop: 40 }}>
