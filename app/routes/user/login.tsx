@@ -89,7 +89,7 @@ const Login: React.FC = () => {
   const { styles } = useStyles();
   const [hasError, setHasError] = useState(false);
 
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = async () => {
     try {
       const defaultLoginSuccessMessage = '登录成功！';
       message.success(defaultLoginSuccessMessage);

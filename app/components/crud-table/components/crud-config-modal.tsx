@@ -33,7 +33,7 @@ const CrudConfigModal: React.FC<CrudConfigModalProps> = ({
 
   const isEdit = modalActionType === ModalActionType.EDIT;
 
-  const isCreate = modalActionType === ModalActionType.CREATE;
+  const _isCreate = modalActionType === ModalActionType.CREATE;
 
   const isView = modalActionType === ModalActionType.VIEW;
 

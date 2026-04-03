@@ -33,7 +33,7 @@ const ArticleConfigModal: React.FC<ArticleConfigModalProps> = ({
 
   const isEdit = modalActionType === ModalActionType.EDIT;
 
-  const isCreate = modalActionType === ModalActionType.CREATE;
+  const _isCreate = modalActionType === ModalActionType.CREATE;
 
   const isView = modalActionType === ModalActionType.VIEW;
 
