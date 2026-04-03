@@ -31,6 +31,9 @@ export default defineConfig({
   plugins: [reactRouter(), tailwindcss(), svgr()],
   server: {
     host: true,
+    warmup: {
+      clientFiles: ['./app/routes/**/*.tsx'],
+    },
     proxy: {
       '/api': {
         target: 'https://fast-api-mock.netlify.app',

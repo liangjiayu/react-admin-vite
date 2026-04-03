@@ -22,10 +22,6 @@ export default [
       'basic-features/store-feature',
       'routes/basic-features/store-feature/index.tsx',
     ),
-    route(
-      'basic-features/access-feature',
-      'routes/basic-features/access-feature.tsx',
-    ),
     route('exception/403', 'routes/exception/403.tsx'),
     route('exception/404', 'routes/exception/404.tsx'),
     route('exception/500', 'routes/exception/500.tsx'),

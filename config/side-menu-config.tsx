@@ -1,9 +1,3 @@
-import {
-  DashboardOutlined,
-  FormOutlined,
-  LockOutlined,
-  WarningOutlined,
-} from '@ant-design/icons';
 import type { MenuDataItem } from '@ant-design/pro-components';
 import {
   House,
@@ -45,10 +39,6 @@ const Side_Menu_Config: MenuDataItem[] = [
       {
         path: '/basic-features/store-feature',
         name: '状态管理',
-      },
-      {
-        path: '/basic-features/access-feature',
-        name: '权限功能',
       },
       {
         path: 'https://www.baidu.com',

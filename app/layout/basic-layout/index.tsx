@@ -32,7 +32,7 @@ const BasicLayout = () => {
       navTheme={navTheme}
       location={location}
       menuItemRender={(item, dom) => (
-        <Link to={item.path || ''} target={item.target}>
+        <Link to={item.path || ''} target={item.target} prefetch="intent">
           {dom}
         </Link>
       )}
