@@ -12,8 +12,7 @@ const customAntdTheme: ThemeConfig = {
     colorInfo: '#2166f7',
   },
   hashed: false,
-  cssVar: true,
-  // algorithm: theme.darkAlgorithm,
+  cssVar: {},
 };
 
 export default customAntdTheme;

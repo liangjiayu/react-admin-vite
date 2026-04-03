@@ -18,13 +18,8 @@ declare module 'react-router' {
 declare global {
   const __APP_INFO__: {
     pkg: {
-      name: string;
-      version: string;
-      license: string;
-      author: string;
       dependencies: typeof dependencies;
       devDependencies: typeof devDependencies;
     };
-    lastBuildTime: string;
   };
 }

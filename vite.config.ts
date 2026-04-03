@@ -1,19 +1,11 @@
 import { reactRouter } from '@react-router/dev/vite';
 import tailwindcss from '@tailwindcss/vite';
-import dayjs from 'dayjs';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
-import {
-  author,
-  dependencies,
-  devDependencies,
-  name,
-  version,
-} from './package.json';
+import { dependencies, devDependencies } from './package.json';
 
 const __APP_INFO__ = {
-  pkg: { dependencies, devDependencies, name, version, author },
-  lastBuildTime: dayjs(new Date()).format('YYYY-MM-DD HH:mm:ss'),
+  pkg: { dependencies, devDependencies },
 };
 
 /**

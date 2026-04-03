@@ -104,7 +104,7 @@ const CrudTable = () => {
               编辑
             </a>
             <a
-              className="!text-red-500"
+              className="text-red-500!"
               onClick={() => {
                 handleDelete(record);
               }}
