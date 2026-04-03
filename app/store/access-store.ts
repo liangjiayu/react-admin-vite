@@ -32,8 +32,9 @@ export const useAccessStore = create<AccessState & AccessActions>((set) => ({
     if (!currentUser) {
       return;
     }
+    const isAdmin = Math.random() > 0.5;
     set({
-      isAdmin: true,
+      isAdmin,
       canReadFoo: true,
       canUpdateFoo: true,
     });
