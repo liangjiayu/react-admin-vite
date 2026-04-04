@@ -4,7 +4,6 @@ import type { dependencies, devDependencies } from '../../package.json';
 type RouteMeta = {
   name?: string;
   access?: string;
-  hideInMenu?: boolean;
   target?: '_blank' | '_self';
 };
 

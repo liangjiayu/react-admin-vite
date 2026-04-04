@@ -14,6 +14,4 @@ export default () => (
   />
 );
 
-export const handle = {
-  hideInMenu: true,
-};
+export const handle = {};
