@@ -2,7 +2,7 @@ import { Result } from 'antd';
 import type React from 'react';
 import { useMemo } from 'react';
 import { useMatches } from 'react-router';
-import useAccess from '@/hooks/use-access';
+import { useAccessStore } from '@/store/access-store';
 
 type AccessControlProps = {
   children?: React.ReactNode;
@@ -13,7 +13,7 @@ type AccessControlProps = {
  */
 const AccessControl: React.FC<AccessControlProps> = ({ children }) => {
   const matches = useMatches();
-  const accessStore = useAccess();
+  const accessStore = useAccessStore();
   const currentRoute = matches[matches.length - 1];
 
   const hasAccess = useMemo(() => {
@@ -44,7 +44,7 @@ const AccessControl: React.FC<AccessControlProps> = ({ children }) => {
     );
   }
 
-  return <div>{children}</div>;
+  return <>{children}</>;
 };
 
 export default AccessControl;

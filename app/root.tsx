@@ -8,8 +8,8 @@ import zhCN from 'antd/locale/zh_CN';
 import { useMemo } from 'react';
 import { Links, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import CheckUpdates from '@/components/check-updates';
-import { SITE_APP_TITLE } from '@/constants';
-import { ThemeMode, useGlobalStore } from '@/store/global-store';
+import { SITE_APP_TITLE, ThemeMode } from '@/constants';
+import { useGlobalStore } from '@/store/global-store';
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

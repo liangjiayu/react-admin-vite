@@ -1,7 +1,8 @@
 import { MoonOutlined, SunOutlined } from '@ant-design/icons';
 import clsx from 'clsx';
 import { useMemo } from 'react';
-import { ThemeMode, useGlobalStore } from '@/store';
+import { ThemeMode } from '@/constants';
+import { useGlobalStore } from '@/store';
 
 const ThemeSwitch = () => {
   const { themeMode, setThemeMode } = useGlobalStore();

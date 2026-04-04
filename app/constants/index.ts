@@ -12,6 +12,12 @@ export enum ModalActionType {
   COPY = 'COPY',
 }
 
+/** 主题模式 */
+export enum ThemeMode {
+  Light = 'light',
+  Dark = 'dark',
+}
+
 /** 网站标题 */
 export const SITE_APP_TITLE = 'React Admin Vite';
 

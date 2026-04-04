@@ -6,7 +6,8 @@ import {
   ProFormTextArea,
 } from '@ant-design/pro-components';
 import { App as AntdApp } from 'antd';
-import React, { useState } from 'react';
+import type React from 'react';
+import { useState } from 'react';
 import { ModalActionType } from '@/constants';
 import { FastApiServices } from '@/services';
 

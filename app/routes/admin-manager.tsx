@@ -1,10 +1,10 @@
 import { Alert, Card, Tag, Typography } from 'antd';
-import useAccess from '@/hooks/use-access';
+import { useAccessStore } from '@/store/access-store';
 
 const { Title, Paragraph, Text } = Typography;
 
 const AdminManagerPage = () => {
-  const access = useAccess();
+  const access = useAccessStore();
 
   return (
     <div className="!space-y-5">

@@ -10,7 +10,6 @@ type AccessState = {
 
 type AccessActions = {
   initAccess: () => Promise<void>;
-  canDeleteFoo: (bool: boolean) => boolean;
 };
 
 export const useAccessStore = create<AccessState & AccessActions>((set) => ({
@@ -18,10 +17,6 @@ export const useAccessStore = create<AccessState & AccessActions>((set) => ({
   isUser: false,
   canReadFoo: false,
   canUpdateFoo: false,
-
-  canDeleteFoo: (bool) => {
-    return bool;
-  },
 
   /**
    * 初始化权限标识，依赖全局状态的属性。

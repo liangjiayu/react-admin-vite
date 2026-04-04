@@ -12,7 +12,8 @@ import {
 } from '@ant-design/pro-components';
 import { Alert, message } from 'antd';
 import { createStyles } from 'antd-style';
-import React, { useState } from 'react';
+import type React from 'react';
+import { useState } from 'react';
 import { SITE_LOGO_URL } from '@/constants';
 
 const useStyles = createStyles(({ token }) => {

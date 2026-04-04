@@ -4,13 +4,14 @@ import sidebarSetting from '@config/sidebar-setting';
 import { useMemo } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router';
 import AccessControl from '@/components/access-control';
+import { ThemeMode } from '@/constants';
+import useTitleUpdater from '@/hooks/use-title-updater';
 import {
   AvatarInfo,
   Question,
   ThemeSwitch,
 } from '@/layout/widgets/right-content';
-import { ThemeMode, useGlobalStore } from '@/store';
-import useTitleUpdater from '../widgets/hooks/use-title-updater';
+import { useGlobalStore } from '@/store';
 
 const BasicLayout = () => {
   const location = useLocation();

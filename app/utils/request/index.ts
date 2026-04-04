@@ -39,9 +39,12 @@ instance.interceptors.response.use(
   (error) => {
     const serverMsg = error?.response?.data?.message;
 
-    /** 状态码为401，用户未认证，跳转到登录页面 */
+    /** 状态码为401，用户未认证，跳转到登录页面并携带当前路径用于登录后回跳 */
     if (error.status === 401) {
-      window.location.href = '/user/login';
+      const redirect = encodeURIComponent(
+        window.location.pathname + window.location.search,
+      );
+      window.location.href = `/user/login?redirect=${redirect}`;
       return;
     }
     /** 优先使用业务错误消息 */

@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router';
-import useTitleUpdater from '../widgets/hooks/use-title-updater';
+import useTitleUpdater from '@/hooks/use-title-updater';
 
 const BlankLayout = () => {
   useTitleUpdater();
