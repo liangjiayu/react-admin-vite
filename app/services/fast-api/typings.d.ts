@@ -42,12 +42,12 @@ declare namespace FastAPI {
   };
 
   type deleteTaskParams = {
-    id: string;
+    id?: number;
   };
 
   type getTasksParams = {
-    page?: string;
-    pageSize?: string;
+    page?: number;
+    pageSize?: number;
     name?: string;
     status?: "todo" | "progress" | "done";
   };
@@ -105,6 +105,6 @@ declare namespace FastAPI {
   };
 
   type updateTaskParams = {
-    id: string;
+    id?: number;
   };
 }

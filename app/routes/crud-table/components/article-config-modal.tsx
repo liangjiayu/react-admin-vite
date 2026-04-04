@@ -10,6 +10,7 @@ import type React from 'react';
 import { useState } from 'react';
 import { ModalActionType } from '@/constants';
 import { FastApiServices } from '@/services';
+import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '../constants';
 
 export type ArticleConfigModalProps = {
   width?: number | string;
@@ -42,7 +43,7 @@ const ArticleConfigModal: React.FC<ArticleConfigModalProps> = ({
     try {
       if (isEdit) {
         await FastApiServices.Task.updateTask(
-          { id: String(initialValues?.id) },
+          { id: initialValues?.id },
           { ...values },
         );
       } else {
@@ -81,22 +82,14 @@ const ArticleConfigModal: React.FC<ArticleConfigModalProps> = ({
         label="状态"
         name="status"
         placeholder="请选择状态"
-        options={[
-          { label: '待办', value: 'todo' },
-          { label: '进行中', value: 'progress' },
-          { label: '已完成', value: 'done' },
-        ]}
+        options={STATUS_OPTIONS}
         rules={[{ required: true }]}
       />
       <ProFormSelect
         label="优先级"
         name="priority"
         placeholder="请选择优先级"
-        options={[
-          { label: '低', value: 'low' },
-          { label: '中', value: 'medium' },
-          { label: '高', value: 'high' },
-        ]}
+        options={PRIORITY_OPTIONS}
         rules={[{ required: true }]}
       />
       <ProFormText

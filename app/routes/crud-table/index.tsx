@@ -9,6 +9,7 @@ import { useRef } from 'react';
 import { ModalActionType } from '@/constants';
 import { FastApiServices } from '@/services';
 import { useArticleConfigModal } from './components/article-config-modal';
+import { PRIORITY_MAP, STATUS_MAP } from './constants';
 
 const CrudTable = () => {
   const actionRef = useRef<ActionType>(undefined);
@@ -26,7 +27,7 @@ const CrudTable = () => {
       content: `${record.name}`,
       onOk: async () => {
         await FastApiServices.Task.deleteTask({
-          id: String(record.id),
+          id: record.id,
         });
         message.success('提示：删除成功');
         actionRef.current?.reload();
@@ -42,21 +43,13 @@ const CrudTable = () => {
     {
       title: '任务状态',
       dataIndex: 'status',
-      valueEnum: {
-        todo: { text: '待办', status: 'Default' },
-        progress: { text: '进行中', status: 'Processing' },
-        done: { text: '已完成', status: 'Success' },
-      },
+      valueEnum: STATUS_MAP,
     },
     {
       title: '优先级',
       dataIndex: 'priority',
       search: false,
-      valueEnum: {
-        low: { text: '低', color: 'blue' },
-        medium: { text: '中', color: 'orange' },
-        high: { text: '高', color: 'red' },
-      },
+      valueEnum: PRIORITY_MAP,
     },
     {
       title: '负责人',
@@ -74,14 +67,14 @@ const CrudTable = () => {
       dataIndex: 'createdAt',
       valueType: 'dateTime',
       search: false,
-      width: 170,
+      width: 180,
     },
     {
       title: '截止时间',
       dataIndex: 'deadline',
       valueType: 'dateTime',
       search: false,
-      width: 170,
+      width: 180,
     },
     {
       title: '操作',
@@ -126,8 +119,8 @@ const CrudTable = () => {
         cardBordered
         request={async (params) => {
           const res = await FastApiServices.Task.getTasks({
-            page: String(params.current),
-            pageSize: String(params.pageSize),
+            page: params.current,
+            pageSize: params.pageSize,
             name: params?.name,
             status: params?.status,
           });
