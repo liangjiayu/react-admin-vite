@@ -4,14 +4,13 @@
 
 开箱即用的中后台前端解决方案，采用了最新的 React19、Vite、TypeScript 等主流技术开发。
 
-[![Preview Deploy](https://github.com/liangjiayu/react-admin-vite/actions/workflows/deploy.yml/badge.svg)](https://github.com/liangjiayu/react-admin-vite/actions/workflows/deploy.yml)
 [![](https://badgen.net/static/Build%20with/Vite/blue)](https://vite.dev)
 [![](https://badgen.net/static/Checked%20with/Biome/blue)](https://biomejs.dev)
 [![](https://badgen.net/badge/icon/Ant%20Design?icon=https://gw.alipayobjects.com/zos/antfincdn/Pp4WPgVDB3/KDpgvguMpGfqaHPjicRK.svg&label)](https://ant.design/)
 
-![](https://cdn.liangjiayu.cn/images/admin-preview.png)
+![](http://cdn.liangjiayu.cn/images/admin-preview.png)
 
-![](https://cdn.liangjiayu.cn/images/admin-preview-dark.png)
+![](http://cdn.liangjiayu.cn/images/admin-preview-dark.png)
 
 </div>
 
