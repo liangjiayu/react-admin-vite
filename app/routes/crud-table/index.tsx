@@ -8,14 +8,14 @@ import { App as AntdApp, Button, Space } from 'antd';
 import { useRef } from 'react';
 import { ModalActionType } from '@/constants';
 import { FastApiServices } from '@/services';
-import { useArticleConfigModal } from './components/article-config-modal';
+import { useTaskConfigModal } from './components/task-config-modal';
 import { PRIORITY_MAP, STATUS_MAP } from './constants';
 
 const CrudTable = () => {
   const actionRef = useRef<ActionType>(undefined);
   const { message, modal } = AntdApp.useApp();
 
-  const articleConfigModal = useArticleConfigModal({
+  const taskConfigModal = useTaskConfigModal({
     handleOnFinish() {
       actionRef.current?.reload();
     },
@@ -86,7 +86,7 @@ const CrudTable = () => {
           <Space>
             <a
               onClick={() => {
-                articleConfigModal.setModalParams({
+                taskConfigModal.setModalParams({
                   open: true,
                   modalActionType: ModalActionType.EDIT,
                   title: `编辑任务 - ${record.name}`,
@@ -138,7 +138,7 @@ const CrudTable = () => {
           <Button
             key="CREATE"
             onClick={() => {
-              articleConfigModal.setModalParams({
+              taskConfigModal.setModalParams({
                 open: true,
                 modalActionType: ModalActionType.CREATE,
                 title: '新建任务',
@@ -152,7 +152,7 @@ const CrudTable = () => {
         ]}
       />
 
-      {articleConfigModal.element}
+      {taskConfigModal.element}
     </>
   );
 };

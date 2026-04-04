@@ -12,7 +12,7 @@ import { ModalActionType } from '@/constants';
 import { FastApiServices } from '@/services';
 import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '../constants';
 
-export type ArticleConfigModalProps = {
+export type TaskConfigModalProps = {
   width?: number | string;
   title?: string;
   open: boolean;
@@ -22,7 +22,7 @@ export type ArticleConfigModalProps = {
   onFinish?: () => void;
 };
 
-const ArticleConfigModal: React.FC<ArticleConfigModalProps> = ({
+const TaskConfigModal: React.FC<TaskConfigModalProps> = ({
   width = 600,
   title,
   open = false,
@@ -35,19 +35,15 @@ const ArticleConfigModal: React.FC<ArticleConfigModalProps> = ({
 
   const isEdit = modalActionType === ModalActionType.EDIT;
 
-  const _isCreate = modalActionType === ModalActionType.CREATE;
-
-  const isView = modalActionType === ModalActionType.VIEW;
-
   const onFinishByForm = async (values: any) => {
     try {
       if (isEdit) {
         await FastApiServices.Task.updateTask(
           { id: initialValues?.id },
-          { ...values },
+          values,
         );
       } else {
-        await FastApiServices.Task.createTask({ ...values });
+        await FastApiServices.Task.createTask(values);
       }
     } catch {
       return false;
@@ -62,14 +58,11 @@ const ArticleConfigModal: React.FC<ArticleConfigModalProps> = ({
       title={title}
       width={width}
       open={open}
-      disabled={isView}
       modalProps={{
         destroyOnHidden: true,
         onCancel: onClose,
       }}
-      initialValues={{
-        ...initialValues,
-      }}
+      initialValues={initialValues}
       onFinish={onFinishByForm}
     >
       <ProFormText
@@ -112,42 +105,39 @@ const ArticleConfigModal: React.FC<ArticleConfigModalProps> = ({
   );
 };
 
-export default ArticleConfigModal;
+export default TaskConfigModal;
 
-export function useArticleConfigModal(_params?: {
+export function useTaskConfigModal(_params?: {
   /** 弹窗关闭回调 */
   handleOnClose?: () => void;
   /** 弹窗完成回调 */
   handleOnFinish?: () => void;
 }) {
-  /** 弹窗状态 */
   const [modalParams, setModalParams] = useState<
-    Omit<ArticleConfigModalProps, 'onClose' | 'onFinish'>
+    Omit<TaskConfigModalProps, 'onClose' | 'onFinish'>
   >({
     open: false,
     modalActionType: ModalActionType.CREATE,
   });
 
   const element = (
-    <>
-      <ArticleConfigModal
-        {...modalParams}
-        onClose={() => {
-          setModalParams({
-            ...modalParams,
-            open: false,
-          });
-          _params?.handleOnClose?.();
-        }}
-        onFinish={() => {
-          setModalParams({
-            ...modalParams,
-            open: false,
-          });
-          _params?.handleOnFinish?.();
-        }}
-      />
-    </>
+    <TaskConfigModal
+      {...modalParams}
+      onClose={() => {
+        setModalParams({
+          ...modalParams,
+          open: false,
+        });
+        _params?.handleOnClose?.();
+      }}
+      onFinish={() => {
+        setModalParams({
+          ...modalParams,
+          open: false,
+        });
+        _params?.handleOnFinish?.();
+      }}
+    />
   );
 
   return {
