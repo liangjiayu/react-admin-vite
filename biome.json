@@ -9,11 +9,11 @@
     "ignoreUnknown": true,
     "includes": [
       "**",
-      "!app/services/**",
-      "!mock/**",
-      "!build/**",
-      "!public/**",
-      "!node_modules/**"
+      "!app/services",
+      "!mock",
+      "!build",
+      "!public",
+      "!node_modules"
     ]
   },
   "formatter": {
@@ -24,6 +24,9 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "complexity": {
+        "noImportantStyles": "off"
+      },
       "style": {
         "noNonNullAssertion": "off",
         "useSelfClosingElements": "warn"
@@ -60,6 +63,9 @@
   "css": {
     "formatter": {
       "quoteStyle": "single"
+    },
+    "parser": {
+      "tailwindDirectives": true
     }
   },
   "assist": {
