@@ -8,23 +8,14 @@ import { App as AntdApp, Button, Space } from 'antd';
 import { useRef } from 'react';
 import { ModalActionType } from '@/constants';
 import { FastApiServices } from '@/services';
-import { useCrudConfigModal } from './components/crud-config-modal';
-
-/**
- * 业务页面的crud组件，需要根据实际情况，替换对应的函数
- *
- * Task: 服务端的实体
- * getTasks：分页查询接口
- * createTask：新建接口
- * updateTask：更新接口
- * deleteTask：删除接口
- */
+import { useTaskConfigModal } from './components/task-config-modal';
+import { PRIORITY_MAP, STATUS_MAP } from './constants';
 
 const CrudTable = () => {
   const actionRef = useRef<ActionType>(undefined);
   const { message, modal } = AntdApp.useApp();
 
-  const crudConfigModal = useCrudConfigModal({
+  const taskConfigModal = useTaskConfigModal({
     handleOnFinish() {
       actionRef.current?.reload();
     },
@@ -36,7 +27,7 @@ const CrudTable = () => {
       content: `${record.name}`,
       onOk: async () => {
         await FastApiServices.Task.deleteTask({
-          id: String(record.id),
+          id: record.id,
         });
         message.success('提示：删除成功');
         actionRef.current?.reload();
@@ -50,18 +41,40 @@ const CrudTable = () => {
       dataIndex: 'name',
     },
     {
+      title: '任务状态',
+      dataIndex: 'status',
+      valueEnum: STATUS_MAP,
+    },
+    {
+      title: '优先级',
+      dataIndex: 'priority',
+      search: false,
+      valueEnum: PRIORITY_MAP,
+    },
+    {
+      title: '负责人',
+      dataIndex: 'assignee',
+      search: false,
+    },
+    {
+      title: '任务描述',
+      dataIndex: 'description',
+      search: false,
+      ellipsis: true,
+    },
+    {
       title: '创建时间',
       dataIndex: 'createdAt',
-      valueType: 'date',
+      valueType: 'dateTime',
       search: false,
-      width: 170,
+      width: 180,
     },
     {
       title: '截止时间',
       dataIndex: 'deadline',
       valueType: 'dateTime',
       search: false,
-      width: 170,
+      width: 180,
     },
     {
       title: '操作',
@@ -73,10 +86,10 @@ const CrudTable = () => {
           <Space>
             <a
               onClick={() => {
-                crudConfigModal.setModalParams({
+                taskConfigModal.setModalParams({
                   open: true,
                   modalActionType: ModalActionType.EDIT,
-                  title: `编辑 - ${record.name}`,
+                  title: `编辑任务 - ${record.name}`,
                   initialValues: record,
                 });
               }}
@@ -84,7 +97,7 @@ const CrudTable = () => {
               编辑
             </a>
             <a
-              className="!text-red-500"
+              className="text-red-500!"
               onClick={() => {
                 handleDelete(record);
               }}
@@ -106,9 +119,10 @@ const CrudTable = () => {
         cardBordered
         request={async (params) => {
           const res = await FastApiServices.Task.getTasks({
-            page: String(params.current),
-            pageSize: String(params.pageSize),
+            page: params.current,
+            pageSize: params.pageSize,
             name: params?.name,
+            status: params?.status,
           });
 
           return {
@@ -117,29 +131,34 @@ const CrudTable = () => {
           };
         }}
         search={{
+          labelWidth: 120,
           defaultCollapsed: false,
         }}
         toolBarRender={() => [
           <Button
             key="CREATE"
             onClick={() => {
-              crudConfigModal.setModalParams({
+              taskConfigModal.setModalParams({
                 open: true,
                 modalActionType: ModalActionType.CREATE,
-                title: '新建',
+                title: '新建任务',
               });
             }}
             type="primary"
             icon={<PlusOutlined />}
           >
-            新建
+            新建任务
           </Button>,
         ]}
       />
 
-      {crudConfigModal.element}
+      {taskConfigModal.element}
     </>
   );
 };
 
 export default CrudTable;
+
+export const handle = {
+  name: 'CRUD表格',
+};
