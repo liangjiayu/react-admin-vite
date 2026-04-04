@@ -14,7 +14,7 @@
 
 </div>
 
-- [预览基础版本](https://admin.liangjiayu.cn)
+- [预览基础版本](https://react-admin-vite.vercel.app)
 - [预览演示版本](https://react-admin-vite-git-all-blocks-liangjiayus-projects.vercel.app)
 - [使用文档](https://admin-docs.liangjiayu.cn)
 
