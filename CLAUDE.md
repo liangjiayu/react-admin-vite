@@ -52,6 +52,7 @@ pnpm openapi      # 从 Swagger 文档生成 API 服务代码
 
 - 共享组件在 `app/components/`，页面在 `app/routes/`
 - CRUD 页面基于 Pro Components 的 ProTable
+- 使用 `/crud-module-generator` 可快速生成 CRUD 模块
 
 ## Code Style
 
