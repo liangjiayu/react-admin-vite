@@ -54,6 +54,13 @@ pnpm openapi      # 从 Swagger 文档生成 API 服务代码
 - CRUD 页面基于 Pro Components 的 ProTable
 - 使用 `/crud-module-generator` 可快速生成 CRUD 模块
 
+### 新增路由
+
+新增页面时需要同步修改：
+1. `app/routes/` 下新建页面组件，通过 `handle` 导出 `name` 和 `access`
+2. `app/routes.ts` 中添加路由配置
+3. `config/side-menu-config.tsx` 中添加菜单项（图标使用 lucide-react）
+
 ## Code Style
 
 - **Biome** 负责格式化和 lint（非 ESLint/Prettier），配置在 `biome.json`
@@ -64,8 +71,12 @@ pnpm openapi      # 从 Swagger 文档生成 API 服务代码
 ### 命名规范
 
 - 文件夹和文件统一使用 **kebab-case**（如 `global-store.ts`、`access-control/`）
+- React 组件函数使用 **PascalCase**，Props 类型统一命名为 `Props`
+- 自定义 Hook 命名为 `use{Name}`，如 `useTitleUpdater`、`useTaskConfigModal`
+- 常量枚举映射使用 **UPPER_SNAKE_CASE**，如 `STATUS_MAP`、`PRIORITY_MAP`
 
 ### 注释规范
 
 - 只写重要的、有意义的注释，避免显而易见的废话注释
 - 辅助工具类函数建议都写注释说明其用途
+
