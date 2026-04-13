@@ -1,5 +1,8 @@
 /* tailwind样式 */
 @import './tailwind.css';
 
+/* nprogress样式 */
+@import 'nprogress/nprogress.css';
+
 /* 全局样式 */
 @import './global.css';

@@ -5,3 +5,13 @@
 .ui-table-fixed table {
   table-layout: fixed !important;
 }
+
+#nprogress .bar {
+  background: #2166f7;
+}
+
+#nprogress .peg {
+  box-shadow:
+    0 0 10px #2166f7,
+    0 0 5px #2166f7;
+}

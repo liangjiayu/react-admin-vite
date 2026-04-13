@@ -9,6 +9,7 @@ import { useMemo } from 'react';
 import { Links, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import CheckUpdates from '@/components/check-updates';
 import { SITE_APP_TITLE, ThemeMode } from '@/constants';
+import { useNProgress } from '@/hooks';
 import { useGlobalStore } from '@/store/global-store';
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -38,12 +39,13 @@ export function HydrateFallback() {
         <div className="mt-2 text-[15px] text-gray-500">资源加载中...</div>
       }
     >
-      <div className="h-[100vh]" />
+      <div className="h-screen" />
     </Spin>
   );
 }
 
 export default function Root() {
+  useNProgress();
   const { themeMode } = useGlobalStore();
 
   const themeAlgorithm = useMemo(() => {
