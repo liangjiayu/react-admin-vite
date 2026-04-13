@@ -1,4 +1,4 @@
-<h1 align="center">React Admin Vite</h1>
+<h1 align="center">Antd Admin Template</h1>
 
 <div align="center">
 
@@ -14,8 +14,8 @@
 
 </div>
 
-- [预览基础版本](https://react-admin-vite.vercel.app)
-- [预览演示版本](https://react-admin-vite-git-all-blocks-liangjiayus-projects.vercel.app)
+- [预览基础版本](https://antd-admin-template.vercel.app)
+- [预览演示版本](https://antd-admin-template-git-all-blocks-liangjiayus-projects.vercel.app)
 - [使用文档](https://admin-docs.liangjiayu.cn)
 
 ## 特性
@@ -33,13 +33,13 @@
 可以使用 tiged 工具快速创建项目。
 
 ```bash
-npx tiged liangjiayu/react-admin-vite react-admin-vite
+npx tiged liangjiayu/antd-admin-template antd-admin-template
 ```
 
 使用 pnpm 安装依赖
 
 ```bash
-cd react-admin-vite
+cd antd-admin-template
 # 安装项目的pnpm
 corepack enable
 # 安装依赖
@@ -70,9 +70,9 @@ pnpm build
 
 欢迎任何类型的贡献，以下是您可以为该项目做出贡献的一些示例：
 
-- 在日常工作中使用 React Admin Vite。
-- 通过 [Issue](https://github.com/liangjiayu/react-admin-vite/issues) 报告 bug 或提出问题。
-- 提交 [Pull Request](https://github.com/liangjiayu/react-admin-vite/pulls) 改进 项目 的代码。
+- 在日常工作中使用 Antd Admin Template。
+- 通过 [Issue](https://github.com/liangjiayu/antd-admin-template/issues) 报告 bug 或提出问题。
+- 提交 [Pull Request](https://github.com/liangjiayu/antd-admin-template/pulls) 改进 项目 的代码。
 
 ## 感谢
 

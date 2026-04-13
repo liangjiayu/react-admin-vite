@@ -118,7 +118,7 @@ const Login: React.FC = () => {
             maxWidth: '75vw',
           }}
           logo={<img alt="logo" src={SITE_LOGO_URL} />}
-          title="React Admin"
+          title="Antd Admin"
           subTitle={'一个基于 React 的中后台管理系统解决方案'}
           initialValues={{
             autoLogin: true,
