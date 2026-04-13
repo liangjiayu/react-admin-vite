@@ -4,13 +4,23 @@ import './components/icon-font';
 import customAntdTheme from '@config/antd-theme';
 import preferences from '@config/preferences';
 import { App as AntdApp, ConfigProvider, Spin, theme } from 'antd';
-import zhCN from 'antd/locale/zh_CN';
+import zhCNLocale from 'antd/locale/zh_CN';
+import dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn';
 import { useMemo } from 'react';
 import { Links, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import CheckUpdates from '@/components/check-updates';
 import { SITE_APP_TITLE, ThemeMode } from '@/constants';
 import { useNProgress } from '@/hooks';
 import { useGlobalStore } from '@/store/global-store';
+
+dayjs.locale('zh-cn');
+
+/**
+ * Vite 生产模式下 CJS locale 文件会多包一层 default，需要兼容处理
+ * @see https://github.com/ant-design/ant-design/issues/39045
+ */
+const zhCN = (zhCNLocale as any).default || zhCNLocale;
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
