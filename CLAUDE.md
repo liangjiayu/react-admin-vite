@@ -36,6 +36,14 @@ pnpm openapi      # 从 Swagger 文档生成 API 服务代码
 - API 服务由 `@umijs/openapi` 自动生成到 `app/services/fast-api/`，不要手动修改
 - OpenAPI 配置在 `config/openapi.js`，数据源为 mock API
 
+### 数据请求 (react-query)
+
+- 工具与 Provider：`app/utils/query-client.ts`（已在 `root.tsx` 挂载）
+- 查询用 `useQuery` 封装 hook，放模块目录（如 `app/routes/task-card/hooks.ts`）
+- Query Key 导出前缀常量：`export const TASK_LIST_KEY = ['task', 'list'] as const`
+- 提交（增删改）写普通 `async` 函数，末尾 `refreshQuery(TASK_LIST_KEY)` 刷新
+- 需要乐观更新、跨组件复用同一变更逻辑时，才使用 `useMutation`
+
 ### 权限模型
 
 - 路由级：`handle.access` 指定所需权限 key
