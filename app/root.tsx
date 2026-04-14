@@ -3,6 +3,8 @@ import './components/icon-font';
 
 import customAntdTheme from '@config/antd-theme';
 import preferences from '@config/preferences';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { App as AntdApp, ConfigProvider, Spin, theme } from 'antd';
 import zhCNLocale from 'antd/locale/zh_CN';
 import dayjs from 'dayjs';
@@ -13,6 +15,7 @@ import CheckUpdates from '@/components/check-updates';
 import { SITE_APP_TITLE, ThemeMode } from '@/constants';
 import { useNProgress } from '@/hooks';
 import { useGlobalStore } from '@/store/global-store';
+import { queryClient } from '@/utils/query-client';
 
 dayjs.locale('zh-cn');
 
@@ -24,7 +27,7 @@ const zhCN = (zhCNLocale as any).default || zhCNLocale;
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh">
+    <html lang="zh-CN">
       <head>
         <meta charSet="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/logo.svg" />
@@ -70,14 +73,17 @@ export default function Root() {
       theme={{ ...customAntdTheme, algorithm: themeAlgorithm }}
       locale={zhCN}
     >
-      <AntdApp>
-        <Outlet />
-        {preferences.enableCheckUpdates && (
-          <CheckUpdates
-            checkUpdatesInterval={preferences.checkUpdatesInterval}
-          />
-        )}
-      </AntdApp>
+      <QueryClientProvider client={queryClient}>
+        <AntdApp>
+          <Outlet />
+          {preferences.enableCheckUpdates && (
+            <CheckUpdates
+              checkUpdatesInterval={preferences.checkUpdatesInterval}
+            />
+          )}
+        </AntdApp>
+        {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
+      </QueryClientProvider>
     </ConfigProvider>
   );
 }

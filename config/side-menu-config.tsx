@@ -1,6 +1,7 @@
 import type { MenuDataItem } from '@ant-design/pro-components';
 import {
   House,
+  LayoutGrid,
   PencilRuler,
   Shield,
   Table2,
@@ -17,6 +18,11 @@ const Side_Menu_Config: MenuDataItem[] = [
     path: '/crud-table',
     name: 'CRUD表格',
     icon: <Table2 />,
+  },
+  {
+    path: '/task-card',
+    name: '任务卡片',
+    icon: <LayoutGrid />,
   },
   {
     path: '/icon-feature',
