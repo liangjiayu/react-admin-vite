@@ -32,7 +32,7 @@ pnpm openapi      # 从 Swagger 文档生成 API 服务代码
 
 ### API 层
 
-- Axios 实例在 `app/utils/request/index.ts`，自动处理 401 跳转和错误提示
+- Axios 实例在 `app/utils/request.ts`，自动处理 401 跳转和错误提示
 - API 服务由 `@umijs/openapi` 自动生成到 `app/services/fast-api/`，不要手动修改
 - OpenAPI 配置在 `config/openapi.js`，数据源为 mock API
 
