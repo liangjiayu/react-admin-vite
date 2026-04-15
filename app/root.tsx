@@ -5,7 +5,7 @@ import customAntdTheme from '@config/antd-theme';
 import preferences from '@config/preferences';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { App as AntdApp, ConfigProvider, Spin, theme } from 'antd';
+import { App as AntdApp, ConfigProvider, theme } from 'antd';
 import zhCNLocale from 'antd/locale/zh_CN';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
@@ -46,14 +46,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export function HydrateFallback() {
   return (
-    <Spin
-      size="large"
-      description={
-        <div className="mt-2 text-[15px] text-gray-500">资源加载中...</div>
-      }
-    >
-      <div className="h-screen" />
-    </Spin>
+    <div className="flex h-screen flex-col items-center justify-center gap-3">
+      <div className="relative h-12 w-12">
+        <div className="absolute inset-0 animate-spin rounded-full border-4 border-transparent border-t-blue-500" />
+        <div className="absolute inset-2 animate-[spin_1.5s_linear_infinite_reverse] rounded-full border-4 border-transparent border-t-blue-300" />
+      </div>
+      <div className="text-[15px] text-gray-500">资源加载中...</div>
+    </div>
   );
 }
 
