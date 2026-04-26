@@ -90,16 +90,18 @@ const Login: React.FC = () => {
   const { styles } = useStyles();
   const [hasError, setHasError] = useState(false);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (_values: {
+    username?: string;
+    password?: string;
+    autoLogin?: boolean;
+  }) => {
     try {
-      const defaultLoginSuccessMessage = '登录成功！';
-      message.success(defaultLoginSuccessMessage);
+      message.success('登录成功！');
       const urlParams = new URL(window.location.href).searchParams;
       window.location.href = urlParams.get('redirect') || '/';
     } catch (error) {
-      const defaultLoginFailureMessage = '登录失败，请重试！';
-      console.log(error);
-      message.error(defaultLoginFailureMessage);
+      console.error(error);
+      message.error('登录失败，请重试！');
       setHasError(true);
     }
   };

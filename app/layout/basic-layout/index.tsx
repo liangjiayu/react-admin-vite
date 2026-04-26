@@ -16,7 +16,7 @@ import { useGlobalStore } from '@/store';
 const BasicLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { themeMode } = useGlobalStore();
+  const themeMode = useGlobalStore((s) => s.themeMode);
   useTitleUpdater();
 
   const navTheme = useMemo(() => {

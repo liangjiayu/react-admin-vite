@@ -1,30 +1,25 @@
 import { MoonOutlined, SunOutlined } from '@ant-design/icons';
 import clsx from 'clsx';
-import { useMemo } from 'react';
+import { useEffect } from 'react';
 import { ThemeMode } from '@/constants';
 import { useGlobalStore } from '@/store';
 
 const ThemeSwitch = () => {
-  const { themeMode, setThemeMode } = useGlobalStore();
+  const themeMode = useGlobalStore((s) => s.themeMode);
+  const setThemeMode = useGlobalStore((s) => s.setThemeMode);
+  const isDarkMode = themeMode === ThemeMode.Dark;
 
-  const isDarkMode = useMemo(() => {
-    if (themeMode === ThemeMode.Light) {
-      return false;
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isDarkMode) {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
     }
-    if (themeMode === ThemeMode.Dark) {
-      return true;
-    }
-    return false;
-  }, [themeMode]);
+  }, [isDarkMode]);
 
   const onChangeBySwitch = () => {
-    if (themeMode === ThemeMode.Light) {
-      document.documentElement.classList.add('dark');
-      setThemeMode(ThemeMode.Dark);
-    } else {
-      document.documentElement.classList.remove('dark');
-      setThemeMode(ThemeMode.Light);
-    }
+    setThemeMode(isDarkMode ? ThemeMode.Light : ThemeMode.Dark);
   };
 
   return (

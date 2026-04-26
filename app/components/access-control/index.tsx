@@ -1,6 +1,5 @@
 import { Result } from 'antd';
 import type React from 'react';
-import { useMemo } from 'react';
 import { useMatches } from 'react-router';
 import { useAccessStore } from '@/store/access-store';
 
@@ -13,30 +12,16 @@ type AccessControlProps = {
  */
 const AccessControl: React.FC<AccessControlProps> = ({ children }) => {
   const matches = useMatches();
-  const accessStore = useAccessStore();
   const currentRoute = matches[matches.length - 1];
+  const requiredPermission = currentRoute.handle?.access as string | undefined;
 
-  const hasAccess = useMemo(() => {
-    // 获取路由要求的权限（如 'isAdmin'）
-    const requiredPermission = currentRoute.handle?.access as
-      | keyof typeof accessStore
-      | undefined;
-
-    // 如果路由未设置权限要求，默认允许访问
-    if (!requiredPermission) {
-      return true;
+  const hasAccess = useAccessStore((s) => {
+    if (!requiredPermission) return true;
+    if (requiredPermission in s) {
+      return Boolean(s[requiredPermission as keyof typeof s]);
     }
-
-    /**
-     * 检查用户是否有该权限（如 accessStore.isAdmin）
-     * true=有权限，false=无权限
-     */
-    if (requiredPermission in accessStore) {
-      return accessStore[requiredPermission];
-    }
-
     return true;
-  }, [currentRoute, accessStore]);
+  });
 
   if (!hasAccess) {
     return (

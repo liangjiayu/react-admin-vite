@@ -58,7 +58,7 @@ export function HydrateFallback() {
 
 export default function Root() {
   useNProgress();
-  const { themeMode } = useGlobalStore();
+  const themeMode = useGlobalStore((s) => s.themeMode);
 
   const themeAlgorithm = useMemo(() => {
     if (themeMode === ThemeMode.Dark) {

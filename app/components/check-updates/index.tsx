@@ -69,8 +69,6 @@ const CheckUpdates: React.FC<CheckUpdatesProps> = ({
         redirect: 'manual',
       });
 
-      console.log('response', response.headers.get('etag'));
-
       return (
         response.headers.get('etag') || response.headers.get('last-modified')
       );

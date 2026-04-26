@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { useMatches } from 'react-router';
 
 /**
@@ -6,12 +5,5 @@ import { useMatches } from 'react-router';
  */
 export function useCurrentRoute() {
   const matches = useMatches();
-
-  const currentRoute = useMemo(() => {
-    const match = matches[matches.length - 1];
-
-    return match;
-  }, [matches]);
-
-  return currentRoute;
+  return matches[matches.length - 1];
 }

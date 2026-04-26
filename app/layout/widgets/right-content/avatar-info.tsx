@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import { useGlobalStore } from '@/store/global-store';
 
 const AvatarInfo = () => {
-  const { currentUser } = useGlobalStore();
+  const currentUser = useGlobalStore((s) => s.currentUser);
   const navigate = useNavigate();
 
   /**
