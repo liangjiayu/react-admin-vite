@@ -14,13 +14,14 @@ import { Alert, message } from 'antd';
 import { createStyles } from 'antd-style';
 import type React from 'react';
 import { useState } from 'react';
-import { SITE_LOGO_URL } from '@/constants';
+import { SITE_LOGO_URL, ThemeMode } from '@/constants';
+import { useGlobalStore } from '@/store/global-store';
 
-const useStyles = createStyles(({ token }) => {
+const useStyles = createStyles(({ token }, { isDark }: { isDark: boolean }) => {
   return {
     action: {
       marginLeft: '8px',
-      color: 'rgba(0, 0, 0, 0.2)',
+      color: token.colorTextTertiary,
       fontSize: '24px',
       verticalAlign: 'middle',
       cursor: 'pointer',
@@ -45,14 +46,16 @@ const useStyles = createStyles(({ token }) => {
       flexDirection: 'column',
       height: '100vh',
       overflow: 'auto',
-      backgroundImage:
-        "url('https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/V-_oS6r-i7wAAAAAAAAAAAAAFl94AQBr')",
+      backgroundColor: token.colorBgLayout,
+      backgroundImage: isDark
+        ? 'none'
+        : "url('https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/V-_oS6r-i7wAAAAAAAAAAAAAFl94AQBr')",
       backgroundSize: '100% 100%',
     },
   };
 });
-const ActionIcons = () => {
-  const { styles } = useStyles();
+const ActionIcons = ({ isDark }: { isDark: boolean }) => {
+  const { styles } = useStyles({ isDark });
   return (
     <>
       <AlipayCircleOutlined
@@ -87,7 +90,8 @@ const LoginMessage: React.FC<{
 };
 
 const Login: React.FC = () => {
-  const { styles } = useStyles();
+  const isDark = useGlobalStore((s) => s.themeMode === ThemeMode.Dark);
+  const { styles } = useStyles({ isDark });
   const [hasError, setHasError] = useState(false);
 
   const handleSubmit = async (_values: {
@@ -125,7 +129,10 @@ const Login: React.FC = () => {
           initialValues={{
             autoLogin: true,
           }}
-          actions={['其他登录方式 :', <ActionIcons key="icons" />]}
+          actions={[
+            '其他登录方式 :',
+            <ActionIcons key="icons" isDark={isDark} />,
+          ]}
           onFinish={async (values) => {
             await handleSubmit(values);
           }}
