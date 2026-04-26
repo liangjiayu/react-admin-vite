@@ -4,10 +4,6 @@ import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 import { dependencies, devDependencies } from './package.json';
 
-const __APP_INFO__ = {
-  pkg: { dependencies, devDependencies },
-};
-
 /**
  * vite 配置
  * @see https://cn.vite.dev/config/
@@ -15,10 +11,7 @@ const __APP_INFO__ = {
 export default defineConfig({
   base: '/',
   resolve: {
-    alias: {
-      '@': '/app/',
-      '@config': '/config/',
-    },
+    tsconfigPaths: true,
   },
   plugins: [reactRouter(), tailwindcss(), svgr()],
   server: {
@@ -34,6 +27,8 @@ export default defineConfig({
     },
   },
   define: {
-    __APP_INFO__: JSON.stringify(__APP_INFO__),
+    __APP_INFO__: JSON.stringify({
+      pkg: { dependencies, devDependencies },
+    }),
   },
 });

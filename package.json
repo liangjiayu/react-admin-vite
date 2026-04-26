@@ -3,16 +3,16 @@
   "private": true,
   "version": "2.0.0",
   "type": "module",
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.33.2",
   "scripts": {
     "dev": "react-router dev",
     "build": "react-router build",
-    "format": "biome format --write .",
+    "preview": "vite preview",
     "check": "biome check .",
     "check:fix": "biome check --write .",
-    "preview": "vite preview",
-    "prepare": "husky",
-    "openapi": "node config/openapi.js"
+    "format": "biome format --write .",
+    "openapi": "node config/openapi.js",
+    "prepare": "husky"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx,json,css}": [
@@ -57,6 +57,6 @@
     "lint-staged": "^16.1.2",
     "typescript": "~6.0.2",
     "vite": "^8.0.3",
-    "vite-plugin-svgr": "^4.3.0"
+    "vite-plugin-svgr": "^5.2.0"
   }
 }
